@@ -1,0 +1,33 @@
+.drawer-box {
+  position: relative;
+  .drawer {
+    position: absolute;
+    top: 30px;
+  }
+}
+
+.isHost {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 17px;
+  height: 17px;
+  word-break: break-all;
+}
+
+.agora-drawer {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  .drawer-header {
+    padding: 16px;
+    .drawer-header-title {
+      height:20px;
+      font-size:14px;
+      font-weight:400;
+      color:rgba(139,146,169,1);
+      line-height:20px;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+  }
+}

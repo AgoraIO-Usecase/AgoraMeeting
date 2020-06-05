@@ -1,0 +1,408 @@
+.highlight {
+  color: #4DA1FF;
+  border:1px solid #4DA1FF !important;
+}
+.drawer-box {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+  flex: 1;
+  border-top: 1px solid #BFBFBF;
+
+
+  .member-btn-group {
+    border-top: 1px solid #E9EFF4;
+    display: flex;
+    flex-direction: row;
+    height: 74px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-size:12px;
+    font-weight:400;
+    color:rgba(50,60,71,1);
+    line-height:17px;
+    .member-btn {
+      margin: 5px;
+      user-select: none;
+      cursor: pointer;
+      padding: 9px 10px;
+      min-width: 50px;
+      box-sizing: border-box;
+      display: flex;
+      padding: 9px 10px;
+      align-items: center;
+      justify-content: center;
+      height:26px;
+      border-radius:2px;
+      border:1px solid rgba(128,143,163,1);
+    }
+  }
+
+  .drawer-header {
+    height:20px;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(139,146,169,1);
+    line-height:20px;
+    // -webkit-background-clip:text;
+    // -webkit-text-fill-color:transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E3E3E3;
+    padding: 16px;
+  }
+
+  .drawer-body {
+    display: flex;
+    flex: 1;
+    .member-list {
+      color: #2E3848;
+      background: white;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      scroll-behavior: smooth;
+      display: flex;
+      flex: 1 1;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 2;
+      box-sizing: content-box;
+
+      .avatar {
+        display: flex;
+        flex: 1;
+        margin-right: 6px;
+
+        &::after {
+          content: ' ';
+          width: 24px;
+          height: 24px;
+          background: #F5A623;
+          border: 1px solid #F5A623;
+          border-radius: 16px;
+        }
+      }
+
+      .avatar.red  {
+        &::after {
+          background: #E66565;
+          border: 1px solid #E66565;
+        }
+      }
+
+      .avatar.green  {
+        &::after {
+          background: #7ED321;
+          border: 1px solid #7ED321;
+        }
+      }
+
+      .avatar.blue  {
+        &::after {
+          background: #4A90E2;
+          border: 1px solid #4A90E2;
+        }
+      }
+
+      .member-table {
+        user-select: none;
+        display: table;
+        border-collapse: collapse;
+        width: 100%;
+        .member-cell {
+          margin: -1px;
+          border-bottom: 1px solid #E9EFF4;
+          position: relative;
+          &:hover {
+            .none {
+              visibility: visible;
+              display: block;
+              position: absolute;
+              z-index: 20;
+              height: 48px;
+              width: 100%;
+              top: 0px;
+              &::after {
+                content: ' ';
+                display: block;
+                width: 100%;
+                height: 48px;
+                background: #E9EFF4;
+                opacity: 0.89;
+                position: absolute;
+              }
+            }
+          }
+          // display: table-row;
+          // border: 1px solid #E9EFF4;
+        }
+      }
+
+      // .member-table {
+      //   user-select: none;
+      //   display: table;
+      //   border: 1px solid #E9EFF4;
+      //   border-collapse: collapse;
+        .member-row {
+          width: 100%;
+          position: relative;
+          padding: 6px 12px;
+          min-height: 35px;
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+          // justify-content: space-between;
+          align-items: center;
+          font-size: 12px;
+          line-height: 17px;
+          .member-profile {
+            display: flex;
+            align-items: center;
+
+            .member-name {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              max-width: 48px;
+            }
+          }
+
+          .member-states {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+            padding-right: 24px;
+          }
+        }
+      // }
+    
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+    
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+    
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+    
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    }
+  }
+
+  .chat-message {
+    display: flex;
+    flex: 1 1;
+    z-index: 100;
+    position: relative;
+    background: white;
+    max-height: 73px;
+  }
+
+  .chat-message .MuiFormControl-root {
+    display: flex;
+    flex: 1;
+    max-height: auto;
+    min-height: auto;
+    margin: 0;
+  }
+
+  .send-btn {
+    position: absolute;
+    bottom: 27px;
+    right: 10px;
+    height: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0,160,233,1);
+    line-height: 17px;
+    top: 49px;
+    cursor: pointer;
+  }
+}
+
+.scrollable-container {
+  flex: 1;
+  position: relative;
+}
+
+.chat-messages {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  scroll-behavior: smooth;
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 2;
+  box-sizing: content-box;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .message.receive {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .content {
+      color: #2E3848;
+      background-color: #F4F8F9;
+      border-radius: 20px 20px 20px 0px;
+    }
+  }
+
+  .message.sent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .content {
+      background-color: #00A0E9;
+      border-radius: 20px 20px 0px 20px;
+    }
+  }
+
+  .message {
+    margin: 10px 20px;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: white;
+    line-height: 20px;
+
+    .nickname {
+      height:17px;
+      font-size:12px;
+      font-weight:400;
+      color:rgba(139,146,169,1);
+      line-height:17px;
+    }
+
+    .content {
+      display: inline-block;
+      padding: 10px 12px;
+      border: 1px solid #DBE2E5;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      overflow: hidden;
+      line-height: 20px;
+      font-size: 14px;
+      color: white;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.none {
+  visibility: hidden;
+}
+
+.show-menu {
+  // right: 23px;
+  display: block;
+  position: absolute;
+  z-index: 20;
+  height: 48px;
+  width: 260px;
+  top: 0px;
+  &::after {
+    content: ' ';
+    display: block;
+    width: 260px;
+    height: 48px;
+    background: #E9EFF4;
+    opacity: 0.89;
+  }
+}
+
+.show-menu .mediaCtrlTitle,
+.show-menu .mediaCtrlIcon
+{
+  opacity: 1 !important;
+}
+
+
+// .show-menu ~ .mediaDropdownBody 
+
+// .show-menu ~ .mediaDropdownBody .mediaMenu{
+//   top: 11px;
+// }
+
+// .show-menu ~ .mediaDropdownBody .mediaMenuList {
+//   border: 1px solid #F4F8F9;
+// }
+
+.show-menu ~ .mediaDropdownBody {
+  z-index: 20;
+  top: 6px;
+  right: 15px;
+
+  visibility: visible !important;
+
+  .mediaCtrlIcon::after {
+    background-image: url('../../assets/more@2x.png') !important;
+  }
+
+  .mediaMenuList {
+    border: 1px solid #F4F8F9;
+  }
+
+  .mediaCtrlTitle {
+    opacity: 1;
+  }
+
+  .mediaCtrlIcon {
+    opacity: 1;
+    cursor: pointer;
+    z-index: 10000;
+  }
+
+  .visibleMediaMenu {
+    user-select: none;
+    position: relative;
+    top: 9px;
+  }
+
+  // .mediaMenu{
+  //   top: 11px;
+  //   visibility: visible !important;
+  //   color: #6D7278;
+  // }
+}
+
+.show-menu ~ .mediaDropdownBody,
+.show-menu ~ .mediaDropdownBody > .mediaMenu
+ {
+  visibility: visible !important;
+}

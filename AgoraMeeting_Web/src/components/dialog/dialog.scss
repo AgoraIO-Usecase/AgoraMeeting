@@ -1,0 +1,107 @@
+.MuiPaper-root {
+  border: 1px solid #C8CACE;
+}
+
+.custom-dialog {
+  .MuiDialogContent-root:first-child {
+    padding-top: 38px;
+    padding-left: 30px;
+    padding-right: 30px;
+    // border: 1px solid #ACB5CB;
+    // box-shadow:0px 5px 22px 0px rgba(172,181,203,0.5);
+    // border-radius:6px;
+  }
+}
+
+.no-mask {
+  .MuiBackdrop-root {
+    background-color: unset;
+    -webkit-tap-highlight-color: unset;
+  }
+}
+
+.MuiPaper-rounded {
+  box-shadow:0px 5px 22px 0px rgba(172,181,203,0.5);
+  border-radius:6px;
+  border:1px solid rgba(200,202,206,1);
+}
+
+.MuiDialogContentText-root.dialog-title {
+  // margin-bottom: 30px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #2E3848;
+}
+  .modal-container {
+    position: relative;
+    z-index: 500000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    // max-width: 240px;
+    // max-height: 134px;
+    min-width: 240px;
+    min-height: 134px;
+    background:rgba(255,255,255,1);
+    // box-shadow:0px 4px 12px 0px rgba(0,0,0,0.2);
+    // border-radius:6px;
+    .desc {
+      align-items: center;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333333;
+    }
+    .meeting-btn-layouts {
+      width: 300px;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 195px;
+      .MuiButton-root {
+        padding: 0;
+        margin: 10px;
+      }
+      .confirm, .cancel {
+        box-shadow: none;
+      }
+    }
+    .confirm {
+      width:90px;
+      height:34px;
+      background:#44A2FC;
+      border-radius:4px;
+      font-size:14px;
+      font-weight:400;
+      color:#ffffff;
+      line-height:20px;
+      &:hover {
+        background: #82C2FF
+      }
+    }
+    .cancel {
+      width:90px;
+      height:34px;
+      background:#ffffff;
+      border-radius:4px;
+      font-size:14px;
+      font-weight:400;
+      color:#44A2FC;
+      line-height:20px;
+      border: 1px solid #44A2FC;
+      &:hover {
+        background: #ffffff;
+        color: #7CBFFF;
+        border: 1px solid #7CBFFF;
+      }
+    }
+  }
+// }
+
+.margin-top-20px {
+  margin-top: 30px;
+}

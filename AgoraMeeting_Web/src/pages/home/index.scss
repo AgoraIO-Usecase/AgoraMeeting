@@ -1,0 +1,288 @@
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  // width: 100vw;
+  // height: 100vh;
+}
+
+.login-card {
+  position: relative;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.customize-password input.MuiInputBase-input.MuiOutlinedInput-input {
+  padding-right: 24px;
+}
+
+
+.home-notice-container {
+  position: absolute;
+  right: -183px;
+  top: 325px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+
+  .home-notice {
+    position: absolute;
+    left: -25px;
+    top: 33px;
+    z-index: 500;
+    cursor: pointer;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    &::after {
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: ' ';
+      background-image: url('./assets/icon-shape.png');
+    }
+  }
+}
+
+.facade-notice {
+  border: 1px solid #E9EFF4;
+  background: white;
+  width: 241px;
+  height: 101px;
+
+  box-sizing: border-box;
+  padding: 11px;
+  font-size: 12px;
+  color: #323C47;
+  position: relative;
+  border-radius: 8px;
+
+  .triangle {
+    border-width: 8px 8px 8px 8px;
+    border-style: solid;
+    border-color: transparent #E9EFF4 transparent transparent;
+    height: 0;
+    z-index: 100;
+    display: block;
+    position: absolute;
+    left: -17px;
+    top: 33px;
+    &::after {
+      z-index: 22;
+      content: ' ';
+      display: block;
+      border-width: 8px 8px 8px 8px;
+      border-style: solid;
+      border-color: transparent white transparent transparent;
+      position: absolute;
+      left: -16px;
+      top: 32px;
+      position: absolute;
+      left: -7px;
+      top: -8px;
+    }
+
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    /* list-style: none; */
+    display: block;
+    padding-left: 15px;
+  }
+}
+
+// .facade-box {
+  // &:hover {
+  //   .facade-notice {
+  //     position: absolute;
+  //     opacity: 1 !important;
+  //   }
+  // }
+
+// }
+
+.meeting-facade {
+  // width: 100vw;
+  // flex: 1;
+  height: 100%;
+  // overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  background: url('./assets/background.png') ; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  // display: flex;
+  // justify-content: center;
+}
+
+.login {
+  width: 420px;
+  height: 653px;
+  background: rgba(255,255,255,1);
+  box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.2);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.login-container .login-header {
+  display: flex;
+  flex: 1;
+}
+
+.login-content {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  padding: 60px;
+  position: relative;
+}
+
+.content-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 79px;
+  margin-bottom: 52px;
+}
+
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.MuiCheckbox-colorPrimary.Mui-checked {
+  color: #4DA1FF !important;
+}
+
+.meeting-logo {
+  width: 88px;
+  height: 59px;
+  content: url('./assets/logo@2x.png');
+}
+
+.app-name {
+  width:184px;
+  height:28px;
+  font-size:20px;
+  font-weight:400;
+  color: #808FA3;
+  line-height:28px;
+  text-align: center;
+}
+
+.setting {
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  left: 344px;
+}
+
+.setting-icon {
+  display: flex;
+  max-width: 24px;
+  max-height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  cursor: pointer;
+}
+
+.setting-icon::after {
+  content: ' ';
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('./assets/setting@2x.png');
+  background-size: cover;
+  flex: 1;
+}
+
+.setting-icon:hover::after {
+  content: ' ';
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('./assets/settingDown@2x.png');
+  background-size: cover;
+  flex: 1;
+}
+
+.login-btn {
+  position: relative;
+  top: 14px;
+}
+
+.login-btn.MuiButton-containedPrimary {
+  background-color: #4DA1FF !important;
+  height: 42px;
+}
+
+.customize > .MuiFormControl-root {
+  margin: 0;
+}
+
+.customize .Mui-focused {
+  color: #4DA1FF !important;
+}
+
+.customize .Mui-error.Mui-focused {
+  color: #f44336 !important;
+  fieldset {
+    color: #f44336 !important;
+    border-color: #f44336 !important;
+  }
+  .MuiOutlinedInput-root {
+    border-color: #f44336 !important;
+  }
+}
+
+.customize input {
+  color: #2E3848;
+}
+
+.customize .Mui-focused fieldset {
+  color: #4DA1FF !important;
+  border-color: #4DA1FF !important;
+}
+
+.customize fieldset:hover {
+  border-color: yellow;
+}
+
+.customize > .MuiInputLabel-outlined {
+  transform: translate(11px, 12px) scale(1);
+}
+
+.customize .MuiOutlinedInput-input {
+  padding: 11px;
+}
+
+.customize {
+  .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    color: #4DA1FF;
+    border-color: #4DA1FF;
+  }
+
+  .MuiOutlinedInput-root.Mui-error:hover .MuiOutlinedInput-notchedOutline {
+    color: #f44336;
+    border-color: #f44336;
+  }
+}

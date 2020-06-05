@@ -1,0 +1,70 @@
+
+.invite-drawer {
+  position: absolute;
+  bottom: 80px;
+  top: auto !important;
+  left: auto !important;
+  right: 117px;
+  z-index: 9999;
+}
+
+.inviter-url {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.invite-container {
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  width: 382px;
+  height: 254px;
+  z-index: 9999;
+  left: 20px;
+  top: 38px;
+  user-select: none;
+
+  .className {
+    left: 20px;
+  }
+
+  .invite-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    font-size: 12px;
+    color: white;
+    top: 20px;
+    left: 20px;
+    background: #2B2B2C;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+.align-self {
+  align-self: center;
+}
+
+.invite-row {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  .label {
+    display: block;
+    min-width: 72px;
+  }
+}
+
+.invite-link-btn {
+  width: 192px;
+  height: 39px;
+  background: rgba(77,161,255,1);
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

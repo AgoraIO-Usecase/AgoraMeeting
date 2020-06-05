@@ -1,0 +1,46 @@
+.lectorTileLayout {
+  display: grid;
+  flex: 1;
+  // margin: 146px 90px;
+}
+
+.gridWrapper {
+  display: grid;
+  text-align: center;
+  align-items: center;
+}
+
+.oneCell {
+  flex: 1;
+}
+
+.twoCell {
+  flex: 1;
+  grid-template-columns: repeat(auto-fill, minmax(630px, 1fr));
+  // grid-template-rows: repeat(1, minmax(732px, 1fr));
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.fourGrid {
+  grid-template-columns: repeat(auto-fill, minmax(607px, 1fr));
+  // grid-template-columns: repeat(2, minmax(607px, 1fr));
+  // grid-template-rows: repeat(2, minmax(340px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.nineGrid {
+  grid-template-columns: repeat(auto-fill, minmax(402px, 1fr));
+  // grid-template-columns: repeat(3, minmax(402px, 1fr));
+  // grid-template-rows: repeat(3, minmax(224px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.sixTeenGrid {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  // grid-template-rows: repeat(auto-fill, minmax(168px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
