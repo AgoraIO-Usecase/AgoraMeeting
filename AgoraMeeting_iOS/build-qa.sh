@@ -2,6 +2,8 @@
 ArchivePathQA=VideoConferenceQA.xcarchive
 IPANameQA="IPAQA"
 
+sh install.sh
+
 xcodebuild clean -workspace "VideoConference.xcworkspace" -scheme "VideoConference" -configuration QARelease
 xcodebuild -workspace "VideoConference.xcworkspace" -scheme "VideoConference" -configuration QARelease -archivePath ${ArchivePathQA} archive -quiet || exit
 xcodebuild -exportArchive -exportOptionsPlist exportPlist.plist -archivePath ${ArchivePathQA} -exportPath ${IPANameQA} -quiet || exit

@@ -659,7 +659,9 @@ static NSString *agoraUId;
     }
     
     if(authorization != nil) {
-        headers[@"Authorization"] = [NSString stringWithFormat:@"Basic %@", authorization];
+        NSString *auth = [authorization stringByReplacingOccurrencesOfString:@"Basic " withString:@""];
+        auth = [NSString stringWithFormat:@"Basic %@", auth];
+        headers[@"Authorization"] = auth;
     } else {
         if(agoraToken) {
             headers[@"x-agora-token"] = agoraToken;
