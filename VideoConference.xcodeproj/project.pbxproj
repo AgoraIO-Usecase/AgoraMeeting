@@ -1025,7 +1025,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis;
 				PRODUCT_NAME = "Agora Meeting";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraIODistribution;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingsDistribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
