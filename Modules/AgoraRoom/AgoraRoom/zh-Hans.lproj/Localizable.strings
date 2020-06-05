@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  AgoraRoom
+
+  Created by SRS on 2020/5/7.
+  Copyright © 2020 agora. All rights reserved.
+*/
+
+GetLogParamsErrorText = "获取日志参数失败";
+LogNotFoundText = "没有找到日志文件";
+LogClearErrorText = "清除日志文件失败";
+LogZipErrorText = "日志文件压缩失败";
+UploadOSSErrorText = "上传OSS失败";
+
+RTMInitErrorText = "RTM初始化失败";
+
+OKText = "确定";
+CancelText = "取消";
+UpdateText = "版本已经更新了，请下载最新版本";

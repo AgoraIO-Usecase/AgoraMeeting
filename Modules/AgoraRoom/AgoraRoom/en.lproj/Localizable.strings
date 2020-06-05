@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  AgoraRoom
+
+  Created by SRS on 2020/5/7.
+  Copyright © 2020 agora. All rights reserved.
+*/
+
+GetLogParamsErrorText = "get log params failed";
+LogNotFoundText = "no log files found";
+LogClearErrorText = "failed to clear log files";
+LogZipErrorText = "log file compression failed";
+UploadOSSErrorText = "upload OSS failed";
+
+RTMInitErrorText = "RTM init error";
+
+OKText = "OK";
+CancelText = "Cancel";
+UpdateText = "version has been updated. Please download the new version";

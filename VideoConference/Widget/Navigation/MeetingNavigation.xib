@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeetingNavigation">
+            <connections>
+                <outlet property="directionBtn" destination="ncG-eo-piu" id="A6j-3l-DiO"/>
+                <outlet property="navigation" destination="iN0-l3-epB" id="6v0-6d-LSL"/>
+                <outlet property="speakerBtn" destination="bKs-sg-Mfg" id="QdJ-7t-FgF"/>
+                <outlet property="time" destination="56K-2k-P6U" id="CIm-r8-fK9"/>
+                <outlet property="title" destination="yxa-C4-hfH" id="BPr-JD-Drz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKs-sg-Mfg">
+                    <rect key="frame" x="2" y="40" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="5kh-Iv-hMi"/>
+                        <constraint firstAttribute="height" constant="44" id="jMa-dW-IFP"/>
+                    </constraints>
+                    <state key="normal" image="speaker-open"/>
+                    <connections>
+                        <action selector="onSpeakerClick:" destination="-1" eventType="touchUpInside" id="ngY-ZL-AMM"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncG-eo-piu">
+                    <rect key="frame" x="52" y="40" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="OjF-Cc-7sn"/>
+                        <constraint firstAttribute="width" constant="44" id="XzR-Zn-5gD"/>
+                    </constraints>
+                    <state key="normal" image="camera-rotate"/>
+                    <connections>
+                        <action selector="onSwitchCamera:" destination="-1" eventType="touchUpInside" id="Xcd-xJ-oqE"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AVCUX710" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-C4-hfH">
+                    <rect key="frame" x="104" y="44" width="204" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="RVW-fi-0zc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:23:45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56K-2k-P6U">
+                    <rect key="frame" x="104" y="63" width="204" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsR-om-jke">
+                    <rect key="frame" x="352" y="44" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="MYU-nC-Cla"/>
+                        <constraint firstAttribute="height" constant="44" id="wll-Yb-hng"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="离开">
+                        <color key="titleColor" red="1" green="0.37254901960784315" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="onLeftMeeting:" destination="-1" eventType="touchUpInside" id="W2P-j0-KZS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.13333333333333333" green="0.14117647058823529" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yxa-C4-hfH" firstAttribute="leading" secondItem="ncG-eo-piu" secondAttribute="trailing" constant="8" id="5f2-rM-79p"/>
+                <constraint firstAttribute="bottom" secondItem="yxa-C4-hfH" secondAttribute="bottom" constant="23" id="73o-do-tKB"/>
+                <constraint firstAttribute="bottom" secondItem="JsR-om-jke" secondAttribute="bottom" id="Dyj-Na-fng"/>
+                <constraint firstItem="JsR-om-jke" firstAttribute="leading" secondItem="yxa-C4-hfH" secondAttribute="trailing" constant="44" id="Jvm-5W-QFe"/>
+                <constraint firstAttribute="bottom" secondItem="56K-2k-P6U" secondAttribute="bottom" constant="10" id="MjT-n6-FHz"/>
+                <constraint firstItem="56K-2k-P6U" firstAttribute="trailing" secondItem="yxa-C4-hfH" secondAttribute="trailing" id="P3e-gY-OPs"/>
+                <constraint firstAttribute="trailing" secondItem="JsR-om-jke" secondAttribute="trailing" constant="18" id="Pdg-fU-ruW"/>
+                <constraint firstAttribute="bottom" secondItem="bKs-sg-Mfg" secondAttribute="bottom" constant="4" id="SqC-UA-L6n"/>
+                <constraint firstItem="bKs-sg-Mfg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="iQ6-bT-pvj"/>
+                <constraint firstItem="ncG-eo-piu" firstAttribute="leading" secondItem="bKs-sg-Mfg" secondAttribute="trailing" constant="6" id="jZE-uA-t2N"/>
+                <constraint firstItem="56K-2k-P6U" firstAttribute="leading" secondItem="yxa-C4-hfH" secondAttribute="leading" id="ovx-5M-hNK"/>
+                <constraint firstAttribute="bottom" secondItem="ncG-eo-piu" secondAttribute="bottom" constant="4" id="wdw-Ei-WaQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="135.9375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera-rotate" width="24" height="24"/>
+        <image name="speaker-open" width="24" height="24"/>
+    </resources>
+</document>
