@@ -44,7 +44,7 @@ pod install
 open VideoConference.xcworkspace
 ```
 
-5.配置相关参数
+6.配置相关参数
 
 在 `KeyCenter.m` 文件中配置以下参数：
 - 你获取到的声网 App ID。
@@ -63,7 +63,7 @@ open VideoConference.xcworkspace
 
 ```
 
-6.通过 `command + r` 运行项目
+7.通过 `command + r` 运行项目
 
 ## 联系我们
 

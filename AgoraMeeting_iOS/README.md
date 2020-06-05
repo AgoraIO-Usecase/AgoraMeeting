@@ -39,13 +39,13 @@ sh install.sh
 pod install
 ```
 
-4.Open the iOS project 
+5.Open the iOS project 
 
 ```
 open VideoConference.xcworkspace
 ```
 
-5.Configure parameters
+6.Configure parameters
 
 Pass the following parameters in `KeyCenter.m`:
 
@@ -65,7 +65,7 @@ For details, see the [prerequisites](https://github.com/AgoraIO-Usecase/AgoraMee
 
 ```
 
-6. Run the project with `command + r`.
+7. Run the project with `command + r`.
 
 ## Connect us
 
