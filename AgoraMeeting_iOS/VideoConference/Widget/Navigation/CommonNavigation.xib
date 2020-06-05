@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommonNavigation">
+            <connections>
+                <outlet property="leftBtn" destination="oZo-iT-wXg" id="No9-2v-gag"/>
+                <outlet property="navigation" destination="iN0-l3-epB" id="8Sf-o5-CpH"/>
+                <outlet property="rightBtn" destination="AKC-Tz-GCC" id="X59-og-NUl"/>
+                <outlet property="title" destination="YAQ-bl-FQg" id="tEy-3K-Gra"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKC-Tz-GCC">
+                    <rect key="frame" x="360" y="44" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="9On-Ko-Ump"/>
+                        <constraint firstAttribute="width" constant="44" id="VKf-yr-ECg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="onRightBtnClick:" destination="-1" eventType="touchUpInside" id="3Fc-tF-J9k"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZo-iT-wXg">
+                    <rect key="frame" x="0.0" y="44" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="SRE-Hr-YU6"/>
+                        <constraint firstAttribute="height" constant="44" id="siW-sn-P9L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" image="back">
+                        <color key="titleColor" red="1" green="0.37254901959999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="onBackBtnClick:" destination="-1" eventType="touchUpInside" id="Cu1-VQ-fAd"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAQ-bl-FQg">
+                    <rect key="frame" x="54" y="44" width="296" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="X7M-Aw-paM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="YAQ-bl-FQg" firstAttribute="leading" secondItem="oZo-iT-wXg" secondAttribute="trailing" constant="10" id="H9b-s5-cS0"/>
+                <constraint firstAttribute="bottom" secondItem="YAQ-bl-FQg" secondAttribute="bottom" id="MVS-34-dpX"/>
+                <constraint firstAttribute="bottom" secondItem="AKC-Tz-GCC" secondAttribute="bottom" id="QfI-bs-1hr"/>
+                <constraint firstItem="oZo-iT-wXg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XQh-0I-XkC"/>
+                <constraint firstItem="AKC-Tz-GCC" firstAttribute="leading" secondItem="YAQ-bl-FQg" secondAttribute="trailing" constant="10" id="ahR-oR-GFW"/>
+                <constraint firstAttribute="bottom" secondItem="oZo-iT-wXg" secondAttribute="bottom" id="ciC-hT-Qau"/>
+                <constraint firstAttribute="trailing" secondItem="AKC-Tz-GCC" secondAttribute="trailing" constant="10" id="tHe-VN-7gY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="135.9375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="24" height="24"/>
+    </resources>
+</document>
