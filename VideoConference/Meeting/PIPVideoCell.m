@@ -272,14 +272,11 @@
             NSInteger uid = 0;
             if(manager.roomModel.shareScreenUsers.count > 0) {
                 
-                for(ConfShareScreenUserModel *model in manager.roomModel.shareScreenUsers) {
-                    if([model.userId isEqualToString:NoNullString(manager.roomModel.createBoardUserId)]) {
-                        userName = model.userName;
-                        roleType = model.role;
-                        uid = model.uid;
-                        break;
-                    }
-                }
+                ConfShareScreenUserModel *model = manager.roomModel.shareScreenUsers.firstObject;
+                userName = model.userName;
+                roleType = model.role;
+                uid = model.uid;
+                
             } else {
                 for(ConfShareBoardUserModel *model in manager.roomModel.shareBoardUsers) {
                     if([model.userId isEqualToString:NoNullString(manager.roomModel.createBoardUserId)]) {
