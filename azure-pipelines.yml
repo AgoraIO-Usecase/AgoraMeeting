@@ -1,0 +1,11 @@
+jobs:
+  - template: cicd/templates/build-android.yml
+    parameters:
+      displayName: 'MeetingAndroid'
+      workingDirectory: 'AgoraMeeting_Android/AgoraMeeting'
+  - template: cicd/templates/build-ios.yml
+    parameters:
+      devDisplayName: 'AgoraMeetingDEV'
+      qaDisplayName: 'AgoraMeetingQA'
+      workingDirectory: 'AgoraMeeting_iOS'
+      scheme: 'VideoConference'
