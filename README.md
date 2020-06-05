@@ -12,7 +12,6 @@
   - [Run the sample project](https://github.com/AgoraIO-Usecase/AgoraMeeting#run-the-sample-project)
   - [Use Agora Cloud Service](https://github.com/AgoraIO-Usecase/AgoraMeeting#use-agora-cloud-service)
 - [FAQ](https://github.com/AgoraIO-Usecase/AgoraMeeting#faq)
-- [Recommended versions of the Agora RTC SDK](https://github.com/AgoraIO-Usecase/AgoraMeeting#recommended-versions-of-the-agora-rtc-sdk)
 
 ## About the project
 
