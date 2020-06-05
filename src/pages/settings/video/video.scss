@@ -1,0 +1,88 @@
+.video-page {
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.video-item {
+  flex: 1 1;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.margin-bottom-20px {
+  margin-bottom: 20px;
+}
+
+.video-check {
+  position: relative;
+  left: 119px;
+  display: flex;
+  align-items: center;
+}
+
+.video-item-cols {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-label {
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+  line-height: 24px;
+  display: inline-block;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.partial-page.video-page .preview-stream {
+  display: flex;
+  width: 264px;
+  height: 147.8px;
+  background-color: #E9EFF4;
+}
+
+.MuiList-root .MuiListItem-root {
+  font-size: 12px;
+}
+
+.setting-page {
+
+  .MuiListItem-root.Mui-selected, 
+  .MuiListItem-root.Mui-selected:hover {
+    font-size: 12px;
+  }
+
+  .MuiSelect-root,
+  .MuiSelect-select.MuiSelect-select
+  {
+    font-size: 12px;
+  }
+}
+
+.video-sub-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.video-devices-select {
+  flex: 1;
+  height: 24px;
+}
+
+.agora-video-player {
+  display: flex;
+  flex: 1;
+}
+
+#local {
+  display: flex;
+  flex: 1;
+}

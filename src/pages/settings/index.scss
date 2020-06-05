@@ -1,0 +1,90 @@
+.setting-page {
+  position: relative;
+  width: 612px;
+  height: 420px;
+  background: white;
+  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.setting-header {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 16px;
+  align-items: center;
+  border-bottom: #E9EFF4 1px solid;
+}
+
+.setting-header .setting-title {
+  height:17px;
+  font-weight:400;
+  color:rgba(50,60,71,1);
+}
+
+.setting-body {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.setting-body .navbar {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  border-right: 1px solid #E9EFF4;
+  box-sizing: content-box;
+  line-height: 40px;
+}
+
+.setting-body .content {
+  display: flex;
+  flex: 1;
+}
+
+.nav-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.nav-list a {
+  display: inline-flex;
+  flex: 1 1;
+  max-height: 32px;
+  align-items: center;
+  padding-left: 26px;
+  cursor: pointer;
+}
+
+.nav-list a:hover {
+  color: #4DA1FF;
+  background-color: #F4F8F9;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.active {
+  color: #4DA1FF;
+  background-color: #F4F8F9;
+}
+
+.partial-page {
+  margin-top: 28px;
+  align-items: center;
+}
+
+.active {
+  color: #444444;
+}

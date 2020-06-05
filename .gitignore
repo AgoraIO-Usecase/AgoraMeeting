@@ -1,0 +1,10 @@
+.env
+.DS_Store
+node_modules
+*.js~
+build
+build
+*.json~
+meeting
+.*~
+package-lock.json

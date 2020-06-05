@@ -1,0 +1,43 @@
+.partial-page.about-page {
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  align-items: center;
+}
+
+.about-logo {
+  height: 114px;
+  position: relative;
+  top: 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  .title {
+    width: 198px;
+    height: 32px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #2e3848;
+    line-height: 16px;
+    text-align: center;
+  }
+  img {
+    width: 48px;
+    height: 33px;
+  }
+}
+
+.download-link {
+  cursor: pointer;
+  border-radius: 2px;
+  color: white;
+  width: 120px;
+  height: 32px;
+  background-color: #00A8FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
