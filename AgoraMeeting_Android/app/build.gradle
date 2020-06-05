@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: "androidx.navigation.safeargs"
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "io.agora.meeting"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'CODE', '"conf-demo"'
+        buildConfigField 'String', 'EXTRA', '"AgoraMeeting"'
+
+        buildConfigField 'String', 'API_BASE_URL', '"https://api.agora.io/scenario/"'
+        buildConfigField 'String', 'POLICY_URL', '"https://www.agora.io/privacy-policy"'
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':base')
+    implementation project(':log')
+    implementation project(':sdk')
+    implementation project(':whiteboard')
+
+    testImplementation rootProject.ext.dependencies['junit']
+    androidTestImplementation rootProject.ext.dependencies['androidx.junit']
+    androidTestImplementation rootProject.ext.dependencies['espresso-core']
+
+    implementation rootProject.ext.dependencies['constraintlayout']
+    implementation rootProject.ext.dependencies['navigation-fragment']
+    implementation rootProject.ext.dependencies['lifecycle-extensions']
+    implementation rootProject.ext.dependencies['recyclerview']
+    implementation rootProject.ext.dependencies['material']
+    implementation rootProject.ext.dependencies['BasePopup']
+    implementation rootProject.ext.dependencies['easypermissions']
+    implementation rootProject.ext.dependencies['badgeview']
+    implementation rootProject.ext.dependencies['colorpicker']
+    implementation rootProject.ext.dependencies['live-event-bus-x']
+}
