@@ -16,10 +16,10 @@ target "AgoraRoom" do
   
   # Media
 #  pod 'AgoraRtcEngine_iOS', '2.9.0.102'
-  pod 'AgoraRtm_iOS', '~> 1.2.2'
+  pod 'AgoraRtm_iOS', '1.2.2'
   
   # HTTP
-  pod 'AFNetworking', '~> 3.2.1'
+  pod 'AFNetworking', '4.0.1'
   
   # LOG
   pod 'CocoaLumberjack'
