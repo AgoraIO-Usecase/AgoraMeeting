@@ -2,6 +2,8 @@
 ArchivePath=VideoConferenceDev.xcarchive
 IPAName="IPADEV"
 
+sh install.sh
+
 xcodebuild clean -workspace "VideoConference.xcworkspace" -scheme "VideoConference" -configuration DevRelease
 xcodebuild archive -workspace "VideoConference.xcworkspace" -scheme "VideoConference"  -configuration DevRelease -archivePath ${ArchivePath} -quiet || exit
 xcodebuild -exportArchive -exportOptionsPlist exportPlist.plist -archivePath ${ArchivePath} -exportPath ${IPAName} -quiet || exit
