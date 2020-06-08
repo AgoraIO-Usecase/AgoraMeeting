@@ -52,10 +52,7 @@ static HttpClient *manager = nil;
           \nheaders==>\n%@\n\
           \nparams==>\n%@\n\
           ", url, headers, params);
-    
-    [HttpClient.shareManager.sessionManager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [HttpClient.shareManager.sessionManager GET:url parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         AgoraLogInfo(@"\n============>Get HTTP Success<============\n\
               \nurl==>\n%@\n\
@@ -69,6 +66,7 @@ static HttpClient *manager = nil;
         if (success) {
             success(responseObject);
         }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         AgoraLogInfo(@"\n============>Get HTTP Error<============\n\
               \nurl==>\n%@\n\
@@ -95,7 +93,7 @@ static HttpClient *manager = nil;
           \nparams==>\n%@\n\
           ", url, headers, params);
     
-    [HttpClient.shareManager.sessionManager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [HttpClient.shareManager.sessionManager POST:url parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         AgoraLogInfo(@"\n============>Post HTTP Success<============\n\
               \nurl==>\n%@\n\
@@ -111,7 +109,7 @@ static HttpClient *manager = nil;
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-
+        
         AgoraLogInfo(@"\n============>Get HTTP Error<============\n\
               \nurl==>\n%@\n\
               \nError==>\n%@\n\
