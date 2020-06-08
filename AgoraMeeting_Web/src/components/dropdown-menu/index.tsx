@@ -32,7 +32,7 @@ const CustomMenuList = ({
 
   const CanIApplyBoard = !notSharing && isMe && !!grantBoard === false && !isHost && !meIsOwner ? true : false
 
-  const CanIEnableVideo = isMe || isHost ? true : false
+  const CanIEnableVideo = isMe ? true : false
 
   const CanIGrantRole = isHost && !isMe ? true : false
 
@@ -122,7 +122,7 @@ const CustomMenuList = ({
 
       {CanIEnableVideo ? <DropDownBtn text='video' value={video} onClick={clickVideo} /> : null}
 
-      {/* {CanIEnableInviteVideo ? <DropDownBtn text='invite_video' value={video} onClick={handleInviteVideo} /> : null} */}
+      {CanIEnableInviteVideo ? <DropDownBtn text='invite_video' value={video} onClick={handleInviteVideo} /> : null}
 
       {CanIGrantRole ? <DropDownBtn text='role' value={role === 1} onClick={clickRole} /> : null}
 
