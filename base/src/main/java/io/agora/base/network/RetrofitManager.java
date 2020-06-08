@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import io.agora.base.callback.ThrowableCallback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.internal.platform.Platform;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -21,12 +22,12 @@ public class RetrofitManager {
 
     private OkHttpClient client;
     private Map<String, String> headers = new HashMap<>();
+    private HttpLoggingInterceptor.Logger logger;
 
     private RetrofitManager() {
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
         clientBuilder.connectTimeout(30, TimeUnit.SECONDS);
         clientBuilder.readTimeout(30, TimeUnit.SECONDS);
-        clientBuilder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         clientBuilder.addInterceptor(chain -> {
             Request request = chain.request();
             Request.Builder requestBuilder = request.newBuilder()
@@ -38,6 +39,13 @@ public class RetrofitManager {
             }
             return chain.proceed(requestBuilder.build());
         });
+        clientBuilder.addInterceptor(new HttpLoggingInterceptor(s -> {
+            if (logger == null) {
+                Platform.get().log(s, Platform.INFO, null);
+            } else {
+                logger.log(s);
+            }
+        }).setLevel(HttpLoggingInterceptor.Level.BODY));
         client = clientBuilder.build();
     }
 
@@ -54,6 +62,10 @@ public class RetrofitManager {
 
     public void addHeader(@NonNull String key, @NonNull String value) {
         headers.put(key, value);
+    }
+
+    public void setLogger(@NonNull HttpLoggingInterceptor.Logger logger) {
+        this.logger = logger;
     }
 
     public <T> T getService(@NonNull String baseUrl, @NonNull Class<T> tClass) {
