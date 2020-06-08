@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - AgoraRtm_iOS (1.2.2)
   - AliyunOSSiOS (2.10.8)
@@ -47,8 +47,8 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.2.1)
-  - AgoraRtm_iOS (~> 1.2.2)
+  - AFNetworking (= 4.0.1)
+  - AgoraRtm_iOS (= 1.2.2)
   - AliyunOSSiOS
   - CocoaLumberjack
   - IQKeyboardManager
@@ -67,7 +67,7 @@ SPEC REPOS:
     - YYModel
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   AgoraRtm_iOS: c6ba986a3af73dd0f02e6e2995ae4fe9c155e6ae
   AliyunOSSiOS: 8db92936545593b9e5c66d680ef2ac0738946651
   CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
@@ -76,6 +76,6 @@ SPEC CHECKSUMS:
   Whiteboard: 79ab8b3ba0a3bcd573c9a77a23da5ef07e7a0f5d
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: b7d48ff471dad55654308fb5cadf4e5786c46655
+PODFILE CHECKSUM: a00f2eb62a1d835290267922de3208597218b4ac
 
 COCOAPODS: 1.9.3
