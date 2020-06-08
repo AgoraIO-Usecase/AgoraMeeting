@@ -23,13 +23,13 @@ public class LogUtil {
     public static void upload(@NonNull Activity activity, @Nullable String roomId) {
         UploadManager.upload(activity, new UploadManager.UploadParam(
                 BuildConfig.API_BASE_URL,
-                "/meeting/v1/log/params?osType=" + OS.ANDROID + "&terminalType=" + Terminal.PHONE,
+                "meeting/v1/log/params?osType=" + OS.ANDROID + "&terminalType=" + Terminal.PHONE,
                 MainApplication.getAppId(),
                 BuildConfig.CODE,
                 BuildConfig.VERSION_NAME,
                 roomId,
                 LogManager.getPath().getAbsolutePath(),
-                "/meeting/v1/log/sts/callback"
+                "meeting/v1/log/sts/callback"
         ), new ThrowableCallback<String>() {
             @Override
             public void onSuccess(String res) {
