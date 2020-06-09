@@ -287,7 +287,7 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
                     if (titleRes == R.string.close_title) {
                         showRateDialog();
                     } else if (titleRes == R.string.kick_out) {
-                        Navigation.findNavController(requireView()).navigate(MeetingFragmentDirections.actionGlobalLoginFragment());
+                        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(MeetingFragmentDirections.actionGlobalLoginFragment());
                     }
                 }).setCancelable(false).show();
     }
