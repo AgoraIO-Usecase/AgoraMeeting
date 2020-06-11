@@ -9,9 +9,9 @@
   - [前提条件](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6)
     - [获取声网 App ID](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E8%8E%B7%E5%8F%96%E5%A3%B0%E7%BD%91-app-id)
     - [进行 HTTP 基本认证](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E8%BF%9B%E8%A1%8C-http-%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81)
-    - [获取第三方白板 sdkToken 并注册到Agora会议云服务](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#获取第三方白板-sdkToken-并注册到Agora会议云服务)
+    - [获取第三方白板 SDK Token 并注册到 Agora 会议云服务](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E6%8E%A5%E5%85%A5-agora-%E4%BC%9A%E8%AE%AE%E4%BA%91%E6%9C%8D%E5%8A%A1)
   - [运行示例项目](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B%E9%A1%B9%E7%9B%AE)
-  - [接入 Agora 会议云服务](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E6%8E%A5%E5%85%A5-agora-%E4%BA%91%E6%9C%8D%E5%8A%A1)
+  - [接入 Agora 会议云服务](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#接入-agora-会议云服务)
 - [常见问题](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
 
 ## 项目概述

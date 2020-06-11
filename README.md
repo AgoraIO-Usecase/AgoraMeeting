@@ -10,7 +10,7 @@
     - [Pass the basic HTTP authentication](https://github.com/AgoraIO-Usecase/AgoraMeeting#pass-the-basic-http-authentication)
     - [Get a Netless  `sdkToken` and register with Agora Conference Cloud Service](https://github.com/AgoraIO-Usecase/AgoraMeeting#get-a-netless--sdktoken-and-register-with-agora-conference-cloud-service)
   - [Run the sample project](https://github.com/AgoraIO-Usecase/AgoraMeeting#run-the-sample-project)
-  - [Use Agora Conference Cloud Service](https://github.com/AgoraIO-Usecase/AgoraMeeting#use-agora-cloud-service)
+  - [Use Agora Conference Cloud Service](https://github.com/AgoraIO-Usecase/AgoraMeeting#use-agora-conference-cloud-service)
 - [FAQ](https://github.com/AgoraIO-Usecase/AgoraMeeting#faq)
 
 ## About the project
@@ -62,8 +62,8 @@ Follow these steps to get a Netless whiteboard  `sdkToken`:
 2. Log in to Netless Console and get the `sdkToken` in the **Key management** page.
 
 You need to register the sdkToken of the whiteboard to the Agora cloud server.
-1. Open[Agora Console](https://console.agora.io/)
-2. Edit**Project Management**, select the function module and click "update the token" to register.
+1. Open [Agora Console](https://console.agora.io/)
+2. Edit **Project Management**, select the function module and click "update the token" to register.
 
 ### Run the sample project
 
@@ -79,4 +79,4 @@ Agora provides Agora Conference Cloud Service for developers who are not good at
 
 ## FAQ
 
-See [Trouble Shooting](https://github.com/AgoraIO-Usecase/AgoraMeeting/wiki/Trouble-Shooting).
+See [Troubleshooting](https://github.com/AgoraIO-Usecase/AgoraMeeting/wiki/Trouble-Shooting).
