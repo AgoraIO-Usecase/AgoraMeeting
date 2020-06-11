@@ -514,6 +514,9 @@
     BOOL muteAudio = !self.ownModel.enableAudio;
     [self.roomManager muteLocalAudioStream:@(muteAudio)];
     
+    BOOL muteVideo = !self.ownModel.enableVideo;
+    [self.roomManager muteLocalVideoStream:@(muteVideo)];
+    
     AgoraLogInfo(@"messageUserInfo ownModel ===> %@", [self.ownModel yy_modelDescription]);
     AgoraLogInfo(@"messageShareBoard roomModel ===> %@", [self.roomModel yy_modelDescription]);
     AgoraLogInfo(@"messageUserInfo userListModels ===> %@", [self.userListModels yy_modelDescription]);
