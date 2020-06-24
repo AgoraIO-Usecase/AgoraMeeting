@@ -7,8 +7,11 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +21,8 @@ import io.agora.rtc.IRtcEngineEventHandler;
 import io.agora.rtc.RtcEngine;
 import io.agora.rtc.video.VideoCanvas;
 import io.agora.rtc.video.VideoEncoderConfiguration;
+import io.agora.sdk.annotation.AudioProfile;
+import io.agora.sdk.annotation.AudioScenario;
 import io.agora.sdk.annotation.ChannelProfile;
 import io.agora.sdk.annotation.ClientRole;
 import io.agora.sdk.annotation.RenderMode;
@@ -56,13 +61,6 @@ public final class RtcManager extends SdkManager<RtcEngine> {
         getSdk().enableAudio();
         getSdk().enableVideo();
         getSdk().enableWebSdkInteroperability(true);
-        VideoEncoderConfiguration config = new VideoEncoderConfiguration(
-                VideoEncoderConfiguration.VD_360x360,
-                VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15,
-                VideoEncoderConfiguration.STANDARD_BITRATE,
-                VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_LANDSCAPE
-        );
-        getSdk().setVideoEncoderConfiguration(config);
     }
 
     @Override
@@ -94,6 +92,20 @@ public final class RtcManager extends SdkManager<RtcEngine> {
 
     public void setClientRole(@ClientRole int role) {
         getSdk().setClientRole(role);
+    }
+
+    public void setAudioProfile(@AudioProfile int profile, @AudioScenario int scenario) {
+        getSdk().setAudioProfile(profile, scenario);
+    }
+
+    public void setVideoEncoderConfiguration(@NonNull VideoEncoderConfiguration configuration) {
+        getSdk().setVideoEncoderConfiguration(configuration);
+    }
+
+    public void setParameters(@NonNull String key, @NonNull Object value) {
+        getSdk().setParameters(new Gson().toJson(new HashMap<String, Object>() {{
+            put(key, value);
+        }}));
     }
 
     public void enableLocalAudio(boolean enable) {
@@ -134,7 +146,7 @@ public final class RtcManager extends SdkManager<RtcEngine> {
         return RtcEngine.CreateRendererView(context);
     }
 
-    public void setupLocalVideo(SurfaceView view, @RenderMode int renderMode) {
+    public void setupLocalVideo(@Nullable SurfaceView view, @RenderMode int renderMode) {
         log.d("setupLocalVideo %b", view != null);
         VideoCanvas canvas = new VideoCanvas(view, renderMode, 0);
         getSdk().setupLocalVideo(canvas);
@@ -148,7 +160,7 @@ public final class RtcManager extends SdkManager<RtcEngine> {
         getSdk().switchCamera();
     }
 
-    public void setupRemoteVideo(SurfaceView view, @RenderMode int renderMode, int uid) {
+    public void setupRemoteVideo(@Nullable SurfaceView view, @RenderMode int renderMode, int uid) {
         log.d("setupRemoteVideo %b %d", view != null, uid);
         VideoCanvas canvas = new VideoCanvas(view, renderMode, uid);
         getSdk().setupRemoteVideo(canvas);
