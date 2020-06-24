@@ -11,6 +11,8 @@ import io.agora.base.ToastManager;
 import io.agora.base.network.RetrofitManager;
 import io.agora.base.util.CryptoUtil;
 import io.agora.log.LogManager;
+import io.agora.rtc.Constants;
+import io.agora.rtc.video.VideoEncoderConfiguration;
 import io.agora.sdk.manager.RtcManager;
 import io.agora.sdk.manager.RtmManager;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -38,8 +40,18 @@ public class MainApplication extends Application {
         });
 
         setAppId(getString(R.string.agora_app_id));
-        RtcManager.instance().init(this, getAppId());
-        RtmManager.instance().init(this, getAppId());
+        RtcManager.instance().init(this, getAppId(), (RtcManager sdk) -> {
+            if (sdk == null) return;
+            sdk.setParameters("che.audio.specify.codec", "OPUSFB");
+            sdk.setAudioProfile(Constants.AUDIO_PROFILE_DEFAULT, Constants.AUDIO_SCENARIO_CHATROOM_ENTERTAINMENT);
+            sdk.setVideoEncoderConfiguration(new VideoEncoderConfiguration(
+                    VideoEncoderConfiguration.VD_360x360,
+                    VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15,
+                    VideoEncoderConfiguration.STANDARD_BITRATE,
+                    VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_LANDSCAPE
+            ));
+        });
+        RtmManager.instance().init(this, getAppId(), null);
         RetrofitManager.instance().addHeader("Authorization", CryptoUtil.getAuth(getString(R.string.agora_auth)));
     }
 

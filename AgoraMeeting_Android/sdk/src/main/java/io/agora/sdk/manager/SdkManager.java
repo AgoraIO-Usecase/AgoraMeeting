@@ -2,7 +2,11 @@ package io.agora.sdk.manager;
 
 import android.content.Context;
 
+import androidx.annotation.Nullable;
+
 import java.util.Map;
+
+import io.agora.base.callback.Callback;
 
 /**
  * Agora SDK manager template
@@ -15,7 +19,7 @@ public abstract class SdkManager<Sdk> {
 
     private Sdk sdk;
 
-    public final void init(Context context, String appId) {
+    public final <T extends SdkManager<Sdk>> void init(Context context, String appId, @Nullable Callback<T> configSdk) {
         try {
             if (sdk != null) release();
             sdk = creakSdk(context, appId);
@@ -23,6 +27,7 @@ public abstract class SdkManager<Sdk> {
             throw new RuntimeException(e.getMessage());
         }
         configSdk();
+        if (configSdk != null) configSdk.onSuccess((T) this);
     }
 
     protected abstract Sdk creakSdk(Context context, String appId) throws Exception;
