@@ -42,6 +42,8 @@ public class MainApplication extends Application {
         setAppId(getString(R.string.agora_app_id));
         RtcManager.instance().init(this, getAppId(), (RtcManager sdk) -> {
             if (sdk == null) return;
+            sdk.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
+            sdk.setClientRole(Constants.CLIENT_ROLE_BROADCASTER);
             sdk.setParameters("che.audio.specify.codec", "OPUSFB");
             sdk.setAudioProfile(Constants.AUDIO_PROFILE_DEFAULT, Constants.AUDIO_SCENARIO_CHATROOM_ENTERTAINMENT);
             sdk.setVideoEncoderConfiguration(new VideoEncoderConfiguration(
