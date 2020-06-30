@@ -27,7 +27,7 @@ def main():
     content = f.read()
 
     contentNew = content
-    contentNew = re.sub(r'https://api.agora.io/scenario/', host, contentNew)
+    contentNew = re.sub(r'https://api.agora.io/scenario', host, contentNew)
 
     f.seek(0)
     f.write(contentNew)
