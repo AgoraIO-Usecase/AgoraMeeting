@@ -13,6 +13,7 @@ import io.agora.meeting.BuildConfig;
 import io.agora.meeting.annotaion.room.AudioRoute;
 import io.agora.meeting.data.Me;
 import io.agora.meeting.data.Room;
+import io.agora.rtc.Constants;
 import io.agora.sdk.listener.RtcEventListener;
 import io.agora.sdk.manager.RtcManager;
 import io.agora.sdk.manager.RtmManager;
@@ -48,6 +49,7 @@ public class RtcViewModel extends ViewModel {
                 RtmManager.instance().joinChannel(new HashMap<String, String>() {{
                     put(SdkManager.CHANNEL_ID, channelId);
                 }});
+                RtcManager.instance().setClientRole(Constants.CLIENT_ROLE_BROADCASTER);
                 RtcManager.instance().joinChannel(new HashMap<String, String>() {{
                     put(SdkManager.TOKEN, me.rtcToken);
                     put(SdkManager.CHANNEL_ID, channelId);

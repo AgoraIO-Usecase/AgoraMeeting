@@ -105,7 +105,7 @@ public final class RtcManager extends SdkManager<RtcEngine> {
     public void setParameters(@NonNull String key, @NonNull Object value) {
         getSdk().setParameters(new Gson().toJson(new HashMap<String, Object>() {{
             put(key, value);
-        }}));
+        }}, Map.class));
     }
 
     public void enableLocalAudio(boolean enable) {
