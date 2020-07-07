@@ -16,6 +16,7 @@
 
 + (NSString *)authorization {
     return <#Your Authorization#>;
+
 }
 
 @end
