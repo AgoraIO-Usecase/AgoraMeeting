@@ -1,0 +1,61 @@
+.partial-page.feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+// .partial-page.feedback .custom-textarea {
+//   flex: 1;
+//   border-radius:2px;
+//   border:1px solid rgba(233,239,244,1);
+//   outline: none;
+// }
+
+.partial-page.feedback .upload-btn {
+  width: 130px;
+  height: 34px;
+  line-height: 24px;
+}
+
+.custom-textarea {
+  outline: none;
+  background: white;
+  overflow: auto;
+  display: flex;
+  padding: 0 !important;
+  flex: 1 1;
+  border-style: none;
+  border-top: 1px solid #E3E3E3;
+}
+
+.custom-textarea fieldset,
+.custom-textarea textarea,
+.custom-textarea .MuiInputBase-root
+{
+  max-height: 75px;
+  min-height: 75px;
+}
+.custom-textarea .MuiOutlinedInput-multiline {
+  padding: 3px;
+  overflow: auto;
+}
+
+.feedback .Mui-focused fieldset {
+  color: #4DA1FF !important;
+  border-color: #4DA1FF !important;
+}
+
+.partial-page.feedback .upload-btn.MuiButton-containedPrimary {
+  background-color: #4DA1FF !important;
+}
+
+.feedback .item-label {
+  margin-bottom: 7px;
+}
+
+// .feedback .item {
+//   margin-bottom: 10px;
+//   position: relative;
+//   left: 120px;
+// }

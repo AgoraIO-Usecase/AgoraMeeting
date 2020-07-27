@@ -1,0 +1,33 @@
+.volume-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.voice-sliders {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  width: 155px;
+  justify-content: space-between;
+  span {
+    margin: 1px;
+    flex: 1;
+    min-height: 12px;
+    min-width: 2px;
+    background-color: #CCCCCC;
+    border-radius: 4px;
+    max-width: 7px;
+    height: 18px;
+    &.active {
+      background-color: #67C91F;
+    }
+  }
+}
+
+.voice-volume {
+
+}
+
+.speaker-volume {
+
+}
