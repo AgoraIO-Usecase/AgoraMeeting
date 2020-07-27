@@ -53,6 +53,9 @@
     if(role == AgoraClientRoleBroadcaster){
         [self.rtcEngineKit startPreview];
     }
+    
+    [self.rtcEngineKit setParameters:@"{\"che.audio.specify.codec\":\"OPUSFB\"}"];
+    [self.rtcEngineKit setAudioProfile:AgoraAudioProfileDefault scenario:AgoraAudioScenarioGameStreaming];
 }
 
 - (int)startLastmileProbeTest:(NSString *)appid dataSourceDelegate:(id<RTCManagerDelegate> _Nullable)rtcDelegate {
