@@ -23,8 +23,8 @@
    ```bash
   # 声望 App ID
    REACT_APP_AGORA_APP_ID=agora_app_id
-   REACT_APP_AGORA_EDU_ENDPOINT_PREFIX=agora_endpoint_prefix
-   REACT_APP_YOUR_BACKEND_WHITEBOARD_API=board_api_prefix
+   REACT_APP_AGORA_EDU_ENDPOINT_PREFIX=https://api.agora.io/scenario/meeting
+   REACT_APP_YOUR_BACKEND_WHITEBOARD_API=https://api.agora.io/scenario/meeting/apps/%app_id%/v1/room/%room_id%/board
    REACT_APP_AGORA_RESTFULL_TOKEN=agora_restfull_api_token
    ```  
 
