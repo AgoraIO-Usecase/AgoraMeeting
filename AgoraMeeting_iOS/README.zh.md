@@ -17,13 +17,13 @@
 1.将代码克隆到本地
 
 ```
-git clone https://github.com/AgoraIO-Community/eConferencing-iOS
+git clone https://github.com/AgoraIO-Usecase/AgoraMeeting.git
 ```
 
 2.进入项目目录
 
 ```
-cd eConferencing-iOS
+cd AgoraMeeting_iOS
 ```
 
 3.配置sdk

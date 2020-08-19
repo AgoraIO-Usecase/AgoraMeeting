@@ -18,13 +18,13 @@ Follow these steps to run the sample project:
 1.Clone the repository to your local machine.
 
 ```
-git clone https://github.com/AgoraIO-Community/eConferencing-iOS
+git clone https://github.com/AgoraIO-Usecase/AgoraMeeting.git
 ```
 
 2.Enter the directory of the Android project.
 
 ```
-cd eConferencing-iOS
+cd AgoraMeeting_iOS
 ```
 
 3.Setup sdk.
