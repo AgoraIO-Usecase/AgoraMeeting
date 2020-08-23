@@ -71,7 +71,7 @@ See the following documents to compile and run the sample project:
 
 - [Run the Android project](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_Android)
 - [Run the iOS project](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_iOS)
-- [Run Web project](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_web)
+- [Run Web project](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_Web)
 
 ### Use Agora Conference Cloud Service
 

@@ -73,7 +73,7 @@ Agora Meeting 示例项目支持以下平台和版本：
 
 - [Android 运行指南](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/AgoraMeeting_Android/README.zh.md)
 - [iOS 运行指南](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_iOS/README.zh.md)
-- [Web 运行指南](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_web/README.zh.md)
+- [Web 运行指南](https://github.com/AgoraIO-Usecase/AgoraMeeting/tree/master/AgoraMeeting_Web/README.zh.md)
 
 ### 接入 Agora 会议云服务
 
