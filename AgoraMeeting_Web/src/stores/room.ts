@@ -1083,12 +1083,15 @@ export class RoomStore {
       const appId = this.state.confState.appID
       const channelName = this.state.confState.channelName
       const {screenId} = this.state.me
-      await webClient.startScreenShare({
+      const stream = await webClient.startScreenShare({
         uid: +screenId,
         token: screenToken,
         channel: channelName,
         appId
       })
+      // const stream = this.rtcClient.shareClient._localStream
+      const _stream = new AgoraStream(stream, stream.getId(), true);
+      this.addLocalSharedStream(_stream)
       // add screen client listener
       // 监听屏幕共享主要的事件
       webClient.shareClient.on('onTokenPrivilegeWillExpire', (evt: any) => {
@@ -1260,7 +1263,7 @@ export class RoomStore {
       rtc: {
         ...this.state.rtc,
         localStream: null,
-        localSharedStream: null
+        // localSharedStream: null
       }
     }
     console.log("removeLocalStream>>")
@@ -2169,14 +2172,21 @@ export class RoomStore {
     const webClient = this.rtcClient as AgoraWebClient
     const streams = this.state.rtc.remoteStreams
     if (webClient) {
-      const stream = streams.get(`${largeUid}`)
-      const otherStreams = streams.filterNot((stream: AgoraStream) => stream.streamID === largeUid && !stream.stream)
+      // const stream = streams.get(`${largeUid}`)
+      const otherStreams = streams.filterNot((stream: AgoraStream) => !stream.stream)
       otherStreams.forEach((stream: AgoraStream) => {
-        webClient.setRemoteVideoStreamType(stream.stream, 1)
+        const curId = +stream.stream.getId()
+        if (curId === +largeUid) {
+          webClient.setRemoteVideoStreamType(stream.stream, 0)
+          console.log('[rtc] [otherStreams], 0, ', stream.stream.getId(), stream.stream)
+        } else {
+          webClient.setRemoteVideoStreamType(stream.stream, 1)
+          console.log('[rtc] [otherStreams], 1, ', stream.stream.getId(), stream.stream)
+        }
       })
-      if (stream) {
-        webClient.setRemoteVideoStreamType(stream.stream, 0)
-      }
+      // if (stream) {
+      //   webClient.setRemoteVideoStreamType(stream.stream, 0)
+      // }
     }
   }
 

@@ -25,6 +25,7 @@ export const useStreams = ({
 
     // share screen
     if (confState.shareScreen) {
+      console.log(+Date.now(), '[use-streams] ', confState.shareScreen)
       let member = null
 
       let stream = null
@@ -32,18 +33,29 @@ export const useStreams = ({
       let sharedUser = users.shareScreenUsers.first() as AgoraUser
 
       if (!sharedUser) {
+        console.log(+Date.now(), '[use-streams] !sharedUser')
         return null
       } else {
         member = sharedUser
       }
 
+      console.log(+Date.now(), `[use-streams] member: ${JSON.stringify(member)}`)
+
       const remoteStream = member ? rtc.remoteStreams.get(`${member.screenId}`) : ''
 
       if (remoteStream) {
+        console.log(+Date.now(), '[use-streams] rtc.remoteStreams.get(`${member.screenId}`) remoteStream, screenId: ', member.screenId)
         stream = remoteStream.stream
       }
 
+      if (rtc.localSharedStream) {
+        console.log(+Date.now(), '[use-streams] rtc.localSharedStream: ', rtc.localSharedStream)
+        stream = rtc.localSharedStream.stream
+      }
+
+      console.log(+Date.now(), `[use-streams] member2: ${JSON.stringify(member)}`)
       if (member) {
+        console.log(+Date.now(), `[use-streams] member3: ${JSON.stringify(member)}`)
         const mediaState = transformMediaState(me, member, users, confState)
 
         const screenStream: AgoraMediaStream = {
@@ -63,20 +75,28 @@ export const useStreams = ({
           // shareBoard: confState.createBoardUserId === member.userId ? 1 : 0,
           ...mediaState
         }
+        console.log(+Date.now(), '[use-streams] return screenStream')
         return screenStream
       }
     }
 
-    const host = users.hosts.first() as AgoraUser
+    
+    
+    const audience = users.audiences.first() as AgoraUser
 
-    const member = host ? host : me
+    const member = audience ? audience : me
 
     if (member) {
 
       let stream = null
 
       if (member.userId === me.userId)  {
-        stream = rtc.localStream ? rtc.localStream.stream : null
+        if (confState.shareScreen) {
+          console.log(+Date.now(), ':inner conf.shareScreen')
+          stream = rtc.localSharedStream ? rtc.localSharedStream.stream : null
+        } else {
+          stream = rtc.localStream ? rtc.localStream.stream : null
+        }
       } else {
         const remoteStream = rtc.remoteStreams.get(`${member.uid}`)
         stream = remoteStream ? remoteStream.stream : null
@@ -107,6 +127,7 @@ export const useStreams = ({
   }, [
     me,
     rtc.localStream,
+    rtc.localSharedStream,
     // rtc.largeScreenUserId,
     rtc.remoteStreams, 
     users.audiences,
@@ -232,9 +253,9 @@ export const useStreams = ({
   ])
 
 
-  useMemo(() => {
-    roomStore.switchStream(largeStream && largeStream.stream ? +largeStream.uid : -1)
-  }, [largeStream])
+  // useMemo(() => {
+  //   roomStore.switchStream(largeStream && largeStream.stream ? +largeStream.uid : -1)
+  // }, [largeStream])
 
   return {
     largeStream,

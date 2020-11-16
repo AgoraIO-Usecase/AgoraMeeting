@@ -208,6 +208,10 @@ export class AgoraRTCClient {
     })
   }
 
+  setLowStreamParameter(params: any) {
+    this._client.setLowStreamParameter(params)
+  }
+
   setRemoteVideoStreamType(stream: any, streamType: number) {
     this._client.setRemoteVideoStreamType(stream, streamType);
   }
@@ -224,6 +228,26 @@ export class AgoraRTCClient {
       if (data.screen) {
         this._localStream.setScreenProfile('720p_2')
       }
+      else {
+        this._localStream.setVideoEncoderConfiguration({
+          resolution: {
+            width: 640,
+            height: 360,
+          },
+          frameRate: {
+            min: 25,
+            max: 25
+          },
+        })
+      }
+      console.log('[rtc] setVideoEncoderConfiguration')
+      const LowStreamParameterConfig = {
+        framerate: 25,
+        height: 180,
+        width: 360,
+      }
+      this._client.setLowStreamParameter(LowStreamParameterConfig)
+      console.log('[rtc] setLowStreamParameter', LowStreamParameterConfig)
       this._localStream.init(() => {
         this.streamID = data.streamID;
         this.subscribeLocalStreamEvents();
