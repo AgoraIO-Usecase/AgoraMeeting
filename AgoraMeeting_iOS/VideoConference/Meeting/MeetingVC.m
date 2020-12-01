@@ -18,7 +18,7 @@
 #import <ReplayKit/ReplayKit.h>
 
 API_AVAILABLE(ios(12.0))
-@interface MeetingVC ()<UICollectionViewDelegate, UICollectionViewDataSource, WhiteManagerDelegate, ConferenceDelegate,BottomBarDelegate, RPBroadcastActivityViewControllerDelegate>
+@interface MeetingVC ()<UICollectionViewDelegate, UICollectionViewDataSource, WhiteManagerDelegate, ConferenceDelegate, BottomBarDelegate>
 
 @property (weak, nonatomic) IBOutlet PaddingLabel *tipLabel;
 @property (weak, nonatomic) IBOutlet MeetingNavigation *nav;
@@ -33,9 +33,7 @@ API_AVAILABLE(ios(12.0))
 @property (strong, nonatomic) WhiteInfoModel *whiteInfoModel;
 @property (weak, nonatomic) PIPVideoCell *pipVideoCell;
 
-
 @property (nonatomic, strong) RPSystemBroadcastPickerView* picker;
-@property (nonatomic, strong) RPBroadcastController* broadcastController;
 
 @end
 
@@ -608,6 +606,7 @@ API_AVAILABLE(ios(12.0))
 }
 
 - (void)dealloc {
+    [self onScreenShareEnd];
     [NSNotificationCenter.defaultCenter removeObserver:self];
     [AgoraRoomManager releaseResource];
 }
@@ -625,6 +624,7 @@ API_AVAILABLE(ios(12.0))
     }
 }
 - (void)onScreenShareEnd {
+    
     if (@available(iOS 12.0, *)) {
         
         NSString *identifier = @"com.videoconference.exit";
@@ -635,14 +635,26 @@ API_AVAILABLE(ios(12.0))
         BOOL const deliverImmediately = YES;
         CFStringRef identifierRef = (__bridge CFStringRef)identifier;
         CFNotificationCenterPostNotification(center, identifierRef, nil, userInfo, deliverImmediately);
-        
-        
-        ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
-        if(manager.ownModel.grantScreen){
-            [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
-            } completeFailBlock:^(NSError * _Nonnull error) {;
-            }];
-        }
+                
+        [self.activityIndicator startAnimating];
+        self.bottomBar.userInteractionEnabled = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+            if(manager.ownModel.grantScreen){
+                [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
+                    
+                    [self.activityIndicator stopAnimating];
+                    self.bottomBar.userInteractionEnabled = YES;
+                    
+                } completeFailBlock:^(NSError * _Nonnull error) {
+                    
+                    [self.activityIndicator stopAnimating];
+                    self.bottomBar.userInteractionEnabled = YES;
+                }];
+            }
+            
+        });
     }
 }
 
@@ -665,8 +677,6 @@ API_AVAILABLE(ios(12.0))
 
        self.picker = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 110, self.view.bounds.size.height - 120, 60, 60)];
        self.picker.showsMicrophoneButton = NO;
-       [self.picker setAutoresizingMask: UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin];
-
        NSURL *url = [[NSBundle mainBundle] URLForResource:@"ScreenSharingBroadcast" withExtension:@"appex" subdirectory:@"PlugIns"];
        NSBundle* bundle = [[NSBundle alloc] initWithURL:url];
        if (bundle) {

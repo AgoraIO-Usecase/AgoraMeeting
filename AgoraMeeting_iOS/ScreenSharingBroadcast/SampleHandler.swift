@@ -15,8 +15,10 @@ class SampleHandler: RPBroadcastSampleHandler {
 
         let observer = UnsafeRawPointer(Unmanaged.passUnretained(self).toOpaque())
         CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), observer,
-            { (_, observer, name, _, _) -> Void in
+            {(_, observer, name, _, _) -> Void in
+
                 AgoraUploader.stopBroadcast()
+
                 if let observer = observer {
 
                     // Extract pointer to `self` from void pointer:

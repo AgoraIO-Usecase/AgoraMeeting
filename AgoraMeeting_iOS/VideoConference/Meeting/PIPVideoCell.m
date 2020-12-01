@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *shareView;
 @property (weak, nonatomic) IBOutlet UIView *shareBoardView;
+@property (weak, nonatomic) IBOutlet UILabel *shareBoardLabel;
 @property (weak, nonatomic) IBOutlet UIButton *applyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *endBtn;
 
@@ -127,7 +128,17 @@
         self.localView.hidden = YES;
     }
     
-    [manager addVideoCanvasWithUId:screenModel.screenId inView:self.shareView showType:ShowViewTypeFit];
+    //
+    ConfShareScreenUserModel *screenUserModel = manager.roomModel.shareScreenUsers.firstObject;
+    if(screenUserModel && screenUserModel.userId.integerValue == manager.ownModel.userId.integerValue) {
+        
+        self.shareBoardLabel.hidden = NO;
+        
+    } else {
+        self.shareBoardLabel.hidden = YES;
+        
+        [manager addVideoCanvasWithUId:screenModel.screenId inView:self.shareView showType:ShowViewTypeFit];
+    }
 }
 
 - (void)setUser:(ConfUserModel *)userModel remoteUser:(ConfUserModel *)remoteUserModel {
