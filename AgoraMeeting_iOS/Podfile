@@ -7,7 +7,7 @@ target 'VideoConference' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'YYModel'
-#  pod 'Masonry'
+  pod 'AgoraRtcEngine_iOS'
   pod "IQKeyboardManager"
 end
 
@@ -15,7 +15,7 @@ target "AgoraRoom" do
   project 'Modules/AgoraRoom/AgoraRoom.xcodeproj'
   
   # Media
-#  pod 'AgoraRtcEngine_iOS', '2.9.0.102'
+#  pod 'AgoraRtcEngine_iOS'
   pod 'AgoraRtm_iOS', '1.2.2'
   
   # HTTP
