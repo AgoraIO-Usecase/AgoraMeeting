@@ -357,6 +357,33 @@ static NSString *agoraUId;
     }];
 }
 
++ (void)shareScreenStateWithValue:(NSInteger)value appId:(NSString *)appId roomId:(NSString *)roomId userId:(NSString *)userId apiVersion:(NSString *)apiVersion completeSuccessBlock:(void (^ _Nullable) (void))successBlock completeFailBlock:(void (^ _Nullable) (NSError *error))failBlock {
+    
+    NSString *url = [NSString stringWithFormat:HTTP_SCREEN_STATE, HTTP_BASE_URL, appId, roomId, userId];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"state"] = @(value);
+             
+    [HttpManager post:url params:params headers:nil apiVersion:apiVersion success:^(id responseObj) {
+        
+        CommonModel *model = [CommonModel yy_modelWithDictionary:responseObj];
+        if(model.code == 0) {
+            if(successBlock != nil) {
+                successBlock();
+            }
+        } else {
+            if(failBlock != nil) {
+                NSError *error = LocalError(model.code, model.msg);
+                failBlock(error);
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        if(failBlock != nil) {
+            failBlock(error);
+        }
+    }];
+}
+
 + (void)hostActionWithType:(EnableSignalType)type value:(NSInteger)value appId:(NSString *)appId roomId:(NSString *)roomId userId:(NSString *)userId apiVersion:(NSString *)apiVersion completeSuccessBlock:(void (^ _Nullable) (void))successBlock completeFailBlock:(void (^ _Nullable) (NSError *error))failBlock {
     
     NSString *url = [NSString stringWithFormat:HTTP_HOTS_ACTION, HTTP_BASE_URL, appId, roomId, userId];

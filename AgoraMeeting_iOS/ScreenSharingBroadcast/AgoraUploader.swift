@@ -49,40 +49,40 @@ class AgoraUploader {
 
         return kit
     }()
-//
-//    static func startBroadcast() {
-//        sharedAgoraEngine.joinChannel(byToken: token, channelId: channelid, info: nil, uid: screenid, joinSuccess: nil)
-//    }
-//
-//    static func sendVideoBuffer(_ sampleBuffer: CMSampleBuffer) {
-//        guard let videoFrame = CMSampleBufferGetImageBuffer(sampleBuffer)
-//             else {
-//            return
-//        }
-//
-//        var rotation : Int32 = 0
-//        if let orientationAttachment = CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber {
-//            if let orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value) {
-//                switch orientation {
-//                case .up,    .upMirrored:    rotation = 0
-//                case .down,  .downMirrored:  rotation = 180
-//                case .left,  .leftMirrored:  rotation = 90
-//                case .right, .rightMirrored: rotation = 270
-//                default:   break
-//                }
-//            }
-//        }
-//
-//        let time = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-//
-//        let frame = AgoraVideoFrame()
-//        frame.format = 12
-//        frame.time = time
-//        frame.textureBuf = videoFrame
-//        frame.rotation = rotation
-//        sharedAgoraEngine.pushExternalVideoFrame(frame)
-//    }
-//
+
+    static func startBroadcast() {
+        sharedAgoraEngine.joinChannel(byToken: token, channelId: channelid, info: nil, uid: screenid, joinSuccess: nil)
+    }
+
+    static func sendVideoBuffer(_ sampleBuffer: CMSampleBuffer) {
+        guard let videoFrame = CMSampleBufferGetImageBuffer(sampleBuffer)
+             else {
+            return
+        }
+
+        var rotation : Int32 = 0
+        if let orientationAttachment = CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber {
+            if let orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value) {
+                switch orientation {
+                case .up,    .upMirrored:    rotation = 0
+                case .down,  .downMirrored:  rotation = 180
+                case .left,  .leftMirrored:  rotation = 90
+                case .right, .rightMirrored: rotation = 270
+                default:   break
+                }
+            }
+        }
+
+        let time = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+
+        let frame = AgoraVideoFrame()
+        frame.format = 12
+        frame.time = time
+        frame.textureBuf = videoFrame
+        frame.rotation = rotation
+        sharedAgoraEngine.pushExternalVideoFrame(frame)
+    }
+
     static func stopBroadcast() {
         sharedAgoraEngine.leaveChannel(nil)
         AgoraRtcEngineKit.destroy()

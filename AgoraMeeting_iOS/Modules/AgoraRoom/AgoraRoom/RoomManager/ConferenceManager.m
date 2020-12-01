@@ -87,7 +87,7 @@
     ConfConfigModel.shareInstance.avatar = params.avatar;
     
     WEAK(self);
-    [self.roomManager enterRoomProcess:params configApiVersion:APIVersion1 entryApiVersion:APIVersion1 roomInfoApiVersion:APIVersion1 successBolck:^(id  _Nonnull roomInfoModel) {
+    [self.roomManager enterRoomProcess:params configApiVersion:APIVersion1 entryApiVersion:APIVersion2 roomInfoApiVersion:APIVersion1 successBolck:^(id  _Nonnull roomInfoModel) {
         if([roomInfoModel isKindOfClass:[ConfRoomInfoModel class]]) {
             ConfRoomInfoModel *model = (ConfRoomInfoModel*)roomInfoModel;
             [weakself handelConfRoomInfoModel:model];
@@ -259,6 +259,25 @@
     
     WEAK(self);
     [self.roomManager whiteBoardStateWithValue:enable userId:userId apiVersion:APIVersion1 completeSuccessBlock:^{
+        
+        for(ConfUserModel *model in weakself.userListModels) {
+            if([model.userId isEqualToString:userId]){
+                model.grantBoard = enable;
+                break;
+            }
+        }
+        
+        if (successBlock != nil) {
+            successBlock();
+        }
+        
+    } completeFailBlock:failBlock];
+}
+
+- (void)shareScreenStateWithValue:(BOOL)enable userId:(NSString *)userId  completeSuccessBlock:(void (^ _Nullable) (void))successBlock completeFailBlock:(void (^ _Nullable) (NSError *error))failBlock {
+    
+    WEAK(self);
+    [self.roomManager shareSceenStateWithValue:enable userId:userId apiVersion:APIVersion1 completeSuccessBlock:^{
         
         for(ConfUserModel *model in weakself.userListModels) {
             if([model.userId isEqualToString:userId]){

@@ -14,8 +14,11 @@
 #import "MeetingNavigation.h"
 #import "BottomBar.h"
 #import "AgoraFlowLayout.h"
+#import "KeyCenter.h"
+#import <ReplayKit/ReplayKit.h>
 
-@interface MeetingVC ()<UICollectionViewDelegate, UICollectionViewDataSource, WhiteManagerDelegate, ConferenceDelegate>
+API_AVAILABLE(ios(12.0))
+@interface MeetingVC ()<UICollectionViewDelegate, UICollectionViewDataSource, WhiteManagerDelegate, ConferenceDelegate,BottomBarDelegate, RPBroadcastActivityViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet PaddingLabel *tipLabel;
 @property (weak, nonatomic) IBOutlet MeetingNavigation *nav;
@@ -29,6 +32,10 @@
 
 @property (strong, nonatomic) WhiteInfoModel *whiteInfoModel;
 @property (weak, nonatomic) PIPVideoCell *pipVideoCell;
+
+
+@property (nonatomic, strong) RPSystemBroadcastPickerView* picker;
+@property (nonatomic, strong) RPBroadcastController* broadcastController;
 
 @end
 
@@ -50,6 +57,13 @@
     
     [self initData];
     [self startDispatchGroup: YES];
+    
+    [self setGroupShareData];
+    [self reloadScreenSharingBtn];
+    [self registerForNotificationsWithIdentifier:@"com.videoconference.sharebegin"];
+    [self registerForNotificationsWithIdentifier:@"com.videoconference.shareend"];
+    
+    self.bottomBar.delegate = self;
 }
 
 - (void)updateViewOnReconnected {
@@ -542,7 +556,18 @@
     } sureHandler:^(UIAlertAction * _Nullable action) {
         [manager updateUserInfoWithUserId:userId value:YES enableSignalType:type successBolck:^{
             
-            if(NoNullString(noticeName).length > 0){
+            if (type == EnableSignalTypeGrantBoard && actionType == P2PMessageTypeActionRejectApply) {
+                
+                [manager whiteBoardStateWithValue:YES userId:userId completeSuccessBlock:^{
+                                    
+                } completeFailBlock:^(NSError * _Nonnull error) {
+                    BaseViewController *vc = (BaseViewController*)[VCManager getTopVC];
+                    if(vc){
+                        [vc showToast:error.localizedDescription];
+                    }
+                }];
+                
+            } else if(NoNullString(noticeName).length > 0){
                 [NSNotificationCenter.defaultCenter postNotificationName:noticeName object:nil];
             }
             
@@ -585,5 +610,115 @@
 - (void)dealloc {
     [NSNotificationCenter.defaultCenter removeObserver:self];
     [AgoraRoomManager releaseResource];
+}
+
+#pragma mark BottomBarDelegate
+- (void)onScreenShareStart {
+    if (@available(iOS 12.0, *)) {
+        for (UIView *view in self.picker.subviews)
+        {
+            if ([view isKindOfClass:[UIButton class]])
+            {
+                [(UIButton*)view sendActionsForControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+    }
+}
+- (void)onScreenShareEnd {
+    if (@available(iOS 12.0, *)) {
+        
+        NSString *identifier = @"com.videoconference.exit";
+        NSDictionary *info = @{};
+        
+        CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+        CFDictionaryRef userInfo = (__bridge CFDictionaryRef)info;
+        BOOL const deliverImmediately = YES;
+        CFStringRef identifierRef = (__bridge CFStringRef)identifier;
+        CFNotificationCenterPostNotification(center, identifierRef, nil, userInfo, deliverImmediately);
+        
+        
+        ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+        if(manager.ownModel.grantScreen){
+            [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
+            } completeFailBlock:^(NSError * _Nonnull error) {;
+            }];
+        }
+    }
+}
+
+#pragma mark Share Screen
+- (void)setGroupShareData {
+   
+   NSString* token = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenToken;
+   NSString* channelid = AgoraRoomManager.shareManager.conferenceManager.roomModel.channelName;
+   NSInteger screenid = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenId;
+   
+   NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.agora.ad"];
+   [userDefaults setValue:[KeyCenter agoraAppid] forKey:@"appid"];
+   [userDefaults setInteger:screenid forKey:@"screenid"];
+   [userDefaults setValue:token forKey:@"token"];
+   [userDefaults setValue:channelid forKey:@"channelid"];
+}
+
+- (void)reloadScreenSharingBtn {
+   if (@available(iOS 12.0, *)) {
+
+       self.picker = [[RPSystemBroadcastPickerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 110, self.view.bounds.size.height - 120, 60, 60)];
+       self.picker.showsMicrophoneButton = NO;
+       [self.picker setAutoresizingMask: UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin];
+
+       NSURL *url = [[NSBundle mainBundle] URLForResource:@"ScreenSharingBroadcast" withExtension:@"appex" subdirectory:@"PlugIns"];
+       NSBundle* bundle = [[NSBundle alloc] initWithURL:url];
+       if (bundle) {
+           self.picker.preferredExtension = bundle.bundleIdentifier;
+       }
+       [self.view addSubview:self.picker];
+       self.picker.hidden = YES;
+   }
+}
+
+void HoleNotificationCallback(CFNotificationCenterRef center,
+                                   void * observer,
+                                   CFStringRef name,
+                                   void const * object,
+                                   CFDictionaryRef userInfo) {
+    NSString *identifier = (__bridge NSString *)name;
+    if ([identifier isEqualToString: @"com.videoconference.sharebegin"]) {
+        ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+        if(!manager.ownModel.grantScreen){
+            [manager shareScreenStateWithValue:YES userId:manager.ownModel.userId completeSuccessBlock:^{
+            } completeFailBlock:^(NSError * _Nonnull error) {;
+            }];
+        }
+    } else if([identifier isEqualToString: @"com.videoconference.shareend"]){
+        ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+        if(manager.ownModel.grantScreen){
+            [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
+            } completeFailBlock:^(NSError * _Nonnull error) {;
+            }];
+        }
+    }
+}
+
+- (void)registerForNotificationsWithIdentifier:(nullable NSString *)identifier {
+    [self unregisterForNotificationsWithIdentifier:identifier];
+
+    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+    CFStringRef str = (__bridge CFStringRef)identifier;
+    CFNotificationCenterAddObserver(center,
+                                    (__bridge const void *)(self),
+                                    HoleNotificationCallback,
+                                    str,
+                                    NULL,
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+    
+}
+- (void)unregisterForNotificationsWithIdentifier:(nullable NSString *)identifier {
+    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+    CFStringRef str = (__bridge CFStringRef)identifier;
+    CFNotificationCenterRemoveObserver(center,
+                                       (__bridge const void *)(self),
+                                       str,
+                                       NULL);
 }
 @end

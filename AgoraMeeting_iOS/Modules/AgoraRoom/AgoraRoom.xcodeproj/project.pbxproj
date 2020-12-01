@@ -109,7 +109,6 @@
 		784D21FD2463F2F00065985A /* LogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784D21862463F2F00065985A /* LogManager.m */; };
 		784D21FE2463F2F00065985A /* LogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 784D21872463F2F00065985A /* LogManager.h */; };
 		784D22162463F5740065985A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 784D22182463F5740065985A /* Localizable.strings */; };
-		78875881247D4FF5008ACBA5 /* AgoraRtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7887587F247D4B51008ACBA5 /* AgoraRtcKit.framework */; };
 		78875885247D50A5008ACBA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78875884247D50A5008ACBA5 /* Accelerate.framework */; };
 		78875887247D50AC008ACBA5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78875886247D50AC008ACBA5 /* AudioToolbox.framework */; };
 		78875889247D50B3008ACBA5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78875888247D50B3008ACBA5 /* AVFoundation.framework */; };
@@ -287,7 +286,6 @@
 		784D21872463F2F00065985A /* LogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogManager.h; sourceTree = "<group>"; };
 		784D22172463F5740065985A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		784D22192463F5760065985A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		7887587F247D4B51008ACBA5 /* AgoraRtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcKit.framework; sourceTree = "<group>"; };
 		78875884247D50A5008ACBA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		78875886247D50AC008ACBA5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		78875888247D50B3008ACBA5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -369,7 +367,6 @@
 				78875895247D50E1008ACBA5 /* VideoToolbox.framework in Frameworks */,
 				7887588D247D50BF008ACBA5 /* CoreML.framework in Frameworks */,
 				78875885247D50A5008ACBA5 /* Accelerate.framework in Frameworks */,
-				78875881247D4FF5008ACBA5 /* AgoraRtcKit.framework in Frameworks */,
 				7887588F247D50C2008ACBA5 /* CoreTelephony.framework in Frameworks */,
 				78875889247D50B3008ACBA5 /* AVFoundation.framework in Frameworks */,
 				8DF822A71DC500B30717030D /* libPods-AgoraRoom.a in Frameworks */,
@@ -401,7 +398,6 @@
 		784D20C42463F18B0065985A /* AgoraRoom */ = {
 			isa = PBXGroup;
 			children = (
-				7887587F247D4B51008ACBA5 /* AgoraRtcKit.framework */,
 				784D21582463F2F00065985A /* BaseManager */,
 				784D20F72463F2F00065985A /* RoomManager */,
 				784D21162463F2F00065985A /* Utils */,

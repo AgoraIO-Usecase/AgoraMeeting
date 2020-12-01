@@ -195,19 +195,66 @@
         [alertController addAction:allMute];
     }
     
-    if(NoNullString(manager.roomModel.createBoardUserId).integerValue > 0 && manager.ownModel.role == ConfRoleTypeParticipant) {
+    if(manager.roomModel.shareScreenUsers.count == 0 && manager.roomModel.shareBoardUsers.count == 0) {
         
-        NSString *boardText = manager.ownModel.grantBoard ? Localized(@"CancelWhiteBoardControl") : Localized(@"ApplyWhiteBoard");
-        
-        UIAlertAction *whiteBoardControl = [UIAlertAction actionWithTitle:boardText style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            if(!manager.ownModel.grantBoard){
-                [weakself gotoApplyOrInvite:EnableSignalTypeGrantBoard actionType:P2PMessageTypeActionApply userId:manager.roomModel.createBoardUserId];
-            } else {
-                [weakself updateWhiteBoardState];
+        NSString *screenText = @"开启屏幕共享";
+        UIAlertAction *screen = [UIAlertAction actionWithTitle:screenText style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            // open
+            if (weakself.delegate) {
+                [weakself.delegate onScreenShareStart];
             }
         }];
-        [alertController addAction:whiteBoardControl];
+        [alertController addAction:screen];
+        
+        NSString *boardText = @"开启白板互动";
+        UIAlertAction *board = [UIAlertAction actionWithTitle:boardText style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            // open
+            [weakself updateWhiteBoardStateWithValue:YES];
+        }];
+        [alertController addAction:board];
+        
+    } else if(manager.roomModel.shareScreenUsers.count > 0) {//?
+        
+        ConfShareScreenUserModel *model = manager.roomModel.shareScreenUsers.firstObject;
+        
+        // 有人在分享 而且 是自己
+        if(manager.ownModel.userId.integerValue == model.userId.integerValue){
+            
+            NSString *screenText = @"关闭屏幕共享";
+            UIAlertAction *applyscreen = [UIAlertAction actionWithTitle:screenText style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                // close
+                if (weakself.delegate) {
+                    [weakself.delegate onScreenShareEnd];
+                }
+            }];
+            [alertController addAction:applyscreen];
+        }
+    }
+    
+    if(NoNullString(manager.roomModel.createBoardUserId).integerValue > 0) {
+        
+        // 如果是自己开启的
+        if(NoNullString(manager.roomModel.createBoardUserId).integerValue == manager.ownModel.userId.integerValue) {
+            NSString *text = @"关闭白板互动";
+            UIAlertAction *board = [UIAlertAction actionWithTitle:text style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                // close
+                [weakself updateWhiteBoardStateWithValue:NO];
+            }];
+            [alertController addAction:board];
+            
+        } else if (manager.ownModel.role == ConfRoleTypeParticipant) {
+            NSString *boardText = manager.ownModel.grantBoard ? Localized(@"CancelWhiteBoardControl") : Localized(@"ApplyWhiteBoard");
+            
+            UIAlertAction *whiteBoardControl = [UIAlertAction actionWithTitle:boardText style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                if(!manager.ownModel.grantBoard){
+                    [weakself gotoApplyOrInvite:EnableSignalTypeGrantBoard actionType:P2PMessageTypeActionApply userId:manager.roomModel.createBoardUserId];
+                } else {
+                    [weakself updateWhiteBoardState];
+                }
+            }];
+            [alertController addAction:whiteBoardControl];
+        }
     }
     
     UIAlertAction *set = [UIAlertAction actionWithTitle:Localized(@"Set") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -272,6 +319,16 @@
     }];
 }
 
+- (void)updateWhiteBoardStateWithValue:(BOOL)enable {
+  
+    WEAK(self);
+    
+    ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+    [manager whiteBoardStateWithValue:enable userId:manager.ownModel.userId completeSuccessBlock:^{
+    } completeFailBlock:^(NSError * _Nonnull error) {;
+        [weakself showMsgToast:error.localizedDescription];
+    }];
+}
 - (void)updateWhiteBoardState {
   
     WEAK(self);
@@ -282,6 +339,7 @@
         [weakself showMsgToast:error.localizedDescription];
     }];
 }
+
 
 - (void)addUnreadMsgCount {
     NSInteger count = self.imItem.count + 1;

@@ -11,10 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol BottomBarDelegate <NSObject>
+- (void)onScreenShareStart;
+- (void)onScreenShareEnd;
+@end
+
+
 @interface BottomBar : UIView
 
 - (void)updateView;
 - (void)addUnreadMsgCount;
+@property(nonatomic,weak) id<BottomBarDelegate> delegate;
 
 @end
 

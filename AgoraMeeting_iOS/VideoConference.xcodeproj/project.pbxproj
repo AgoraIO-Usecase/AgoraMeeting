@@ -82,7 +82,6 @@
 		78A076FC257633F300FFC4DE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A0765D257629A600FFC4DE /* CoreTelephony.framework */; };
 		78A076FD257633F800FFC4DE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A0765F257629B500FFC4DE /* SystemConfiguration.framework */; };
 		78A076FE257633FC00FFC4DE /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A07661257629BA00FFC4DE /* VideoToolbox.framework */; };
-		78A077012576341C00FFC4DE /* AgoraRtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A076F0257633BB00FFC4DE /* AgoraRtcKit.framework */; };
 		78C08C9E2476AD2100728DCB /* AgoraFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C08C9D2476AD2100728DCB /* AgoraFlowLayout.m */; };
 		78C08D01247BEB3700728DCB /* ScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C08D00247BEB3700728DCB /* ScaleView.m */; };
 		78ED7E1B247BFC5600F93385 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ED7E1A247BFC5600F93385 /* UIViewAdditions.m */; };
@@ -265,7 +264,6 @@
 		78A0765D257629A600FFC4DE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		78A0765F257629B500FFC4DE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		78A07661257629BA00FFC4DE /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
-		78A076F0257633BB00FFC4DE /* AgoraRtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcKit.framework; path = Modules/AgoraRoom/AgoraRoom/AgoraRtcKit.framework; sourceTree = "<group>"; };
 		78C08C9C2476AD2100728DCB /* AgoraFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgoraFlowLayout.h; sourceTree = "<group>"; };
 		78C08C9D2476AD2100728DCB /* AgoraFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgoraFlowLayout.m; sourceTree = "<group>"; };
 		78C08CFF247BEB3700728DCB /* ScaleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScaleView.h; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 				78A076FB257633EE00FFC4DE /* CoreML.framework in Frameworks */,
 				78A076F7257633DB00FFC4DE /* Accelerate.framework in Frameworks */,
 				78A076FC257633F300FFC4DE /* CoreTelephony.framework in Frameworks */,
-				78A077012576341C00FFC4DE /* AgoraRtcKit.framework in Frameworks */,
 				78A076F9257633E700FFC4DE /* AVFoundation.framework in Frameworks */,
 				78A075D82576117200FFC4DE /* ReplayKit.framework in Frameworks */,
 				78A076F8257633E300FFC4DE /* AudioToolbox.framework in Frameworks */,
@@ -741,7 +738,6 @@
 		A3EAD3282BE9A6A2366A3EA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				78A076F0257633BB00FFC4DE /* AgoraRtcKit.framework */,
 				78A07661257629BA00FFC4DE /* VideoToolbox.framework */,
 				78A0765F257629B500FFC4DE /* SystemConfiguration.framework */,
 				78A0765D257629A600FFC4DE /* CoreTelephony.framework */,
@@ -782,9 +778,9 @@
 				784D20952463EB810065985A /* Sources */,
 				784D20962463EB810065985A /* Frameworks */,
 				784D20972463EB810065985A /* Resources */,
-				54E3A4322E730D31BE3D2887 /* [CP] Embed Pods Frameworks */,
 				784D227E246419780065985A /* Embed Frameworks */,
 				78A075F92576117300FFC4DE /* Embed App Extensions */,
+				C1B58AD63D16B35C81B435CF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -951,7 +947,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		54E3A4322E730D31BE3D2887 /* [CP] Embed Pods Frameworks */ = {
+		C1B58AD63D16B35C81B435CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1546,7 +1542,7 @@
 				DEVELOPMENT_TEAM = GM72UGLGZW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
+					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1575,7 +1571,7 @@
 				DEVELOPMENT_TEAM = 48TB6ZZL5S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
+					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1603,7 +1599,7 @@
 				DEVELOPMENT_TEAM = SW3CA7M752;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
+					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1631,7 +1627,7 @@
 				DEVELOPMENT_TEAM = 7289G77ZF3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
+					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

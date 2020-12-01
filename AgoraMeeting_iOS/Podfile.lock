@@ -14,14 +14,14 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AgoraRtcEngine_iOS (3.1.2)
+  - AgoraRtcEngine_iOS (3.2.0)
   - AgoraRtm_iOS (1.2.2)
   - AliyunOSSiOS (2.10.8)
-  - CocoaLumberjack (3.6.1):
-    - CocoaLumberjack/Core (= 3.6.1)
-  - CocoaLumberjack/Core (3.6.1)
+  - CocoaLumberjack (3.7.0):
+    - CocoaLumberjack/Core (= 3.7.0)
+  - CocoaLumberjack/Core (3.7.0)
   - dsBridge (3.0.6)
-  - IQKeyboardManager (6.5.5)
+  - IQKeyboardManager (6.5.6)
   - Whiteboard (2.6.4):
     - Whiteboard/Base (= 2.6.4)
     - Whiteboard/Converter (= 2.6.4)
@@ -71,15 +71,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  AgoraRtcEngine_iOS: 0628532d3475471d1c352ba548cee98492850cc0
+  AgoraRtcEngine_iOS: 945df6ec3b50ead4451fb8ef231db8eeb6a2613d
   AgoraRtm_iOS: c6ba986a3af73dd0f02e6e2995ae4fe9c155e6ae
   AliyunOSSiOS: 8db92936545593b9e5c66d680ef2ac0738946651
-  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   dsBridge: 48b62ee8a411ad601a88d6f6c8cf6cb634b206b7
-  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Whiteboard: 79ab8b3ba0a3bcd573c9a77a23da5ef07e7a0f5d
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 PODFILE CHECKSUM: 1dfd8ce37551b34631f83a7ccebfb709e07cbffb
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

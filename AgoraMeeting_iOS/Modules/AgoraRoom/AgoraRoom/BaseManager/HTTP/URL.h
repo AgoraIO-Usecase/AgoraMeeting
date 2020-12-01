@@ -56,6 +56,10 @@
 // /conf/apps/{appId}/v1/room/{roomId}/user/{userId}/board
 #define HTTP_BOARD_STATE @"%@/apps/%@/v1/room/%@/user/%@/board"
 
+// http: change screen
+// /meeting/apps/{appId}/v1/room/{roomId}/user/{userId}/screen
+#define HTTP_SCREEN_STATE @"%@/apps/%@/v1/room/%@/user/%@/screen"
+
 // http: audience action
 // /conf/apps/{appId}/v1/room/{roomId}/user/{userId}/audience/apply
 #define HTTP_AUDIENCE_ACTION @"%@/apps/%@/v1/room/%@/user/%@/audience/apply"
