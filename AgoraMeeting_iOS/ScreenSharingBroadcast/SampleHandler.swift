@@ -39,7 +39,7 @@ class SampleHandler: RPBroadcastSampleHandler {
     
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         
-        let userDefault = UserDefaults.init(suiteName: "group.io.agora.ad")
+        let userDefault = UserDefaults.init(suiteName: "group.io.agora.meeting")
         if let appid = userDefault?.object(forKey: "appid") as? String, let channelid = userDefault?.object(forKey: "channelid") as? String, let token = userDefault?.object(forKey: "token") as? String, let screenid = userDefault?.object(forKey: "screenid") as? UInt {
 
             AgoraUploader.appid = appid

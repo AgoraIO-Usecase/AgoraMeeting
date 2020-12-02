@@ -606,7 +606,26 @@ API_AVAILABLE(ios(12.0))
 }
 
 - (void)dealloc {
-    [self onScreenShareEnd];
+    if (@available(iOS 12.0, *)) {
+        
+        NSString *identifier = @"com.videoconference.exit";
+        NSDictionary *info = @{};
+        
+        CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+        CFDictionaryRef userInfo = (__bridge CFDictionaryRef)info;
+        BOOL const deliverImmediately = YES;
+        CFStringRef identifierRef = (__bridge CFStringRef)identifier;
+        CFNotificationCenterPostNotification(center, identifierRef, nil, userInfo, deliverImmediately);
+            
+        ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+        if(manager.ownModel.grantScreen){
+            [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
+            } completeFailBlock:^(NSError * _Nonnull error) {
+            }];
+        }
+    }
+    
+//    [self onScreenShareEnd];
     [NSNotificationCenter.defaultCenter removeObserver:self];
     [AgoraRoomManager releaseResource];
 }
@@ -638,19 +657,23 @@ API_AVAILABLE(ios(12.0))
                 
         [self.activityIndicator startAnimating];
         self.bottomBar.userInteractionEnabled = NO;
+        
+        WEAK(self);
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
             if(manager.ownModel.grantScreen){
+                
                 [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
                     
-                    [self.activityIndicator stopAnimating];
-                    self.bottomBar.userInteractionEnabled = YES;
+                    [weakself.activityIndicator stopAnimating];
+                    weakself.bottomBar.userInteractionEnabled = YES;
                     
                 } completeFailBlock:^(NSError * _Nonnull error) {
                     
-                    [self.activityIndicator stopAnimating];
-                    self.bottomBar.userInteractionEnabled = YES;
+                    [weakself.activityIndicator stopAnimating];
+                    weakself.bottomBar.userInteractionEnabled = YES;
                 }];
             }
             
@@ -665,7 +688,7 @@ API_AVAILABLE(ios(12.0))
    NSString* channelid = AgoraRoomManager.shareManager.conferenceManager.roomModel.channelName;
    NSInteger screenid = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenId;
    
-   NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.agora.ad"];
+   NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.agora.meeting"];
    [userDefaults setValue:[KeyCenter agoraAppid] forKey:@"appid"];
    [userDefaults setInteger:screenid forKey:@"screenid"];
    [userDefaults setValue:token forKey:@"token"];

@@ -68,10 +68,6 @@
 		7878493D246D770100455FA2 /* UIImage+Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7878493C246D770100455FA2 /* UIImage+Circle.m */; };
 		78A075D82576117200FFC4DE /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A075D72576117200FFC4DE /* ReplayKit.framework */; };
 		78A075DB2576117200FFC4DE /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A075DA2576117200FFC4DE /* SampleHandler.swift */; };
-		78A075E22576117300FFC4DE /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A075D72576117200FFC4DE /* ReplayKit.framework */; };
-		78A075E42576117300FFC4DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A075E32576117300FFC4DE /* UIKit.framework */; };
-		78A075E72576117300FFC4DE /* BroadcastSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A075E62576117300FFC4DE /* BroadcastSetupViewController.swift */; };
-		78A075EB2576117300FFC4DE /* ScreenSharingBroadcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 78A075E12576117300FFC4DE /* ScreenSharingBroadcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		78A075EE2576117300FFC4DE /* ScreenSharingBroadcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 78A075D62576117200FFC4DE /* ScreenSharingBroadcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		78A0763625761E2300FFC4DE /* AgoraUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0763525761E2300FFC4DE /* AgoraUploader.swift */; };
 		78A076F7257633DB00FFC4DE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A076532576298700FFC4DE /* Accelerate.framework */; };
@@ -107,13 +103,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		78A075E92576117300FFC4DE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 784D20912463EB810065985A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 78A075E02576117300FFC4DE;
-			remoteInfo = ScreenSharingBroadcastSetupUI;
-		};
 		78A075EC2576117300FFC4DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 784D20912463EB810065985A /* Project object */;
@@ -142,7 +131,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				78A075EB2576117300FFC4DE /* ScreenSharingBroadcastSetupUI.appex in Embed App Extensions */,
 				78A075EE2576117300FFC4DE /* ScreenSharingBroadcast.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -225,6 +213,8 @@
 		784D22B524655BFA0065985A /* BottomItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomItem.h; sourceTree = "<group>"; };
 		784D22B624655BFA0065985A /* BottomItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomItem.m; sourceTree = "<group>"; };
 		784D22B824655C040065985A /* BottomItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomItem.xib; sourceTree = "<group>"; };
+		785CF0902577C269009E2D4B /* Agora Meeting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Agora Meeting.entitlements"; sourceTree = "<group>"; };
+		785CF0932577C2D1009E2D4B /* ScreenSharingBroadcast.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenSharingBroadcast.entitlements; sourceTree = "<group>"; };
 		78784904246BA6CE00455FA2 /* MemberVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberVC.m; sourceTree = "<group>"; };
 		78784905246BA6CE00455FA2 /* MemberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberVC.xib; sourceTree = "<group>"; };
 		78784906246BA6CE00455FA2 /* MemberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberVC.h; sourceTree = "<group>"; };
@@ -249,7 +239,6 @@
 		78A075D72576117200FFC4DE /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		78A075DA2576117200FFC4DE /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
 		78A075DC2576117200FFC4DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		78A075E12576117300FFC4DE /* ScreenSharingBroadcastSetupUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenSharingBroadcastSetupUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A075E32576117300FFC4DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		78A075E62576117300FFC4DE /* BroadcastSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastSetupViewController.swift; sourceTree = "<group>"; };
 		78A075E82576117300FFC4DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -334,15 +323,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78A075DE2576117300FFC4DE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78A075E22576117300FFC4DE /* ReplayKit.framework in Frameworks */,
-				78A075E42576117300FFC4DE /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -412,7 +392,6 @@
 			children = (
 				784D20992463EB810065985A /* Agora Meeting.app */,
 				78A075D62576117200FFC4DE /* ScreenSharingBroadcast.appex */,
-				78A075E12576117300FFC4DE /* ScreenSharingBroadcastSetupUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -420,6 +399,7 @@
 		784D209B2463EB810065985A /* VideoConference */ = {
 			isa = PBXGroup;
 			children = (
+				785CF0902577C269009E2D4B /* Agora Meeting.entitlements */,
 				78A0760F2576139800FFC4DE /* Agora MeetingDebug.entitlements */,
 				78F6910B246E7212000A0E71 /* Manager */,
 				78F69101246E71FC000A0E71 /* Login */,
@@ -634,6 +614,7 @@
 		78A075D92576117200FFC4DE /* ScreenSharingBroadcast */ = {
 			isa = PBXGroup;
 			children = (
+				785CF0932577C2D1009E2D4B /* ScreenSharingBroadcast.entitlements */,
 				78A07628257618A200FFC4DE /* ScreenSharingBroadcastDebug.entitlements */,
 				78A075DA2576117200FFC4DE /* SampleHandler.swift */,
 				78A0763525761E2300FFC4DE /* AgoraUploader.swift */,
@@ -785,7 +766,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				78A075EA2576117300FFC4DE /* PBXTargetDependency */,
 				78A075ED2576117300FFC4DE /* PBXTargetDependency */,
 			);
 			name = VideoConference;
@@ -810,23 +790,6 @@
 			productReference = 78A075D62576117200FFC4DE /* ScreenSharingBroadcast.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		78A075E02576117300FFC4DE /* ScreenSharingBroadcastSetupUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 78A075EF2576117300FFC4DE /* Build configuration list for PBXNativeTarget "ScreenSharingBroadcastSetupUI" */;
-			buildPhases = (
-				78A075DD2576117300FFC4DE /* Sources */,
-				78A075DE2576117300FFC4DE /* Frameworks */,
-				78A075DF2576117300FFC4DE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ScreenSharingBroadcastSetupUI;
-			productName = ScreenSharingBroadcastSetupUI;
-			productReference = 78A075E12576117300FFC4DE /* ScreenSharingBroadcastSetupUI.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -842,9 +805,6 @@
 						LastSwiftMigration = 1200;
 					};
 					78A075D52576117200FFC4DE = {
-						CreatedOnToolsVersion = 12.0;
-					};
-					78A075E02576117300FFC4DE = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -865,7 +825,6 @@
 			targets = (
 				784D20982463EB810065985A /* VideoConference */,
 				78A075D52576117200FFC4DE /* ScreenSharingBroadcast */,
-				78A075E02576117300FFC4DE /* ScreenSharingBroadcastSetupUI */,
 			);
 		};
 /* End PBXProject section */
@@ -909,13 +868,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		78A075D42576117200FFC4DE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78A075DF2576117300FFC4DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1029,22 +981,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78A075DD2576117300FFC4DE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78A075E72576117300FFC4DE /* BroadcastSetupViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		78A075EA2576117300FFC4DE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 78A075E02576117300FFC4DE /* ScreenSharingBroadcastSetupUI */;
-			targetProxy = 78A075E92576117300FFC4DE /* PBXContainerItemProxy */;
-		};
 		78A075ED2576117300FFC4DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 78A075D52576117200FFC4DE /* ScreenSharingBroadcast */;
@@ -1134,7 +1073,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1187,7 +1126,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1205,8 +1144,8 @@
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora MeetingDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = GM72UGLGZW;
+				CURRENT_PROJECT_VERSION = 18;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
@@ -1214,15 +1153,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/VideoConference/VideoConference.pch";
 				INFOPLIST_FILE = VideoConference/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.ad.education;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting;
 				PRODUCT_NAME = "Agora Meeting";
-				PROVISIONING_PROFILE_SPECIFIER = edu;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoConference/VideoConference-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1237,10 +1176,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora Meeting.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = 48TB6ZZL5S;
+				CURRENT_PROJECT_VERSION = 18;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
@@ -1248,15 +1188,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/VideoConference/VideoConference.pch";
 				INFOPLIST_FILE = VideoConference/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting;
 				PRODUCT_NAME = "Agora Meeting";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingsDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingDis;
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoConference/VideoConference-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1308,7 +1248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1323,10 +1263,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora Meeting.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = 7289G77ZF3;
+				CURRENT_PROJECT_VERSION = 18;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
@@ -1334,15 +1275,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/VideoConference/VideoConference.pch";
 				INFOPLIST_FILE = VideoConference/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceQA;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting;
 				PRODUCT_NAME = "Agora Meeting";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraIOTest2019;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingDis;
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoConference/VideoConference-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1394,7 +1335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1409,10 +1350,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora Meeting.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = SW3CA7M752;
+				CURRENT_PROJECT_VERSION = 18;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Modules/AgoraRoom/AgoraRoom",
@@ -1420,117 +1362,20 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/VideoConference/VideoConference.pch";
 				INFOPLIST_FILE = VideoConference/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDev;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting;
 				PRODUCT_NAME = "Agora Meeting";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraAppsDevProfile;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingDis;
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoConference/VideoConference-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DevRelease;
-		};
-		78A075F02576117300FFC4DE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GM72UGLGZW;
-				INFOPLIST_FILE = ScreenSharingBroadcastSetupUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.ad.education.broadcasterui;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = App;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		78A075F12576117300FFC4DE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48TB6ZZL5S;
-				INFOPLIST_FILE = ScreenSharingBroadcastSetupUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.ScreenSharingBroadcastSetupUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		78A075F22576117300FFC4DE /* DevRelease */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SW3CA7M752;
-				INFOPLIST_FILE = ScreenSharingBroadcastSetupUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.ScreenSharingBroadcastSetupUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = DevRelease;
-		};
-		78A075F32576117300FFC4DE /* QARelease */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7289G77ZF3;
-				INFOPLIST_FILE = ScreenSharingBroadcastSetupUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.ScreenSharingBroadcastSetupUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = QARelease;
 		};
 		78A075F52576117300FFC4DE /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1539,21 +1384,22 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcastDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GM72UGLGZW;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.ad.education.broadcaster;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "edu-ext";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingBroadcastDev;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1566,22 +1412,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48TB6ZZL5S;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.ScreenSharingBroadcast;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingBroadcastDis;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1594,22 +1443,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SW3CA7M752;
+				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcast.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.ScreenSharingBroadcast;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingBroadcastDis;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1622,22 +1474,25 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7289G77ZF3;
+				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcast.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/AgoraRtcEngine_iOS",
 				);
 				INFOPLIST_FILE = ScreenSharingBroadcast/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.ScreenSharingBroadcast;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeeting.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingBroadcastDis;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1667,17 +1522,6 @@
 				784D20B42463EB820065985A /* Release */,
 				7887589F247E20F0008ACBA5 /* DevRelease */,
 				7887589D247E20C5008ACBA5 /* QARelease */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		78A075EF2576117300FFC4DE /* Build configuration list for PBXNativeTarget "ScreenSharingBroadcastSetupUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78A075F02576117300FFC4DE /* Debug */,
-				78A075F12576117300FFC4DE /* Release */,
-				78A075F22576117300FFC4DE /* DevRelease */,
-				78A075F32576117300FFC4DE /* QARelease */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
