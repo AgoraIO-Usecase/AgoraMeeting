@@ -117,6 +117,7 @@
 		7887588F247D50C2008ACBA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7887588E247D50C2008ACBA5 /* CoreTelephony.framework */; };
 		78875893247D50DB008ACBA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78875892247D50DB008ACBA5 /* SystemConfiguration.framework */; };
 		78875895247D50E1008ACBA5 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78875894247D50E1008ACBA5 /* VideoToolbox.framework */; };
+		78A077A625778A3200FFC4DE /* AgoraRtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A077A525778A3100FFC4DE /* AgoraRtcKit.framework */; };
 		78C08CC6247A0D3D00728DCB /* ConferenceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C08CC4247A0D3C00728DCB /* ConferenceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78C08CCC247A179100728DCB /* ConfSignalP2PModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C08CCA247A179100728DCB /* ConfSignalP2PModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78C08CCD247A179100728DCB /* ConfSignalP2PModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C08CCB247A179100728DCB /* ConfSignalP2PModel.m */; };
@@ -296,6 +297,7 @@
 		78875891247D50D7008ACBA5 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		78875892247D50DB008ACBA5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		78875894247D50E1008ACBA5 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		78A077A525778A3100FFC4DE /* AgoraRtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcKit.framework; sourceTree = "<group>"; };
 		78C08CC4247A0D3C00728DCB /* ConferenceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConferenceDelegate.h; sourceTree = "<group>"; };
 		78C08CCA247A179100728DCB /* ConfSignalP2PModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfSignalP2PModel.h; sourceTree = "<group>"; };
 		78C08CCB247A179100728DCB /* ConfSignalP2PModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfSignalP2PModel.m; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				7887588D247D50BF008ACBA5 /* CoreML.framework in Frameworks */,
 				78875885247D50A5008ACBA5 /* Accelerate.framework in Frameworks */,
 				7887588F247D50C2008ACBA5 /* CoreTelephony.framework in Frameworks */,
+				78A077A625778A3200FFC4DE /* AgoraRtcKit.framework in Frameworks */,
 				78875889247D50B3008ACBA5 /* AVFoundation.framework in Frameworks */,
 				8DF822A71DC500B30717030D /* libPods-AgoraRoom.a in Frameworks */,
 				78875887247D50AC008ACBA5 /* AudioToolbox.framework in Frameworks */,
@@ -398,6 +401,7 @@
 		784D20C42463F18B0065985A /* AgoraRoom */ = {
 			isa = PBXGroup;
 			children = (
+				78A077A525778A3100FFC4DE /* AgoraRtcKit.framework */,
 				784D21582463F2F00065985A /* BaseManager */,
 				784D20F72463F2F00065985A /* RoomManager */,
 				784D21162463F2F00065985A /* Utils */,

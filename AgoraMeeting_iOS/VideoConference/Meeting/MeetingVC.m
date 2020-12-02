@@ -638,7 +638,7 @@ API_AVAILABLE(ios(12.0))
                 
         [self.activityIndicator startAnimating];
         self.bottomBar.userInteractionEnabled = NO;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
             if(manager.ownModel.grantScreen){

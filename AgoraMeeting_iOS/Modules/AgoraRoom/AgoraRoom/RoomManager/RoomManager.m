@@ -160,8 +160,10 @@
                 videoCanvas.renderMode = AgoraVideoRenderModeHidden;
             }
             if(uid == self.baseConfigModel.uid) {
+                NSLog(@"render local");
                 [self.rtcManager setupLocalVideo: videoCanvas];
             } else {
+                NSLog(@"render remote");
                 [self.rtcManager setupRemoteVideo: videoCanvas];
             }
             

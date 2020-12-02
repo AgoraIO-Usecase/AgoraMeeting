@@ -193,7 +193,6 @@
         self.imgView.hidden = YES;
         self.remoteView.hidden = NO;
         [manager addVideoCanvasWithUId:userModel.uid inView:self.remoteView];
-        //        [manager addVideoCanvasWithUId:userModel.uid inView:self.remoteView.contentView];
     } else {
         self.imgView.hidden = NO;
         self.remoteView.hidden = YES;

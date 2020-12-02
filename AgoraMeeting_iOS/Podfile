@@ -15,7 +15,6 @@ target "AgoraRoom" do
   project 'Modules/AgoraRoom/AgoraRoom.xcodeproj'
   
   # Media
-  pod 'AgoraRtcEngine_iOS'
   pod 'AgoraRtm_iOS', '1.2.2'
   
   # HTTP
