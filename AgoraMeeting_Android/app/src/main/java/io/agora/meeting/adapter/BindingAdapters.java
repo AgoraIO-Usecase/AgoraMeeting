@@ -60,7 +60,13 @@ public class BindingAdapters {
                     // create new SurfaceView
                     surfaceView = RtcManager.instance().createRendererView(view.getContext());
                 }
-
+                // clean current view binding
+                if (((ViewGroup) view).getChildCount() > 0) {
+                    Integer id = (Integer) ((SurfaceView) ((ViewGroup) view).getChildAt(0)).getTag();
+                    if (id != 0) {
+                        RtcManager.instance().setupRemoteVideo(null, renderMode, id);
+                    }
+                }
                 surfaceView.setZOrderMediaOverlay(overlay);
                 surfaceView.setTag(uid); // bind uid
                 ((ViewGroup) view).removeAllViews();
@@ -69,6 +75,12 @@ public class BindingAdapters {
                 if (uid == 0) {
                     RtcManager.instance().setupLocalVideo(surfaceView, renderMode);
                 } else {
+                    RtcManager.instance().setupLocalVideo(null, renderMode);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     RtcManager.instance().setupRemoteVideo(surfaceView, renderMode, uid);
                 }
             } else {

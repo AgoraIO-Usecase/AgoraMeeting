@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:logo="@drawable/ic_logo_little"
+            app:logo="@drawable/picc_logo_little"
             app:menu="@menu/fragment_login"
             app:title="@string/app_name"
             app:titleTextColor="@color/gray_808fa3" />

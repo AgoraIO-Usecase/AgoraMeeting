@@ -20,7 +20,7 @@ public class RenderVideoModel extends ViewModel {
         renders.addSource(viewModel.me, me -> initRenders(me, viewModel.shareBoard.getValue(), viewModel.shareScreen.getValue(), viewModel.getHostsValue(), viewModel.getAudiencesValue()));
         renders.addSource(viewModel.shareBoard, shareBoard -> initRenders(viewModel.getMeValue(), shareBoard, viewModel.shareScreen.getValue(), viewModel.getHostsValue(), viewModel.getAudiencesValue()));
         renders.addSource(viewModel.shareScreen, shareScreen -> initRenders(viewModel.getMeValue(), viewModel.shareBoard.getValue(), shareScreen, viewModel.getHostsValue(), viewModel.getAudiencesValue()));
-        renders.addSource(viewModel.hosts, hosts -> initRenders(viewModel.getMeValue(), viewModel.shareBoard.getValue(), viewModel.shareScreen.getValue(), hosts, viewModel.getAudiencesValue()));
+        //renders.addSource(viewModel.hosts, hosts -> initRenders(viewModel.getMeValue(), viewModel.shareBoard.getValue(), viewModel.shareScreen.getValue(), hosts, viewModel.getAudiencesValue()));
         renders.addSource(viewModel.audiences, audiences -> initRenders(viewModel.getMeValue(), viewModel.shareBoard.getValue(), viewModel.shareScreen.getValue(), viewModel.getHostsValue(), audiences));
     }
 

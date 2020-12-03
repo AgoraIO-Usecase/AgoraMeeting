@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import io.agora.meeting.base.BaseFragment;
+import io.agora.meeting.data.Me;
+import io.agora.meeting.data.Member;
+import io.agora.meeting.data.ShareScreen;
 import io.agora.meeting.databinding.FragmentSimpleVideoBinding;
 import io.agora.meeting.viewmodel.RenderVideoModel;
 
@@ -39,9 +42,18 @@ public class SimpleVideoFragment extends BaseFragment<FragmentSimpleVideoBinding
                 if (renders.size() == 1) {
                     binding.setLittle(null);
                     binding.setLarge(renders.get(0));
+                    binding.setSharing(false);
                 } else {
                     binding.setLittle(renders.get(0));
-                    binding.setLarge(renders.get(1));
+                    Member member = renders.get(1);
+                    if(member instanceof ShareScreen.Screen && member.userId.equals(renders.get(0).userId)){
+                        binding.setLarge(null);
+                        binding.setSharing(true);
+                    }
+                    else{
+                        binding.setLarge(renders.get(1));
+                        binding.setSharing(false);
+                    }
                 }
             }
         });

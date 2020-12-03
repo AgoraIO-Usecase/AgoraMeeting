@@ -19,25 +19,16 @@
             name="large"
             type="io.agora.meeting.data.Member" />
 
+        <variable
+            name="sharing"
+            type="boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.SimpleVideoFragment">
-
-        <FrameLayout
-            android:id="@+id/fl_large_video"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:video_enable="@{large instanceof Screen || large.videoEnable}"
-            app:video_overlay="@{false}"
-            app:video_render_mode="@{large instanceof Screen ? VideoCanvas.RENDER_MODE_FIT : VideoCanvas.RENDER_MODE_HIDDEN}"
-            app:video_uid="@{large instanceof Screen ? large.screenId : (large instanceof Me ? 0 : large.uid)}" />
 
         <FrameLayout
             android:id="@+id/fl_little_video"
@@ -52,6 +43,23 @@
             app:video_render_mode="@{VideoCanvas.RENDER_MODE_HIDDEN}"
             app:video_uid="@{little instanceof Me ? 0 : little.uid}" />
 
+        <FrameLayout
+            android:id="@+id/fl_large_video"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:video_enable="@{large instanceof Screen || large.videoEnable}"
+            app:video_overlay="@{false}"
+            app:video_render_mode="@{large instanceof Screen ? VideoCanvas.RENDER_MODE_FIT : VideoCanvas.RENDER_MODE_HIDDEN}"
+            app:video_uid="@{large instanceof Screen ? large.screenId : (large instanceof Me ? 0 : large.uid)}">
+
+        </FrameLayout>
+
         <ImageView
             android:id="@+id/iv_avatar"
             android:layout_width="wrap_content"
@@ -62,6 +70,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_logo_large" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_d8"
+            app:isGone="@{!sharing}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            android:text="你当前正在进行屏幕分享" />
 
         <LinearLayout
             android:layout_width="wrap_content"

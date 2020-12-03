@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">AgoraMeeting</string>
+    <string name="app_name">PICC Meeting</string>
     <string name="web_url" translatable="false">https://solutions.agora.io/meeting/web</string>
-    <string name="android_url" translatable="false">https://download.agora.io/demo/release/app-AgoraMeeting-release.apk</string>
-    <string name="ios_url" translatable="false">https://itunes.apple.com/cn/app/id1515428313</string>
+    <string name="android_url" translatable="false">https://agora-adc-artifacts.oss-cn-beijing.aliyuncs.com/apk/app-AgoraMeeting.apk</string>
+    <string name="ios_url" translatable="false">https://www.pgyer.com/EUWO</string>
     <string name="request_error">Server request error: %1$d</string>
     <string name="upload_success">Upload success, please save the log number to help our troubleshooting!</string>
     <string name="clipboard">Successfully saved to clipboard</string>
@@ -140,5 +140,8 @@
     <string name="android_link">Android link: %1$s</string>
     <string name="ios_link">iOS link: %1$s</string>
     <string name="copy_meeting_info">Copy meeting information</string>
+
+    <string name="open_screen">Open screen share</string>
+    <string name="close_screen">Close screen share</string>
 
 </resources>
