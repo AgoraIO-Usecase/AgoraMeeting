@@ -60,6 +60,7 @@ API_AVAILABLE(ios(12.0))
     [self reloadScreenSharingBtn];
     [self registerForNotificationsWithIdentifier:@"com.videoconference.sharebegin"];
     [self registerForNotificationsWithIdentifier:@"com.videoconference.shareend"];
+    [self registerForNotificationsWithIdentifier:@"com.videoconference.shareendbyapp"];
     
     self.bottomBar.delegate = self;
 }
@@ -675,8 +676,10 @@ API_AVAILABLE(ios(12.0))
                     [weakself.activityIndicator stopAnimating];
                     weakself.bottomBar.userInteractionEnabled = YES;
                 }];
+            } else {// ios 14.2
+                [weakself.activityIndicator stopAnimating];
+                weakself.bottomBar.userInteractionEnabled = YES;
             }
-            
         });
     }
 }
@@ -684,15 +687,16 @@ API_AVAILABLE(ios(12.0))
 #pragma mark Share Screen
 - (void)setGroupShareData {
    
-   NSString* token = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenToken;
-   NSString* channelid = AgoraRoomManager.shareManager.conferenceManager.roomModel.channelName;
-   NSInteger screenid = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenId;
-   
-   NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.agora.meeting"];
-   [userDefaults setValue:[KeyCenter agoraAppid] forKey:@"appid"];
-   [userDefaults setInteger:screenid forKey:@"screenid"];
-   [userDefaults setValue:token forKey:@"token"];
-   [userDefaults setValue:channelid forKey:@"channelid"];
+    NSString* token = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenToken;
+    NSString* channelid = AgoraRoomManager.shareManager.conferenceManager.roomModel.channelName;
+    NSInteger screenid = AgoraRoomManager.shareManager.conferenceManager.ownModel.screenId;
+
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.io.agora.meeting"];
+    [userDefaults setValue:[KeyCenter agoraAppid] forKey:@"appid"];
+    [userDefaults setInteger:screenid forKey:@"screenid"];
+    [userDefaults setValue:token forKey:@"token"];
+    [userDefaults setValue:channelid forKey:@"channelid"];
+    [userDefaults synchronize];
 }
 
 - (void)reloadScreenSharingBtn {
@@ -730,6 +734,8 @@ void HoleNotificationCallback(CFNotificationCenterRef center,
             } completeFailBlock:^(NSError * _Nonnull error) {;
             }];
         }
+    } else if([identifier isEqualToString: @"com.videoconference.shareendbyapp"]){
+        
     }
 }
 

@@ -9,7 +9,7 @@
 #import "ShareLinkView.h"
 #import "AgoraRoomManager.h"
 
-#define ITUNES_URL @"https://itunes.apple.com/cn/app/id1515428313"
+#define ITUNES_URL @"https://testflight.apple.com/join/eFABzF29"
 
 @interface ShareLinkView()<UIGestureRecognizerDelegate>
 
@@ -87,7 +87,7 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     
     NSString *webLink = @"web下载链接：https://solutions.agora.io/meeting/web";
-    NSString *androidLink = @"Android下载链接：https://download.agora.io/demo/release/app-AgoraMeeting-release.apk";
+    NSString *androidLink = @"Android下载链接：https://agora-adc-artifacts.oss-cn-beijing.aliyuncs.com/apk/app-AgoraMeeting.apk";
     NSString *iOSLink = [NSString stringWithFormat:@"iOS下载链接：%@", self.link.text];
     
     NSString *str = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@", self.meetName.text, self.psd.text, self.invitationName.text, webLink, androidLink, iOSLink];

@@ -11,7 +11,7 @@
 #import "URL.h"
 #import "ConfigModel.h"
 
-#define ITUNES_URL @"https://itunes.apple.com/cn/app/id1515428313"
+#define ITUNES_URL @"https://testflight.apple.com/join/eFABzF29"
  
 @interface AppUpdateManager()<UIApplicationDelegate>
 

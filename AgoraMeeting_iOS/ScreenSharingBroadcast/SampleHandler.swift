@@ -10,12 +10,14 @@ import ReplayKit
 
 class SampleHandler: RPBroadcastSampleHandler {
     
+    fileprivate var endString = "com.videoconference.shareend"
+    
     override init() {
         super.init()
 
         let observer = UnsafeRawPointer(Unmanaged.passUnretained(self).toOpaque())
         CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), observer,
-            {(_, observer, name, _, _) -> Void in
+                                        { [self](_, observer, name, _, _) -> Void in
 
                 AgoraUploader.stopBroadcast()
 
@@ -24,7 +26,12 @@ class SampleHandler: RPBroadcastSampleHandler {
                     // Extract pointer to `self` from void pointer:
                     let mySelf = Unmanaged<SampleHandler>.fromOpaque(observer).takeUnretainedValue()
                     // Call instance method:
-                    mySelf.finishBroadcastWithError(NSError(domain: "RPBroadcastErrorDomain", code: 0))
+                    let userInfo = [NSLocalizedFailureReasonErrorKey: "屏幕分享已关闭"]
+                    let error = NSError(domain: "", code: -1, userInfo: userInfo)
+                    if #available(iOS 14.2, *) {
+                        mySelf.endString = "com.videoconference.shareendbyapp"
+                    }
+                    mySelf.finishBroadcastWithError(error)
                 }
             },
             "com.videoconference.exit" as CFString,
@@ -63,7 +70,8 @@ class SampleHandler: RPBroadcastSampleHandler {
     override func broadcastFinished() {
         
         AgoraUploader.stopBroadcast()
-        CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFNotificationName(rawValue: "com.videoconference.shareend" as CFString), nil, nil, true);
+        CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFNotificationName(rawValue: endString as CFString), nil, nil, true);
+        endString = "com.videoconference.shareend"
     }
     
     override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {
