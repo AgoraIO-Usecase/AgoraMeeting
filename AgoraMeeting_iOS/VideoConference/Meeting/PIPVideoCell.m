@@ -204,6 +204,7 @@
     if(NoNullString(manager.roomModel.createBoardUserId).integerValue == 0){
         self.whiteboardTool.hidden = YES;
         self.applyBtn.hidden = YES;
+        self.shareBoardView.hidden = YES;
         return;
     }
     
