@@ -1,7 +1,7 @@
+include ':lib-screensharing'
 rootProject.name = 'AgoraMeeting'
 include ':app'
 include ':base'
 include ':whiteboard'
 include ':log'
 include ':sdk'
-include ':screensharing'
