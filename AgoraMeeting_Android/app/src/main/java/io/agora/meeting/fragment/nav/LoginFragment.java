@@ -58,6 +58,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                             .showPopupWindow(v);
                     break;
                 case R.id.btn_enter:
+                    hideKeyBoard();
                     meetingVM.entryRoom(new RoomEntryReq() {{
                         userName = binding.etName.getText().toString();
                         userUuid = UUIDUtil.getUUID();

@@ -30,18 +30,7 @@
         android:layout_height="match_parent"
         tools:context=".fragment.SimpleVideoFragment">
 
-        <FrameLayout
-            android:id="@+id/fl_little_video"
-            android:layout_width="@dimen/dp_90"
-            android:layout_height="@dimen/dp_90"
-            android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginEnd="@dimen/dp_20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:video_enable="@{little.videoEnable}"
-            app:video_overlay="@{true}"
-            app:video_render_mode="@{VideoCanvas.RENDER_MODE_HIDDEN}"
-            app:video_uid="@{little instanceof Me ? 0 : little.uid}" />
+
 
         <FrameLayout
             android:id="@+id/fl_large_video"
@@ -53,12 +42,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
+            app:video_scale="@{large instanceof Screen}"
             app:video_enable="@{large instanceof Screen || large.videoEnable}"
             app:video_overlay="@{false}"
             app:video_render_mode="@{large instanceof Screen ? VideoCanvas.RENDER_MODE_FIT : VideoCanvas.RENDER_MODE_HIDDEN}"
             app:video_uid="@{large instanceof Screen ? large.screenId : (large instanceof Me ? 0 : large.uid)}">
 
         </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_little_video"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_90"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:video_scale="@{false}"
+            app:video_enable="@{little.videoEnable}"
+            app:video_overlay="@{true}"
+            app:video_render_mode="@{VideoCanvas.RENDER_MODE_HIDDEN}"
+            app:video_uid="@{little instanceof Me ? 0 : little.uid}" />
 
         <ImageView
             android:id="@+id/iv_avatar"

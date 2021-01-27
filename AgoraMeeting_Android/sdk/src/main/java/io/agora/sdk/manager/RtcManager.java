@@ -2,6 +2,8 @@ package io.agora.sdk.manager;
 
 import android.content.Context;
 import android.view.SurfaceView;
+import android.view.TextureView;
+import android.view.View;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
@@ -146,7 +148,11 @@ public final class RtcManager extends SdkManager<RtcEngine> {
         return RtcEngine.CreateRendererView(context);
     }
 
-    public void setupLocalVideo(@Nullable SurfaceView view, @RenderMode int renderMode) {
+    public TextureView createTextureView(Context context) {
+        return RtcEngine.CreateTextureView(context);
+    }
+
+    public void setupLocalVideo(@Nullable View view, @RenderMode int renderMode) {
         log.d("setupLocalVideo %b", view != null);
         VideoCanvas canvas = new VideoCanvas(view, renderMode, 0);
         getSdk().setupLocalVideo(canvas);
@@ -160,7 +166,7 @@ public final class RtcManager extends SdkManager<RtcEngine> {
         getSdk().switchCamera();
     }
 
-    public void setupRemoteVideo(@Nullable SurfaceView view, @RenderMode int renderMode, int uid) {
+    public void setupRemoteVideo(@Nullable View view, @RenderMode int renderMode, int uid) {
         log.d("setupRemoteVideo %b %d", view != null, uid);
         VideoCanvas canvas = new VideoCanvas(view, renderMode, uid);
         getSdk().setupRemoteVideo(canvas);

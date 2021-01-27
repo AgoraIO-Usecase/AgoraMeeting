@@ -34,8 +34,8 @@ import io.agora.meeting.data.PeerMsg;
 import io.agora.meeting.databinding.FragmentMeetingBinding;
 import io.agora.meeting.databinding.LayoutRatingBinding;
 import io.agora.meeting.fragment.ActionSheetFragment;
-import io.agora.meeting.fragment.InviteFragment;
 import io.agora.meeting.util.Events;
+import io.agora.meeting.util.ShareUtils;
 import io.agora.meeting.util.TimeUtil;
 import io.agora.meeting.util.TipsUtil;
 import io.agora.meeting.viewmodel.MeetingViewModel;
@@ -300,7 +300,7 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
         }});
         actionSheet.setOnItemClickListener((view, position, id) -> {
             if (id == R.id.menu_invite) {
-                new InviteFragment().show(getChildFragmentManager(), null);
+                ShareUtils.shareMeetingInfo(requireContext(), meetingVM.room.getValue(), meetingVM.me.getValue());
             } else if (id == R.id.menu_mute_all) {
                 meetingVM.switchMuteAllAudio(requireContext());
             } else if (id == R.id.menu_record) {

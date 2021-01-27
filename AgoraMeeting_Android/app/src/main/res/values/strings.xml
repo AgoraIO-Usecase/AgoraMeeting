@@ -48,6 +48,8 @@
     <string name="more">More</string>
     <string name="member_enter">"%1$s" enters</string>
     <string name="member_leave">"%1$s" leaves</string>
+    <string name="restore_screen">Restore screen</string>
+    <string name="board_apply_sent">Application sent</string>
 
     <!-- AlertDialog -->
     <string name="mute_audio_title">The host turned on the mute control</string>

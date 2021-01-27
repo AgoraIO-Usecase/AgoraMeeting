@@ -50,7 +50,7 @@ public abstract class BaseFragment<Binding extends ViewBinding> extends Fragment
         binding = null;
     }
 
-    private void hideKeyBoard() {
+    protected void hideKeyBoard() {
         InputMethodManager manager = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (manager != null) {
             manager.hideSoftInputFromWindow(binding.getRoot().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);

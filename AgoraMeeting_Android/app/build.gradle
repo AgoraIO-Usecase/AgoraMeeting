@@ -57,7 +57,7 @@ dependencies {
     implementation project(':log')
     implementation project(':sdk')
     implementation project(':whiteboard')
-    implementation project(':screensharing')
+    implementation project(':lib-screensharing')
 
     testImplementation rootProject.ext.dependencies['junit']
     androidTestImplementation rootProject.ext.dependencies['androidx.junit']

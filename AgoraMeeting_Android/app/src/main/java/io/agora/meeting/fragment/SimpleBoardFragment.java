@@ -17,6 +17,7 @@ import com.herewhite.sdk.WhiteSdkConfiguration;
 import com.herewhite.sdk.domain.Appliance;
 import com.herewhite.sdk.domain.DeviceType;
 
+import io.agora.base.ToastManager;
 import io.agora.meeting.R;
 import io.agora.meeting.base.BaseCallback;
 import io.agora.meeting.base.BaseFragment;
@@ -63,6 +64,7 @@ public class SimpleBoardFragment extends BaseFragment<FragmentSimpleBoardBinding
                     break;
                 case R.id.btn_apply:
                     meetingVM.switchBoardState(meetingVM.getMeValue());
+                    ToastManager.showShort(R.string.board_apply_sent);
                     break;
             }
         });

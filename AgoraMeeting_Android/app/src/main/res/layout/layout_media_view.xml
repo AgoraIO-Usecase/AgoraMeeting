@@ -28,6 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:video_scale="@{member instanceof Screen}"
             app:video_enable="@{member instanceof Screen || member.videoEnable}"
             app:video_overlay="@{false}"
             app:video_render_mode="@{member instanceof Screen ? VideoCanvas.RENDER_MODE_FIT : VideoCanvas.RENDER_MODE_HIDDEN}"
