@@ -27,7 +27,6 @@ import io.agora.rtc.ss.gles.GLRender;
 import io.agora.rtc.ss.gles.ImgTexFrame;
 import io.agora.rtc.ss.gles.SinkConnector;
 import io.agora.rtc.video.AgoraVideoFrame;
-import io.agora.rtc.video.CameraCapturerConfiguration;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 
 public class ScreenSharingService extends Service {
@@ -64,6 +63,7 @@ public class ScreenSharingService extends Service {
             refreshToken(token);
         }
     };
+    private Intent mIntent;
 
     private void initModules() {
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
@@ -74,7 +74,7 @@ public class ScreenSharingService extends Service {
             mScreenGLRender = new GLRender();
         }
         if (mScreenCapture == null) {
-            mScreenCapture = new ScreenCapture(mContext, mScreenGLRender, metrics.densityDpi);
+            mScreenCapture = new ScreenCapture(mContext, mScreenGLRender, metrics.widthPixels, metrics.heightPixels, metrics.densityDpi);
         }
 
         mScreenCapture.mImgTexSrcConnector.connect(new SinkConnector<ImgTexFrame>() {
@@ -87,7 +87,7 @@ public class ScreenSharingService extends Service {
             public void onFrameAvailable(ImgTexFrame frame) {
                 Log.d(LOG_TAG, "onFrameAvailable " + frame.toString() + " " + frame.pts);
 
-                if (mRtcEngine == null) {
+                if (mRtcEngine == null || mSCS.getConsumer() == null) {
                     return;
                 }
 
@@ -123,9 +123,11 @@ public class ScreenSharingService extends Service {
     }
 
     private void deInitModules() {
-        mRtcEngine.leaveChannel();
-        RtcEngine.destroy();
-        mRtcEngine = null;
+        if(mRtcEngine != null){
+            mRtcEngine.leaveChannel();
+            RtcEngine.destroy();
+            mRtcEngine = null;
+        }
 
         if (mScreenCapture != null) {
             mScreenCapture.release();
@@ -220,10 +222,15 @@ public class ScreenSharingService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        setUpEngine(intent);
-        setUpVideoConfig(intent);
-        joinChannel(intent);
+        mIntent = intent;
+        initialize();
         return mBinder;
+    }
+
+    private void initialize() {
+        setUpEngine();
+        setUpVideoConfig();
+        joinChannel();
     }
 
     @Override
@@ -232,13 +239,32 @@ public class ScreenSharingService extends Service {
         deInitModules();
     }
 
-    private void joinChannel(Intent intent) {
-        mRtcEngine.joinChannel(intent.getStringExtra(Constant.ACCESS_TOKEN), intent.getStringExtra(Constant.CHANNEL_NAME),
-                "ss_" + Process.myPid(), intent.getIntExtra(Constant.UID, 0));
+    private void joinChannel() {
+        String accessToken = mIntent.getStringExtra(Constant.ACCESS_TOKEN);
+        String channelName = mIntent.getStringExtra(Constant.CHANNEL_NAME);
+        String optionalInfo = "ss_" + Process.myPid();
+        int optionalUid = mIntent.getIntExtra(Constant.UID, 0);
+
+        Log.d(LOG_TAG, "======joinChannel info======");
+        Log.d(LOG_TAG, "accessToken  : " + accessToken);
+        Log.d(LOG_TAG, "channelName  : " + channelName);
+        Log.d(LOG_TAG, "optionalInfo : " + optionalInfo);
+        Log.d(LOG_TAG, "optionalUid  : " + optionalUid);
+        Log.d(LOG_TAG, "======joinChannel info======");
+
+        int ret = mRtcEngine.joinChannel(accessToken, channelName,
+                optionalInfo, optionalUid);
+        Log.d(LOG_TAG, "joinChannle ret = " + ret);
     }
 
-    private void setUpEngine(Intent intent) {
-        String appId = intent.getStringExtra(Constant.APP_ID);
+    private void setUpEngine() {
+        if(mRtcEngine != null){
+            mRtcEngine.leaveChannel();
+            RtcEngine.destroy();
+            mRtcEngine = null;
+        }
+
+        String appId = mIntent.getStringExtra(Constant.APP_ID);
         try {
             mRtcEngine = RtcEngine.create(getApplicationContext(), appId, new IRtcEngineEventHandler() {
                 @Override
@@ -316,7 +342,8 @@ public class ScreenSharingService extends Service {
 
         if (mRtcEngine.isTextureEncodeSupported()) {
             mSCS = new ScreenCaptureSource();
-            mRtcEngine.setVideoSource(mSCS);
+            int ret = mRtcEngine.setVideoSource(mSCS);
+            Log.e(LOG_TAG, "setVideoSource ret = "+ ret);
         } else {
             throw new RuntimeException("Can not work on device do not supporting texture" + mRtcEngine.isTextureEncodeSupported());
         }
@@ -328,12 +355,12 @@ public class ScreenSharingService extends Service {
         mRtcEngine.disableAudio();
     }
 
-    private void setUpVideoConfig(Intent intent) {
-        int width = intent.getIntExtra(Constant.WIDTH, 0);
-        int height = intent.getIntExtra(Constant.HEIGHT, 0);
-        int frameRate = intent.getIntExtra(Constant.FRAME_RATE, 15);
-        int bitRate = intent.getIntExtra(Constant.BITRATE, 0);
-        int orientationMode = intent.getIntExtra(Constant.ORIENTATION_MODE, 0);
+    private void setUpVideoConfig() {
+        int width = mIntent.getIntExtra(Constant.WIDTH, 0);
+        int height = mIntent.getIntExtra(Constant.HEIGHT, 0);
+        int frameRate = mIntent.getIntExtra(Constant.FRAME_RATE, 15);
+        int bitRate = mIntent.getIntExtra(Constant.BITRATE, 0);
+        int orientationMode = mIntent.getIntExtra(Constant.ORIENTATION_MODE, 0);
         VideoEncoderConfiguration.FRAME_RATE fr;
         VideoEncoderConfiguration.ORIENTATION_MODE om;
 

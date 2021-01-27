@@ -21,6 +21,16 @@
                 <action android:name="android.intent.action.screenshare" />
             </intent-filter>
         </service>
+
+        <!-- 守护进程 -->
+        <service android:name=".protect.LocalProtectService"
+            android:enabled="true"
+            android:exported="true"/>
+        <service android:name=".protect.RemoteProtectService"
+            android:process=":screensharingsvc"
+            android:enabled="true"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

@@ -97,7 +97,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
      */
     public SrcConnector<ImgTexFrame> mImgTexSrcConnector;
 
-    public ScreenCapture(Context context, GLRender render, int density) {
+    public ScreenCapture(Context context, GLRender render, int width, int height, int density) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             throw new RuntimeException("Need API level " + Build.VERSION_CODES.LOLLIPOP);
         }
@@ -109,6 +109,8 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
         mContext = context;
         mGLRender = render;
         mScreenDensity = density;
+        mWidth = width;
+        mHeight = height;
 
         mGLRender.addListener(mGLRenderListener);
         mImgTexSrcConnector = new SrcConnector<>();

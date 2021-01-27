@@ -12,6 +12,7 @@ import android.util.Log;
 import io.agora.rtc.ss.aidl.INotification;
 import io.agora.rtc.ss.aidl.IScreenSharing;
 import io.agora.rtc.ss.impl.ScreenSharingService;
+import io.agora.rtc.ss.protect.LocalProtectService;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 
 public class ScreenSharingClient {
@@ -87,6 +88,10 @@ public class ScreenSharingClient {
             intent.putExtra(Constant.BITRATE, vec.bitrate);
             intent.putExtra(Constant.ORIENTATION_MODE, vec.orientationMode.getValue());
             context.bindService(intent, mScreenShareConn, Context.BIND_AUTO_CREATE);
+
+            // 启动守护服务
+            context.startService(new Intent(context, LocalProtectService.class));
+
         } else {
             try {
                 mScreenShareSvc.startShare();

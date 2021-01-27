@@ -2,6 +2,7 @@ package io.agora.meeting.fragment.nav;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,6 +31,7 @@ import io.agora.meeting.annotaion.room.AudioRoute;
 import io.agora.meeting.annotaion.room.GlobalModuleState;
 import io.agora.meeting.annotaion.room.MeetingState;
 import io.agora.meeting.base.BaseFragment;
+import io.agora.meeting.data.Me;
 import io.agora.meeting.data.PeerMsg;
 import io.agora.meeting.databinding.FragmentMeetingBinding;
 import io.agora.meeting.databinding.LayoutRatingBinding;
@@ -195,23 +197,11 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
                     break;
             }
         });
-        meetingVM.room.observe(getViewLifecycleOwner(), room -> updateSubTitle(room.startTime));
-        meetingVM.me.observe(getViewLifecycleOwner(), me -> {
-            mic.setActivated(me.isAudioEnable());
-            video.setActivated(me.isVideoEnable());
-            if (me.isGrantScreen()) {
-                if (!mSS) {
-                    mSSClient.start(getContext(), getResources().getString(R.string.agora_app_id), me.screenToken,
-                            meetingVM.getChannelName(), me.screenId, mVEC);
-                    mSS = true;
-                }
-            } else {
-                if (mSS) {
-                    mSSClient.stop(getContext());
-                    mSS = false;
-                }
-            }
+        meetingVM.room.observe(getViewLifecycleOwner(), room -> {
+            updateSubTitle(room.startTime);
+            updateMedia(meetingVM.getMeValue());
         });
+        meetingVM.me.observe(getViewLifecycleOwner(), this::updateMedia);
         renderVM.renders.observe(getViewLifecycleOwner(), renders -> adapter.setItemCount(renders.size()));
         messageVM.unReadChatMsgs.observe(getViewLifecycleOwner(), messages -> {
             qBadgeView.bindTarget(chat);
@@ -223,6 +213,26 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
             }
         });
         Events.TimeEvent.addListener(getViewLifecycleOwner(), timeEvent -> updateSubTitle(timeEvent.time));
+    }
+
+    private void updateMedia(Me me) {
+        mic.setActivated(me.isAudioEnable());
+        video.setActivated(me.isVideoEnable());
+        String channelName = meetingVM.getChannelName();
+        if(!TextUtils.isEmpty(channelName)){
+            if (me.isGrantScreen()) {
+                if (!mSS) {
+                    mSSClient.start(getContext(), getResources().getString(R.string.agora_app_id), me.screenToken,
+                            channelName, me.screenId, mVEC);
+                    mSS = true;
+                }
+            } else {
+                if (mSS) {
+                    mSSClient.stop(getContext());
+                    mSS = false;
+                }
+            }
+        }
     }
 
     private void updateSubTitle(long startTime) {

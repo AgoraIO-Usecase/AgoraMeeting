@@ -51,16 +51,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab"
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@+id/vp_video"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:tabBackground="@drawable/sel_dot"
-                app:tabGravity="center"
-                app:tabIndicatorHeight="0dp" />
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_gravity="center_horizontal"
+                    app:tabBackground="@drawable/sel_dot"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
+
+            </FrameLayout>
+
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/nav_view"
