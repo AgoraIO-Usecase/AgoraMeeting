@@ -26,7 +26,6 @@ import io.agora.rtc.ss.aidl.IScreenSharing;
 import io.agora.rtc.ss.gles.GLRender;
 import io.agora.rtc.ss.gles.ImgTexFrame;
 import io.agora.rtc.ss.gles.SinkConnector;
-import io.agora.rtc.video.AgoraVideoFrame;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 
 public class ScreenSharingService extends Service {
@@ -85,13 +84,13 @@ public class ScreenSharingService extends Service {
 
             @Override
             public void onFrameAvailable(ImgTexFrame frame) {
-                Log.d(LOG_TAG, "onFrameAvailable " + frame.toString() + " " + frame.pts);
+                Log.d(LOG_TAG, "onFrameAvailable " + frame.toString() + ",pts=" + frame.pts + ",width="+frame.mFormat.mWidth + ",height=" + frame.mFormat.mHeight);
 
                 if (mRtcEngine == null || mSCS.getConsumer() == null) {
                     return;
                 }
 
-                mSCS.getConsumer().consumeTextureFrame(frame.mTextureId, AgoraVideoFrame.FORMAT_TEXTURE_OES, frame.mFormat.mWidth,
+                mSCS.getConsumer().consumeTextureFrame(frame.mTextureId, frame.mFormat.mColorFormat, frame.mFormat.mWidth,
                         frame.mFormat.mHeight, 0, frame.pts, frame.mTexMatrix);
             }
         });
@@ -400,7 +399,11 @@ public class ScreenSharingService extends Service {
                 break;
         }
 
+        Log.d(LOG_TAG, "setUpVideoConfig encode width=" + width + ",height=" + height);
+
         mRtcEngine.setVideoEncoderConfiguration(new VideoEncoderConfiguration(
                 new VideoEncoderConfiguration.VideoDimensions(width, height), fr, bitRate, om));
+
+        mScreenCapture.setOutSize(height, width);
     }
 }

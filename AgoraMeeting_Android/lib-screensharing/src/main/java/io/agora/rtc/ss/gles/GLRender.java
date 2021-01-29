@@ -413,6 +413,13 @@ public class GLRender {
         }
     }
 
+    public boolean swapBuffer() {
+        if(mWindowSurface != null){
+            return mWindowSurface.swapBuffers();
+        }
+        return false;
+    }
+
     public interface ScreenshotListener {
         void onBitmapAvailable(Bitmap screenshot);
     }

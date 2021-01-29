@@ -9,6 +9,7 @@ import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
+import android.opengl.GLES20;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,11 +23,13 @@ import java.lang.ref.WeakReference;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import io.agora.rtc.ss.gles.FullFrameRect;
 import io.agora.rtc.ss.gles.GLRender;
 import io.agora.rtc.ss.gles.GlUtil;
 import io.agora.rtc.ss.gles.ImgTexFormat;
 import io.agora.rtc.ss.gles.ImgTexFrame;
 import io.agora.rtc.ss.gles.SrcConnector;
+import io.agora.rtc.ss.gles.Texture2dProgram;
 
 /**
  * capture video frames from screen
@@ -72,11 +75,14 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
     private AtomicInteger mState;
 
     private GLRender mGLRender;
-    private int mTextureId;
+    private int mTextureId = -1;
     private Surface mSurface;
     private SurfaceTexture mSurfaceTexture;
     private boolean mTexInited = false;
     private ImgTexFormat mImgTexFormat;
+    private FullFrameRect mTexFrameRect;
+    private int[] mFBOIds;
+    private float[] mMvpMatrix;
 
     private Handler mMainHandler;
     private HandlerThread mScreenSetupThread;
@@ -91,6 +97,10 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
     // Performance trace
     private long mLastTraceTime;
     private long mFrameDrawed;
+
+    private int outWidth;
+    private int outHeight;
+    private volatile boolean outSizeChange = false;
 
     /**
      * Source pin transfer ImgTexFrame, used for gpu path and preview
@@ -112,6 +122,8 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
         mWidth = width;
         mHeight = height;
 
+        Log.d(TAG, "construct init width=" + mWidth + ",height=" + mHeight);
+
         mGLRender.addListener(mGLRenderListener);
         mImgTexSrcConnector = new SrcConnector<>();
         mMainHandler = new MainHandler(this);
@@ -127,6 +139,15 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
         };
 
         initScreenSetupThread();
+    }
+
+    public void setOutSize(int outWidth, int outHeight) {
+        if(this.outWidth == outWidth && this.outHeight == outHeight){
+            return;
+        }
+        this.outSizeChange = true;
+        this.outWidth = outWidth;
+        this.outHeight = outHeight;
     }
 
     /**
@@ -224,8 +245,13 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
     }
 
     private void initTexFormat() {
-        mImgTexFormat = new ImgTexFormat(ImgTexFormat.COLOR_FORMAT_EXTERNAL_OES, mWidth, mHeight);
-        mImgTexSrcConnector.onFormatChanged(mImgTexFormat);
+        if(mFBOIds != null){
+            mImgTexFormat = new ImgTexFormat(ImgTexFormat.COLOR_FORMAT_EXTERNAL_2D, outWidth, outHeight);
+            mImgTexSrcConnector.onFormatChanged(mImgTexFormat);
+        }else{
+            mImgTexFormat = new ImgTexFormat(ImgTexFormat.COLOR_FORMAT_EXTERNAL_OES, mWidth, mHeight);
+            mImgTexSrcConnector.onFormatChanged(mImgTexFormat);
+        }
     }
 
     public final void initProjection(int requestCode, int resultCode, Intent intent) {
@@ -274,7 +300,11 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
                 mVirtualDisplay = null;
             }
 
-            mTextureId = GlUtil.createOESTextureObject();
+            if(mTexFrameRect == null){
+                mTexFrameRect = new FullFrameRect(new Texture2dProgram(Texture2dProgram.ProgramType.TEXTURE_EXT));
+            }
+
+            mTextureId = mTexFrameRect.createTextureObject();
             if (mSurfaceTexture != null) {
                 mSurfaceTexture.release();
             }
@@ -304,6 +334,20 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
                 return;
             }
 
+            if(outSizeChange){
+                if(mFBOIds != null){
+                    GlUtil.releaseFrameBuffer(mFBOIds);
+                    mFBOIds = null;
+                    mMvpMatrix = null;
+                }
+                if(outHeight > 0 && outWidth > 0){
+                    mFBOIds = GlUtil.createFrameBuffer(outWidth, outHeight);
+                    mMvpMatrix = GlUtil.calculateFitCenterMatrix(mWidth, mHeight, outWidth, outHeight);
+                }
+                outSizeChange = false;
+                mTexInited = false;
+            }
+
             if (!mTexInited) {
                 mTexInited = true;
                 initTexFormat();
@@ -311,9 +355,28 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
             float[] texMatrix = new float[16];
             mSurfaceTexture.getTransformMatrix(texMatrix);
-            ImgTexFrame frame = new ImgTexFrame(mImgTexFormat, mTextureId, texMatrix, pts);
+
+            ImgTexFrame frame;
+            if(mFBOIds != null){
+                GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, mFBOIds[1]);
+                GlUtil.checkGlError("glBindFramebuffer");
+
+                mTexFrameRect.drawFrame(mTextureId, texMatrix, mMvpMatrix);
+
+                frame = new ImgTexFrame(mImgTexFormat, mFBOIds[0], GlUtil.IDENTITY_MATRIX, pts);
+                mGLRender.swapBuffer();
+
+                //GlUtil.dumpBitmap(outWidth, outHeight);
+
+                GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
+                GlUtil.checkGlError("glBindFramebuffer");
+            }else{
+                frame = new ImgTexFrame(mImgTexFormat, mTextureId, texMatrix, pts);
+            }
+
+            final ImgTexFrame _frame = frame;
             try {
-                mImgTexSrcConnector.onFrameAvailable(frame);
+                mImgTexSrcConnector.onFrameAvailable(_frame);
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.e(TAG, "Draw frame failed, ignore");
@@ -334,7 +397,14 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
         @Override
         public void onReleased() {
-
+            if(mFBOIds != null){
+                GlUtil.releaseFrameBuffer(mFBOIds);
+                mFBOIds = null;
+            }
+            if(mTexFrameRect != null){
+                mTexFrameRect.release(false);
+                mTexFrameRect = null;
+            }
         }
     };
 
@@ -459,6 +529,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
         mVirtualDisplay = null;
         mMediaProjection = null;
+        mTexFrameRect = null;
 
         if (isQuit == RELEASE_SCREEN_THREAD) {
             mScreenSetupHandler.sendEmptyMessage(MSG_SCREEN_QUIT);

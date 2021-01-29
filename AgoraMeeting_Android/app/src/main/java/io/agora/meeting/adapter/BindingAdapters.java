@@ -10,7 +10,6 @@ import androidx.databinding.BindingAdapter;
 
 import io.agora.meeting.widget.gesture.GestureLayer;
 import io.agora.meeting.widget.gesture.touch.adapter.GestureVideoTouchAdapterImpl;
-import io.agora.rtc.video.VideoCanvas;
 import io.agora.sdk.annotation.RenderMode;
 import io.agora.sdk.manager.RtcManager;
 
@@ -57,8 +56,6 @@ public class BindingAdapters {
                         if (oUid == uid) {
                             // return if the SurfaceView has bound this uid
                             return;
-                        }else{
-                            RtcManager.instance().setupRemoteVideo(null, renderMode, oUid);
                         }
                     }
                 }else{
@@ -82,7 +79,7 @@ public class BindingAdapters {
                 if (uid == 0) {
                     RtcManager.instance().setupLocalVideo(textureView, renderMode);
                 } else {
-                    RtcManager.instance().setupRemoteVideo(textureView, VideoCanvas.RENDER_MODE_FIT, uid);
+                    RtcManager.instance().setupRemoteVideo(textureView, renderMode, uid);
                 }
             }
             else if (enable) {
@@ -97,8 +94,6 @@ public class BindingAdapters {
                         if (oUid == uid) {
                             // return if the SurfaceView has bound this uid
                             return;
-                        }else{
-                            RtcManager.instance().setupRemoteVideo(null, renderMode, oUid);
                         }
                     }
                 } else { // SurfaceView not exits
