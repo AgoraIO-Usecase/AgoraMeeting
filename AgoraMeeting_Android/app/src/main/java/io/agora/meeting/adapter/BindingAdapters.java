@@ -1,5 +1,6 @@
 package io.agora.meeting.adapter;
 
+import android.graphics.Color;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
@@ -64,6 +65,7 @@ public class BindingAdapters {
                 textureView.setTag(uid);
                 final TextureView _textView = textureView;
 
+                view.setBackgroundColor(Color.BLACK);
                 ((ViewGroup) view).removeAllViews();
                 ((ViewGroup) view).addView(_textView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -102,6 +104,7 @@ public class BindingAdapters {
                 }
                 surfaceView.setZOrderMediaOverlay(overlay);
                 surfaceView.setTag(uid); // bind uid
+                view.setBackground(null);
                 ((ViewGroup) view).removeAllViews();
                 ((ViewGroup) view).addView(surfaceView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -111,6 +114,7 @@ public class BindingAdapters {
                     RtcManager.instance().setupRemoteVideo(surfaceView, renderMode, uid);
                 }
             } else {
+                view.setBackground(null);
                 ((ViewGroup) view).removeAllViews();
             }
         }
