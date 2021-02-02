@@ -26,7 +26,7 @@ class SampleHandler: RPBroadcastSampleHandler {
                     // Extract pointer to `self` from void pointer:
                     let mySelf = Unmanaged<SampleHandler>.fromOpaque(observer).takeUnretainedValue()
                     // Call instance method:
-                    let userInfo = [NSLocalizedFailureReasonErrorKey: "屏幕分享已关闭"]
+                    let userInfo = [NSLocalizedFailureReasonErrorKey: "屏幕分享已"]
                     let error = NSError(domain: "", code: -1, userInfo: userInfo)
                     if #available(iOS 14.2, *) {
                         mySelf.endString = "com.videoconference.shareendbyapp"

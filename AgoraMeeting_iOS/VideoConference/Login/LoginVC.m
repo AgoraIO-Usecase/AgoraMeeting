@@ -13,6 +13,7 @@
 #import "MeetingVC.h"
 #import "AgoraRoomManager.h"
 
+
 @interface LoginVC ()<UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *textFieldBgView;
@@ -189,6 +190,7 @@
 - (IBAction)onClickTip:(id)sender {
     BOOL hidden = self.tipView.hidden;
     self.tipView.hidden = !hidden;
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

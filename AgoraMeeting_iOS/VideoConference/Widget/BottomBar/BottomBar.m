@@ -273,8 +273,34 @@
 
 - (void)onClickInvitation {
     UIViewController *vc = [VCManager getTopVC];
-    ShareLinkView *vv = [ShareLinkView createViewWithXib];
-    [vv showShareLinkViewInView:vc.view];
+    
+    ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+    NSString *meetName = manager.roomModel.roomName;
+    NSString *psd = manager.roomModel.password;
+    NSString *invitationName = manager.ownModel.userName;
+    NSString *urlString = [NSString stringWithFormat:@"https://webdemo.agora.io/agorameeting/?name=%@&pass=%@&invitor=%@", meetName, psd, invitationName];
+    
+    NSString *title = [NSString stringWithFormat:@"会议名称：%@\n密码：%@\n邀请人：%@\n",meetName, psd, invitationName];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSArray *items = @[title, url];
+
+    UIActivity *activity = [[UIActivity alloc]init];
+    NSArray *activities = @[activity];
+
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:activities];
+    activityViewController.excludedActivityTypes = @[UIActivityTypePostToFacebook,
+                                                     UIActivityTypePostToWeibo,
+                                                     UIActivityTypePostToTwitter,
+                                                     UIActivityTypePrint,
+                                                     UIActivityTypeSaveToCameraRoll,
+                                                     UIActivityTypeAddToReadingList,
+                                                     UIActivityTypeAirDrop,
+                                                     UIActivityTypeOpenInIBooks,
+                                                     UIActivityTypeMarkupAsPDF,
+                                                     UIActivityTypePostToFlickr,
+                                                     UIActivityTypePostToVimeo];
+    [vc presentViewController:activityViewController animated:YES completion:nil];
+    
 }
 
 - (void)showMsgToast:(NSString *)title {
@@ -309,9 +335,11 @@
     WEAK(self);
     [self setLoadingVisible:YES clickView:clickView];
     ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
+    BaseViewController *vc = (BaseViewController *) [VCManager getTopVC];
     [manager p2pActionWithType:type actionType:actionType userId:userId completeSuccessBlock:^{
         [weakself setLoadingVisible:NO clickView:clickView];
         [weakself updateView];
+        [vc showToast:NSLocalizedString(@"applyWhiboardInterSuccess", nil)];
     } completeFailBlock:^(NSError *error) {
         [weakself setLoadingVisible:NO clickView:clickView];
         [weakself updateView];

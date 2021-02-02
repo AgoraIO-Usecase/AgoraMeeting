@@ -45,3 +45,5 @@ LoginOnAnotherDeviceText = "账户在其他设备上登录了";
 
 ColorPickerText = " 选择颜色";
 JoinMediaFailedText = "加入媒体失败";
+
+applyWhiboardInterSuccess = "申请白板互动成功";

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26A44FF425C3FFF600D04730 /* ScaleVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A44FF325C3FFF600D04730 /* ScaleVideoView.m */; };
 		780356112465706D001F9624 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780356132465706D001F9624 /* Localizable.strings */; };
 		7803561D246588D9001F9624 /* CommonNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7803561C246588D9001F9624 /* CommonNavigation.m */; };
 		7803561F246588E4001F9624 /* CommonNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7803561E246588E4001F9624 /* CommonNavigation.xib */; };
@@ -140,6 +141,8 @@
 
 /* Begin PBXFileReference section */
 		0BC5E4E14A0F3AD5CA151FEA /* Pods_VideoConference.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoConference.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26A44FF225C3FFF600D04730 /* ScaleVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleVideoView.h; sourceTree = "<group>"; };
+		26A44FF325C3FFF600D04730 /* ScaleVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleVideoView.m; sourceTree = "<group>"; };
 		7803560D2465700A001F9624 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7803560E2465700A001F9624 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		780356122465706D001F9624 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				78F69122246E874F000A0E71 /* PIPVideoCell.xib */,
 				78C08CFF247BEB3700728DCB /* ScaleView.h */,
 				78C08D00247BEB3700728DCB /* ScaleView.m */,
+				26A44FF225C3FFF600D04730 /* ScaleVideoView.h */,
+				26A44FF325C3FFF600D04730 /* ScaleVideoView.m */,
 				78ED7E19247BFC5600F93385 /* UIViewAdditions.h */,
 				78ED7E1A247BFC5600F93385 /* UIViewAdditions.m */,
 				78F69125246E886F000A0E71 /* VideoCell.h */,
@@ -958,6 +963,7 @@
 				784D2296246424D20065985A /* EEColorShowView.m in Sources */,
 				78C08C9E2476AD2100728DCB /* AgoraFlowLayout.m in Sources */,
 				78F69123246E874F000A0E71 /* PIPVideoCell.m in Sources */,
+				26A44FF425C3FFF600D04730 /* ScaleVideoView.m in Sources */,
 				7803561D246588D9001F9624 /* CommonNavigation.m in Sources */,
 				7878491C246BD86900455FA2 /* MessageSelfCell.m in Sources */,
 				784D229C2464262B0065985A /* BottomBar.m in Sources */,

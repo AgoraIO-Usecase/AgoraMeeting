@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUser:(ConfUserModel *)userModel remoteUser:(ConfUserModel *)remoteUserModel;
 - (void)updateWhiteView;
 - (void)updateStateView;
+/// 设置可变大的视频视图的内容大小，通常是cell的大小
+- (void)setScaleVideoContentSize:(CGSize)size;
+
 @end
 
 NS_ASSUME_NONNULL_END

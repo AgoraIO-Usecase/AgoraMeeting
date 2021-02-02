@@ -11,6 +11,7 @@
 #import "EEWhiteboardTool.h"
 #import "EEColorShowView.h"
 #import "ScaleView.h"
+#import "ScaleVideoView.h"
 
 @interface PIPVideoCell ()<WhiteToolDelegate>
 
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *localView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 
-@property (weak, nonatomic) IBOutlet UIView *shareView;
+@property (weak, nonatomic) IBOutlet ScaleVideoView *shareView;
 @property (weak, nonatomic) IBOutlet UIView *shareBoardView;
 @property (weak, nonatomic) IBOutlet UILabel *shareBoardLabel;
 @property (weak, nonatomic) IBOutlet UIButton *applyBtn;
@@ -133,11 +134,12 @@
     if(screenUserModel && screenUserModel.userId.integerValue == manager.ownModel.userId.integerValue) {
         
         self.shareBoardLabel.hidden = NO;
+        self.shareView.videoView.hidden = YES;
         
     } else {
         self.shareBoardLabel.hidden = YES;
-        
-        [manager addVideoCanvasWithUId:screenModel.screenId inView:self.shareView showType:ShowViewTypeFit];
+        self.shareView.videoView.hidden = NO;
+        [manager addVideoCanvasWithUId:screenModel.screenId inView:self.shareView.videoView showType:ShowViewTypeFit];
     }
 }
 
@@ -224,6 +226,10 @@
     }];
 }
 
+- (void)setScaleVideoContentSize:(CGSize)size {
+    [self.shareView configContentSize:size];
+}
+
 - (IBAction)appleBoard:(id)sender {
     
     WEAK(self);
@@ -301,6 +307,7 @@
             self.nameLabel.text = userName;
             self.shareImgView.hidden = NO;
             self.shareWConstraint.constant = 17;
+            [self.contentView bringSubviewToFront:self.localView];
             if(roleType == ConfRoleTypeHost){
                 self.hostImgView.hidden = NO;
                 self.hostWConstraint.constant = 17;

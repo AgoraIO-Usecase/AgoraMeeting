@@ -37,9 +37,9 @@
     [self.rtcEngineKit setLogFileSize:512];
     [self.rtcEngineKit setLogFilter:AgoraLogFilterInfo];
     
-    [self.rtcEngineKit setChannelProfile: AgoraChannelProfileLiveBroadcasting];
+    [self.rtcEngineKit setChannelProfile: AgoraChannelProfileCommunication];
     AgoraVideoEncoderConfiguration *configuration = [AgoraVideoEncoderConfiguration new];
-    configuration.dimensions = AgoraVideoDimension360x360;
+    configuration.dimensions = AgoraVideoDimension480x480;
     configuration.frameRate = 15;
     configuration.bitrate = AgoraVideoBitrateStandard;
     configuration.orientationMode = AgoraVideoOutputOrientationModeFixedLandscape;

@@ -47,3 +47,5 @@ LoginOnAnotherDeviceText = "account signed in on another device";
 
 ColorPickerText = " Color Picker";
 JoinMediaFailedText = "join media failed";
+
+applyWhiboardInterSuccess = "Apply WhiteBoard Success";

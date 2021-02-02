@@ -246,6 +246,7 @@ API_AVAILABLE(ios(12.0))
     if(indexPath.section == 0) {
         PIPVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PIPVideoCell" forIndexPath:indexPath];
         self.pipVideoCell = cell;
+        [cell setScaleVideoContentSize:[self.layout collectionView:collectionView sizeForItemAtIndexPath:indexPath]];
         [self reloadPIPVideoCell];
         return cell;
     } else {
@@ -656,7 +657,6 @@ API_AVAILABLE(ios(12.0))
         CFStringRef identifierRef = (__bridge CFStringRef)identifier;
         CFNotificationCenterPostNotification(center, identifierRef, nil, userInfo, deliverImmediately);
                 
-        [self.activityIndicator startAnimating];
         self.bottomBar.userInteractionEnabled = NO;
         
         WEAK(self);
@@ -667,13 +667,9 @@ API_AVAILABLE(ios(12.0))
             if(manager.ownModel.grantScreen){
                 
                 [manager shareScreenStateWithValue:NO userId:manager.ownModel.userId completeSuccessBlock:^{
-                    
-                    [weakself.activityIndicator stopAnimating];
                     weakself.bottomBar.userInteractionEnabled = YES;
                     
                 } completeFailBlock:^(NSError * _Nonnull error) {
-                    
-                    [weakself.activityIndicator stopAnimating];
                     weakself.bottomBar.userInteractionEnabled = YES;
                 }];
             } else {// ios 14.2
