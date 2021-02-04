@@ -361,6 +361,9 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
                 GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, mFBOIds[1]);
                 GlUtil.checkGlError("glBindFramebuffer");
 
+                GLES20.glViewport(0, 0, mWidth, mHeight);
+                GLES20.glClearColor(0, 0, 0, 0);
+
                 mTexFrameRect.drawFrame(mTextureId, texMatrix, mMvpMatrix);
 
                 frame = new ImgTexFrame(mImgTexFormat, mFBOIds[0], GlUtil.IDENTITY_MATRIX, pts);
