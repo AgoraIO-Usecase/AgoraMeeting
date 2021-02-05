@@ -33,6 +33,19 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            def prpe = new Properties()
+            def input = project.rootProject.file('local.properties').newInputStream();
+            prpe.load(input)
+            storeFile new File(prpe.getProperty('path.store.file'))
+            storePassword prpe.getProperty('path.store.password')
+            keyAlias prpe.getProperty('path.alias')
+            keyPassword prpe.getProperty('path.alias.password')
+        }
+    }
+
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -41,6 +54,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
