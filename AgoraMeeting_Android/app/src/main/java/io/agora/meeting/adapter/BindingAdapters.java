@@ -1,6 +1,7 @@
 package io.agora.meeting.adapter;
 
 import android.graphics.Color;
+import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
@@ -54,7 +55,7 @@ public class BindingAdapters {
                     Object tag = textureView.getTag();
                     if (tag instanceof Integer) {
                         int oUid = (int) tag;
-                        if (oUid == uid) {
+                        if (oUid == uid && textureView.isAvailable()) {
                             // return if the SurfaceView has bound this uid
                             return;
                         }
@@ -93,7 +94,8 @@ public class BindingAdapters {
                     Object tag = surfaceView.getTag();
                     if (tag instanceof Integer) {
                         int oUid = (int) tag;
-                        if (oUid == uid) {
+                        Surface surface = surfaceView.getHolder().getSurface();
+                        if (oUid == uid && surface != null && surface.isValid()) {
                             // return if the SurfaceView has bound this uid
                             return;
                         }
