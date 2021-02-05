@@ -18,9 +18,10 @@ package io.agora.rtc.ss.gles;
 
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
-import android.util.Log;
 
 import java.nio.FloatBuffer;
+
+import io.agora.rtc.ss.utils.Logger;
 
 /**
  * GL program and supporting functions for textured 2D shapes.
@@ -161,7 +162,7 @@ public class Texture2dProgram {
         if (mProgramHandle == 0) {
             throw new RuntimeException("Unable to create program");
         }
-        Log.d(TAG, "Created program " + mProgramHandle + " (" + programType + ")");
+        Logger.d(TAG, "Created program " + mProgramHandle + " (" + programType + ")");
 
         // get locations of attributes and uniforms
 
@@ -199,7 +200,7 @@ public class Texture2dProgram {
      * the program).
      */
     public void release() {
-        Log.d(TAG, "deleting program " + mProgramHandle);
+        Logger.d(TAG, "deleting program " + mProgramHandle);
         GLES20.glDeleteProgram(mProgramHandle);
         mProgramHandle = -1;
     }

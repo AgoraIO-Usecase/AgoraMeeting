@@ -12,7 +12,7 @@ import android.util.Log;
 import io.agora.rtc.ss.aidl.INotification;
 import io.agora.rtc.ss.aidl.IScreenSharing;
 import io.agora.rtc.ss.impl.ScreenSharingService;
-import io.agora.rtc.ss.protect.LocalProtectService;
+import io.agora.rtc.ss.utils.Logger;
 import io.agora.rtc.video.VideoEncoderConfiguration;
 
 public class ScreenSharingClient {
@@ -44,8 +44,7 @@ public class ScreenSharingClient {
                 mScreenShareSvc.registerCallback(mNotification);
                 mScreenShareSvc.startShare();
             } catch (RemoteException e) {
-                e.printStackTrace();
-                Log.e(TAG, Log.getStackTraceString(e));
+                Logger.e(TAG, Log.getStackTraceString(e));
             }
 
         }
@@ -64,12 +63,12 @@ public class ScreenSharingClient {
          * if to update the UI, we need to use a Handler to hop over there.
          */
         public void onError(int error) {
-            Log.e(TAG, "screen sharing service error happened: " + error);
+            Logger.e(TAG, "screen sharing service error happened: " + error);
             mStateListener.onError(error);
         }
 
         public void onTokenWillExpire() {
-            Log.d(TAG, "access token for screen sharing service will expire soon");
+            Logger.d(TAG, "access token for screen sharing service will expire soon");
             mStateListener.onTokenWillExpire();
         }
     };
@@ -89,15 +88,12 @@ public class ScreenSharingClient {
             intent.putExtra(Constant.ORIENTATION_MODE, vec.orientationMode.getValue());
             context.bindService(intent, mScreenShareConn, Context.BIND_AUTO_CREATE);
 
-            // 启动守护服务
-            context.startService(new Intent(context, LocalProtectService.class));
-
         } else {
             try {
                 mScreenShareSvc.startShare();
             } catch (RemoteException e) {
                 e.printStackTrace();
-                Log.e(TAG, Log.getStackTraceString(e));
+                Logger.e(TAG, Log.getStackTraceString(e));
             }
         }
 
@@ -111,7 +107,7 @@ public class ScreenSharingClient {
                 mScreenShareSvc.unregisterCallback(mNotification);
             } catch (RemoteException e) {
                 e.printStackTrace();
-                Log.e(TAG, Log.getStackTraceString(e));
+                Logger.e(TAG, Log.getStackTraceString(e));
             } finally {
                 mScreenShareSvc = null;
             }

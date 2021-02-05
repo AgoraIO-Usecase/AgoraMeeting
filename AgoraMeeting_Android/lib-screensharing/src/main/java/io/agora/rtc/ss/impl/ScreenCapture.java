@@ -30,6 +30,7 @@ import io.agora.rtc.ss.gles.ImgTexFormat;
 import io.agora.rtc.ss.gles.ImgTexFrame;
 import io.agora.rtc.ss.gles.SrcConnector;
 import io.agora.rtc.ss.gles.Texture2dProgram;
+import io.agora.rtc.ss.utils.Logger;
 
 /**
  * capture video frames from screen
@@ -93,7 +94,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
     // fill extra frame
     private Runnable mFillFrameRunnable;
 
-    private final static boolean TRACE = true;
+    private final static boolean TRACE = false;
     // Performance trace
     private long mLastTraceTime;
     private long mFrameDrawed;
@@ -122,7 +123,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
         mWidth = width;
         mHeight = height;
 
-        Log.d(TAG, "construct init width=" + mWidth + ",height=" + mHeight);
+        Logger.d(TAG, "construct init width=" + mWidth + ",height=" + mHeight);
 
         mGLRender.addListener(mGLRenderListener);
         mImgTexSrcConnector = new SrcConnector<>();
@@ -156,7 +157,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
      */
     public boolean start() {
         if (DEBUG_ENABLED) {
-            Log.d(TAG, "start");
+            Logger.d(TAG, "start");
         }
 
         if (mState.get() != SCREEN_STATE_IDLE) {
@@ -180,7 +181,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
      */
     public void stop() {
         if (DEBUG_ENABLED) {
-            Log.d(TAG, "stop");
+            Logger.d(TAG, "stop");
         }
 
         if (mState.get() == SCREEN_STATE_IDLE) {
@@ -256,15 +257,15 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
     public final void initProjection(int requestCode, int resultCode, Intent intent) {
         if (DEBUG_ENABLED) {
-            Log.d(TAG, "initProjection");
+            Logger.d(TAG, "initProjection");
         }
 
         if (requestCode != MEDIA_PROJECTION_REQUEST_CODE) {
             if (DEBUG_ENABLED) {
-                Log.d(TAG, "Unknown request code: " + requestCode);
+                Logger.d(TAG, "Unknown request code: " + requestCode);
             }
         } else if (resultCode != Activity.RESULT_OK) {
-            Log.e(TAG, "Screen Cast Permission Denied, resultCode: " + resultCode);
+            Logger.e(TAG, "Screen Cast Permission Denied, resultCode: " + resultCode);
             Message msg = mMainHandler.obtainMessage(SCREEN_RECORD_FAILED,
                     SCREEN_ERROR_PERMISSION_DENIED, 0);
             mMainHandler.sendMessage(msg);
@@ -284,12 +285,12 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
     private GLRender.GLRenderListener mGLRenderListener = new GLRender.GLRenderListener() {
         @Override
         public void onReady() {
-            Log.d(TAG, "onReady");
+            Logger.d(TAG, "onReady");
         }
 
         @Override
         public void onSizeChanged(int width, int height) {
-            Log.d(TAG, "onSizeChanged : " + width + "*" + height);
+            Logger.d(TAG, "onSizeChanged : " + width + "*" + height);
             mWidth = width;
             mHeight = height;
 
@@ -330,7 +331,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
             try {
                 mSurfaceTexture.updateTexImage();
             } catch (Exception e) {
-                Log.e(TAG, "updateTexImage failed, ignore");
+                Logger.e(TAG, "updateTexImage failed, ignore");
                 return;
             }
 
@@ -362,6 +363,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
                 GlUtil.checkGlError("glBindFramebuffer");
 
                 GLES20.glViewport(0, 0, mWidth, mHeight);
+                GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_STENCIL_BUFFER_BIT);
                 GLES20.glClearColor(0, 0, 0, 0);
 
                 mTexFrameRect.drawFrame(mTextureId, texMatrix, mMvpMatrix);
@@ -369,7 +371,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
                 frame = new ImgTexFrame(mImgTexFormat, mFBOIds[0], GlUtil.IDENTITY_MATRIX, pts);
                 mGLRender.swapBuffer();
 
-                //GlUtil.dumpBitmap(outWidth, outHeight);
+                //Bitmap bitmap = GlUtil.dumpBitmap(outWidth, outHeight);
 
                 GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
                 GlUtil.checkGlError("glBindFramebuffer");
@@ -381,8 +383,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
             try {
                 mImgTexSrcConnector.onFrameAvailable(_frame);
             } catch (Exception e) {
-                e.printStackTrace();
-                Log.e(TAG, "Draw frame failed, ignore");
+                Logger.e(TAG, "Draw frame failed, ignore");
             }
 
             if (TRACE) {
@@ -391,7 +392,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
                 long tmDiff = tm - mLastTraceTime;
                 if (tmDiff >= 5000) {
                     float fps = mFrameDrawed * 1000.f / tmDiff;
-                    Log.d(TAG, "screen fps: " + String.format(Locale.getDefault(), "%.2f", fps));
+                    Logger.d(TAG, "screen fps: " + String.format(Locale.getDefault(), "%.2f", fps));
                     mFrameDrawed = 0;
                     mLastTraceTime = tm;
                 }
@@ -488,7 +489,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
         try {
             mScreenSetupThread.join();
         } catch (InterruptedException e) {
-            Log.d(TAG, "quitThread " + Log.getStackTraceString(e));
+            Logger.d(TAG, "quitThread " + Log.getStackTraceString(e));
         } finally {
             mScreenSetupThread = null;
         }
@@ -501,7 +502,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
     private void doScreenSetup() {
         if (DEBUG_ENABLED) {
-            Log.d(TAG, "doScreenSetup");
+            Logger.d(TAG, "doScreenSetup");
         }
 
         if (mMediaProjectManager == null) {
@@ -517,7 +518,7 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
     private void doScreenRelease(int isQuit) {
         if (DEBUG_ENABLED) {
-            Log.d(TAG, "doScreenRelease");
+            Logger.d(TAG, "doScreenRelease");
         }
 
         mState.set(SCREEN_STATE_IDLE);
@@ -532,7 +533,6 @@ public class ScreenCapture implements SurfaceTexture.OnFrameAvailableListener {
 
         mVirtualDisplay = null;
         mMediaProjection = null;
-        mTexFrameRect = null;
 
         if (isQuit == RELEASE_SCREEN_THREAD) {
             mScreenSetupHandler.sendEmptyMessage(MSG_SCREEN_QUIT);

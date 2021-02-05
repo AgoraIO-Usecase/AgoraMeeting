@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
+import android.view.Surface;
 import android.view.TextureView;
 
 import java.util.Iterator;
@@ -19,6 +20,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+
+import io.agora.rtc.ss.utils.Logger;
 
 public class GLRender {
     private static final String TAG = "GLRender";
@@ -41,6 +44,7 @@ public class GLRender {
     private WindowSurface mWindowSurface;
     private EGLContext mEGLContext;
     private GLSurfaceView mGLSurfaceView;
+    private Surface mSurface;
 
     private AtomicInteger mState;
     private long mThreadId;
@@ -76,7 +80,7 @@ public class GLRender {
 
     private TextureView.SurfaceTextureListener mTextureListener = new TextureView.SurfaceTextureListener() {
         public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-            Log.d(TAG, "onSurfaceTextureAvailable " + surface + " " + width + " " + height);
+            Logger.d(TAG, "onSurfaceTextureAvailable " + surface + " " + width + " " + height);
             initHandlerThread();
 
             Message msg = Message.obtain(mGLHandler, MSG_TYPE_SURFACE_CREATED, surface);
@@ -86,13 +90,13 @@ public class GLRender {
         }
 
         public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-            Log.d(TAG, "onSurfaceTextureSizeChanged " + surface + " " + width + " " + height);
+            Logger.d(TAG, "onSurfaceTextureSizeChanged " + surface + " " + width + " " + height);
             Message msg = Message.obtain(mGLHandler, MSG_TYPE_SURFACE_CHANGED, width, height);
             mGLHandler.sendMessage(msg);
         }
 
         public boolean onSurfaceTextureDestroyed(SurfaceTexture st) {
-            Log.d(TAG, "onSurfaceTextureDestroyed " + st);
+            Logger.d(TAG, "onSurfaceTextureDestroyed " + st);
             quit(st);
             return false;
         }
@@ -131,6 +135,11 @@ public class GLRender {
     public void update(int width, int height) {
         Message msg = Message.obtain(mGLHandler, MSG_TYPE_SURFACE_CHANGED, width, height);
         mGLHandler.sendMessage(msg);
+    }
+
+    public void init(Surface surface) {
+        mState.set(STATE_IDLE);
+        mSurface = surface;
     }
 
     public void init(GLSurfaceView sv) {
@@ -207,7 +216,7 @@ public class GLRender {
 
     public void queueEvent(Runnable runnable) {
         if (mState.get() == STATE_IDLE) {
-            Log.d(TAG, "glContext not ready, queue event: " + runnable);
+            Logger.d(TAG, "glContext not ready, queue event: " + runnable);
             synchronized (mEventLock) {
                 mEventTaskList.add(runnable);
             }
@@ -220,7 +229,7 @@ public class GLRender {
                 mGLHandler.post(runnableDrawFrame);
             }
         } else {
-            Log.d(TAG, "glContext lost, drop event: " + runnable);
+            Logger.d(TAG, "glContext lost, drop event: " + runnable);
         }
     }
 
@@ -338,9 +347,19 @@ public class GLRender {
     }
 
     private void prepareGlSurface(SurfaceTexture st, int width, int height) {
-        mEglCore = new EglCore(mEGLContext, 0);
+        if(mEglCore == null){
+            mEglCore = new EglCore(mEGLContext, 0);
+        }
 
-        if (st != null) {
+
+        if(mWindowSurface != null){
+            mWindowSurface.release();
+        }
+
+        if(mSurface != null){
+            mWindowSurface = new WindowSurface(mEglCore, mSurface);
+        }
+        else if (st != null) {
             mWindowSurface = new WindowSurface(mEglCore, st);
         } else {
             mWindowSurface = new WindowSurface(mEglCore, width, height);
@@ -405,7 +424,7 @@ public class GLRender {
             try {
                 mGLHandlerThread.join();
             } catch (InterruptedException e) {
-                Log.d(TAG, "quit " + Log.getStackTraceString(e));
+                Logger.d(TAG, "quit " + Log.getStackTraceString(e));
             } finally {
                 mGLHandlerThread = null;
                 mGLHandler = null;

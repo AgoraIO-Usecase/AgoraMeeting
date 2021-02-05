@@ -8,28 +8,22 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application>
+        <!-- 在应用进程采集防止应用被杀死 -->
         <activity
             android:name=".impl.ScreenCapture$ScreenCaptureAssistantActivity"
-            android:process=":screensharingsvc"
             android:screenOrientation="fullUser"
             android:theme="@android:style/Theme.Translucent" />
+        <service android:name=".impl.ScreenCaptureService"
+            android:foregroundServiceType="mediaProjection"/>
+
+        <!-- 在子进程发数据 -->
         <service
-            android:foregroundServiceType="mediaProjection"
             android:name=".impl.ScreenSharingService"
             android:process=":screensharingsvc">
             <intent-filter>
                 <action android:name="android.intent.action.screenshare" />
             </intent-filter>
         </service>
-
-        <!-- 守护进程 -->
-        <service android:name=".protect.LocalProtectService"
-            android:enabled="true"
-            android:exported="true"/>
-        <service android:name=".protect.RemoteProtectService"
-            android:process=":screensharingsvc"
-            android:enabled="true"
-            android:exported="true"/>
 
     </application>
 

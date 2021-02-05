@@ -6,7 +6,6 @@ import android.opengl.EGL14;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
 import android.os.Build;
-import android.util.Log;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -14,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+
+import io.agora.rtc.ss.utils.Logger;
 
 /**
  * Common base class for EGL surfaces.
@@ -117,7 +118,7 @@ public class EglSurfaceBase {
     public boolean swapBuffers() {
         boolean result = mEglCore.swapBuffers(mEGLSurface);
         if (!result) {
-            Log.d(TAG, "WARNING: swapBuffers() failed");
+            Logger.d(TAG, "WARNING: swapBuffers() failed");
         }
         return result;
     }
@@ -174,6 +175,6 @@ public class EglSurfaceBase {
         } finally {
             if (bos != null) bos.close();
         }
-        Log.d(TAG, "Saved " + width + "x" + height + " frame as '" + filename + "'");
+        Logger.d(TAG, "Saved " + width + "x" + height + " frame as '" + filename + "'");
     }
 }

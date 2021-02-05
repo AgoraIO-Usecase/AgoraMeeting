@@ -1,4 +1,4 @@
-package io.agora.rtc.ss.impl;
+package io.agora.rtc.ss.utils;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
@@ -8,8 +8,25 @@ import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+
+import io.agora.rtc.ss.R;
 
 public class NotificationHelper {
+
+    public static Notification getForeNotification(Context context) {
+        Notification notification;
+        String eventTitle = context.getResources().getString(R.string.app_name);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NotificationHelper.generateChannelId(context, 55431))
+                .setContentTitle(eventTitle)
+                .setContentText(eventTitle);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            builder.setColor(context.getResources().getColor(android.R.color.black));
+        notification = builder.build();
+        notification.flags |= Notification.FLAG_ONGOING_EVENT;
+
+        return notification;
+    }
 
     public static String generateChannelId(Context ctx, int notification) {
         String channelId;
