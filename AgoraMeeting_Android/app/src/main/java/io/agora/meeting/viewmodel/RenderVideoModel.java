@@ -6,7 +6,11 @@ import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import io.agora.meeting.data.Me;
 import io.agora.meeting.data.Member;
@@ -15,6 +19,7 @@ import io.agora.meeting.data.ShareScreen;
 
 public class RenderVideoModel extends ViewModel {
     public final MediatorLiveData<List<Member>> renders = new MediatorLiveData<>();
+    private final static Executor sSimpleExecutor = Executors.newSingleThreadExecutor();
 
     public void init(MeetingViewModel viewModel) {
         renders.addSource(viewModel.me, me -> initRenders(me, viewModel.shareBoard.getValue(), viewModel.shareScreen.getValue(), viewModel.getHostsValue(), viewModel.getAudiencesValue()));
@@ -25,28 +30,31 @@ public class RenderVideoModel extends ViewModel {
     }
 
     private void initRenders(@Nullable Me me, @Nullable ShareBoard shareBoard, @Nullable ShareScreen shareScreen, @NonNull List<Member> hosts, @NonNull List<Member> audiences) {
-        List<Member> renders = new ArrayList<>();
-        renders.add(me);
-        if (shareBoard != null && shareBoard.isShareBoard()) {
-            renders.add(shareBoard.shareBoardUsers.get(0));
-        }
-        if (shareScreen != null && shareScreen.isShareScreen()) {
-            for (ShareScreen.Screen screen : shareScreen.shareScreenUsers) {
-                int index = hosts.indexOf(screen);
-                if (index > -1) {
-                    renders.add(new ShareScreen.Screen(hosts.get(index)));
-                } else {
-                    index = audiences.indexOf(screen);
+        sSimpleExecutor.execute(() -> {
+            Set<Member> renders = new LinkedHashSet<>();
+            renders.add(me);
+            if (shareBoard != null && shareBoard.isShareBoard()) {
+                renders.add(shareBoard.shareBoardUsers.get(0));
+            }
+            if (shareScreen != null && shareScreen.isShareScreen()) {
+                for (ShareScreen.Screen screen : shareScreen.shareScreenUsers) {
+                    int index = hosts.indexOf(screen);
                     if (index > -1) {
-                        renders.add(new ShareScreen.Screen(audiences.get(index)));
+                        renders.add(new ShareScreen.Screen(hosts.get(index)));
                     } else {
-                        renders.add(screen);
+                        index = audiences.indexOf(screen);
+                        if (index > -1) {
+                            renders.add(new ShareScreen.Screen(audiences.get(index)));
+                        } else {
+                            renders.add(screen);
+                        }
                     }
                 }
             }
-        }
-        renders.addAll(hosts);
-        renders.addAll(audiences);
-        this.renders.setValue(renders);
+            renders.addAll(hosts);
+            renders.addAll(audiences);
+
+            RenderVideoModel.this.renders.postValue(new ArrayList<>(renders));
+        });
     }
 }
