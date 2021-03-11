@@ -7,6 +7,7 @@
 //
 
 import ReplayKit
+import Foundation
 
 class SampleHandler: RPBroadcastSampleHandler {
     
@@ -47,16 +48,35 @@ class SampleHandler: RPBroadcastSampleHandler {
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         
         let userDefault = UserDefaults.init(suiteName: "group.io.agora.meeting")
-        if let appid = userDefault?.object(forKey: "appid") as? String, let channelid = userDefault?.object(forKey: "channelid") as? String, let token = userDefault?.object(forKey: "token") as? String, let screenid = userDefault?.object(forKey: "screenid") as? UInt {
-
-            AgoraUploader.appid = appid
-            AgoraUploader.channelid = channelid
-            AgoraUploader.screenid = screenid
-            AgoraUploader.token = token
-            AgoraUploader.startBroadcast()
-            
-            CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFNotificationName(rawValue: "com.videoconference.sharebegin" as CFString), nil, nil, true);
+        
+        guard let appid = userDefault?.object(forKey: "appid") as? String else {
+            return
         }
+        
+        guard let channelid = userDefault?.object(forKey: "channelid") as? String else {
+            return
+        }
+        
+        guard let token = userDefault?.object(forKey: "token") as? String else {
+            return
+        }
+        
+        guard let screenid = userDefault?.object(forKey: "screenid") as? String else {
+            return
+        }
+        
+        guard let number = UInt(screenid) else {
+            return
+        }
+        
+        
+        AgoraUploader.appid = appid
+        AgoraUploader.channelid = channelid
+        AgoraUploader.screenid = number
+        AgoraUploader.token = token
+        AgoraUploader.startBroadcast()
+        
+        CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFNotificationName(rawValue: "com.videoconference.sharebegin" as CFString), nil, nil, true);
     }
     
     override func broadcastPaused() {

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setShareBoardModel:(ConfShareBoardUserModel *)userModel;
 - (void)setShareScreenModel:(ConfShareScreenUserModel *)userModel;
 - (void)setUserModel:(ConfUserModel * _Nullable)userModel;
+- (void)addRenderViewIfNeed;
 
 @end
 

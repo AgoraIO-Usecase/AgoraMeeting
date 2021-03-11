@@ -49,7 +49,7 @@
                         </constraints>
                     </view>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PmJ-tG-omG">
-                        <rect key="frame" x="0.0" y="0.0" width="299" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="299" height="440"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00O-1d-Kux" customClass="EEWhiteboardTool">
@@ -164,7 +164,7 @@
                 <constraint firstAttribute="trailing" secondItem="k8S-e4-wRe" secondAttribute="trailing" constant="15" id="FlC-rq-ZMK"/>
                 <constraint firstItem="6rl-FV-MGv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HiP-We-U1x"/>
                 <constraint firstAttribute="trailing" secondItem="6rl-FV-MGv" secondAttribute="trailing" id="Hjs-cg-iwd"/>
-                <constraint firstAttribute="bottom" secondItem="PmJ-tG-omG" secondAttribute="bottom" id="Jjr-Of-ZF8"/>
+                <constraint firstAttribute="bottom" secondItem="PmJ-tG-omG" secondAttribute="bottom" constant="60" id="Jjr-Of-ZF8"/>
                 <constraint firstItem="00O-1d-Kux" firstAttribute="top" secondItem="4Ql-oX-1kf" secondAttribute="bottom" constant="2" id="QnI-jM-KYN"/>
                 <constraint firstItem="qJN-vp-Mts" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="-5" id="RC3-0y-vlB"/>
                 <constraint firstItem="PmJ-tG-omG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VbM-cJ-zUI"/>

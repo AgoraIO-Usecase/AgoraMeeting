@@ -95,7 +95,6 @@
 		78F69123246E874F000A0E71 /* PIPVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F69121246E874F000A0E71 /* PIPVideoCell.m */; };
 		78F69124246E874F000A0E71 /* PIPVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F69122246E874F000A0E71 /* PIPVideoCell.xib */; };
 		78F69128246E886F000A0E71 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F69126246E886F000A0E71 /* VideoCell.m */; };
-		78F69129246E886F000A0E71 /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F69127246E886F000A0E71 /* VideoCell.xib */; };
 		78F6912D246EC17E000A0E71 /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F6912C246EC17E000A0E71 /* PaddingLabel.m */; };
 		78F69131247239F6000A0E71 /* WhiteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F6912F247239F6000A0E71 /* WhiteVC.m */; };
 		78F69132247239F6000A0E71 /* WhiteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F69130247239F6000A0E71 /* WhiteVC.xib */; };
@@ -286,7 +285,6 @@
 		78F69122246E874F000A0E71 /* PIPVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PIPVideoCell.xib; sourceTree = "<group>"; };
 		78F69125246E886F000A0E71 /* VideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
 		78F69126246E886F000A0E71 /* VideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
-		78F69127246E886F000A0E71 /* VideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		78F6912B246EC17E000A0E71 /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
 		78F6912C246EC17E000A0E71 /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		78F6912E247239F6000A0E71 /* WhiteVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhiteVC.h; sourceTree = "<group>"; };
@@ -688,7 +686,6 @@
 				78ED7E1A247BFC5600F93385 /* UIViewAdditions.m */,
 				78F69125246E886F000A0E71 /* VideoCell.h */,
 				78F69126246E886F000A0E71 /* VideoCell.m */,
-				78F69127246E886F000A0E71 /* VideoCell.xib */,
 				78F6912E247239F6000A0E71 /* WhiteVC.h */,
 				78F6912F247239F6000A0E71 /* WhiteVC.m */,
 				78F69130247239F6000A0E71 /* WhiteVC.xib */,
@@ -864,7 +861,6 @@
 				78F6910A246E71FC000A0E71 /* MeetingVC.xib in Resources */,
 				7808B2972468449700B320EB /* SetVC.xib in Resources */,
 				784D22B924655C040065985A /* BottomItem.xib in Resources */,
-				78F69129246E886F000A0E71 /* VideoCell.xib in Resources */,
 				78F690FF246E71EA000A0E71 /* AllMuteAlertVC.xib in Resources */,
 				784D20A92463EB820065985A /* Assets.xcassets in Resources */,
 				7808B2A12468449700B320EB /* SetTextFieldCell.xib in Resources */,
@@ -1154,7 +1150,7 @@
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora MeetingDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1189,7 +1185,7 @@
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora MeetingRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1276,7 +1272,7 @@
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora Meeting.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1363,7 +1359,7 @@
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Agora Meeting.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1394,7 +1390,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcastDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1426,7 +1422,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcastRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1458,7 +1454,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1490,7 +1486,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

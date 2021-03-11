@@ -63,6 +63,7 @@ API_AVAILABLE(ios(12.0))
     [self registerForNotificationsWithIdentifier:@"com.videoconference.shareendbyapp"];
     
     self.bottomBar.delegate = self;
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 - (void)updateViewOnReconnected {
@@ -142,7 +143,7 @@ API_AVAILABLE(ios(12.0))
 - (void)initView {
     //    UICollectionView
     [self.collectionView registerNib:[UINib nibWithNibName:@"PIPVideoCell" bundle:nil] forCellWithReuseIdentifier:@"PIPVideoCell"];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"VideoCell" bundle:nil] forCellWithReuseIdentifier:@"VideoCell"];
+    [self.collectionView registerClass:VideoCell.class forCellWithReuseIdentifier:@"VideoCell"];
     
     AgoraFlowLayout *layout = [AgoraFlowLayout new];
     layout = [AgoraFlowLayout new];
@@ -163,12 +164,18 @@ API_AVAILABLE(ios(12.0))
     self.nav.title.text = manager.roomModel.roomName;
     [self.nav startTimerWithCount: manager.roomModel.startTime];
     
-    [self.allUserListModel addObject:manager.ownModel];
+    if (![self.allUserListModel containsObject:manager.ownModel]) {
+        [self.allUserListModel addObject:manager.ownModel];
+    }
+    
     for(ConfUserModel *hostModel in manager.roomModel.hosts) {
         if(hostModel.uid != manager.ownModel.uid){
-            [self.allUserListModel addObject:hostModel];
+            if(![self.allUserListModel containsObject:hostModel]) {
+                [self.allUserListModel addObject:hostModel];
+            }
         }
     }
+    [self logList];
     [self.collectionView  reloadData];
     
     [self updateStateView];
@@ -190,6 +197,7 @@ API_AVAILABLE(ios(12.0))
     
     ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
     self.allUserListModel = [NSMutableArray arrayWithArray:manager.userListModels];
+    [self logList];
     
     NSInteger shareScreenCount = manager.roomModel.shareScreenUsers.count;
     NSInteger shareBoardCount = manager.roomModel.shareBoardUsers.count;
@@ -203,6 +211,7 @@ API_AVAILABLE(ios(12.0))
         self.pageControl.numberOfPages = 1 + count / 4 + (count % 4 == 0 ? 0 : 1);
     }
     [self.collectionView reloadData];
+    self.pageControl.userInteractionEnabled = false;
     
     [self updateStateView];
 }
@@ -210,7 +219,7 @@ API_AVAILABLE(ios(12.0))
 - (void)onLocalVideoStateChange {
     ConferenceManager *manager = AgoraRoomManager.shareManager.conferenceManager;
     self.allUserListModel = [NSMutableArray arrayWithArray:manager.userListModels];
-       
+    [self logList];
     
     [self reloadPIPVideoCell];
     [self.bottomBar updateView];
@@ -287,6 +296,7 @@ API_AVAILABLE(ios(12.0))
     }
     
     NSInteger count = self.allUserListModel.count + (shared ? 1 : 0) - 2;
+    [self logList];
     if(count % 4 == 0){
         return count;
     } else {
@@ -626,7 +636,7 @@ API_AVAILABLE(ios(12.0))
             }];
         }
     }
-    
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 //    [self onScreenShareEnd];
     [NSNotificationCenter.defaultCenter removeObserver:self];
     [AgoraRoomManager releaseResource];
@@ -756,4 +766,33 @@ void HoleNotificationCallback(CFNotificationCenterRef center,
                                        str,
                                        NULL);
 }
+
+- (void)logList {
+//    if ([self hasRepeat]) {
+//        NSLog(@"");
+//    }
+//    NSString *str = @"";
+//    for (ConfUserModel *m in self.allUserListModel) {
+//        str = [str stringByAppendingFormat:@"-id-: %@\n",m.userId];
+//    }
+//    NSLog(@"%@", str);
+}
+
+- (BOOL)hasRepeat {
+    NSInteger count = self.allUserListModel.count;
+    for (NSInteger i = 0; i<count; i++) {
+        for (NSInteger j = 0; j<count; j++) {
+            if(i != j) {
+                NSString *vi = self.allUserListModel[i].userId;
+                NSString *vj = self.allUserListModel[j].userId;
+                if( [vi isEqualToString:vj] ){
+                    return YES;
+                }
+            }
+        }
+    }
+    
+    return NO;
+}
+
 @end

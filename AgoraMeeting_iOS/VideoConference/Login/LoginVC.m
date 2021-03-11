@@ -36,6 +36,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     [self initView];
+    [self checkFieldText:@"催凯"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -111,7 +112,7 @@
         [self showToast:NSLocalizedString(@"UserNameVerifyEmptyText", nil)];
         return;
     }
-    NSInteger strlength = [self checkFieldText:roomName];
+    NSInteger strlength = [roomName length];
     if(strlength < 3){
         [self showToast:NSLocalizedString(@"RoomNameMinVerifyText", nil)];
         return;
@@ -120,7 +121,7 @@
         [self showToast:NSLocalizedString(@"RoomNameMaxVerifyText", nil)];
         return;
     }
-    strlength = [self checkFieldText:userName];
+    strlength = [userName length];
     if(strlength < 3){
         [self showToast:NSLocalizedString(@"UserNameMinVerifyText", nil)];
         return;
@@ -129,7 +130,7 @@
         [self showToast:NSLocalizedString(@"UserNameMaxVerifyText", nil)];
         return;
     }
-    strlength = [self checkFieldText:roomPsd];
+    strlength = [roomPsd length];
     if(strlength > 20){
         [self showToast:NSLocalizedString(@"PsdMaxVerifyText", nil)];
         return;

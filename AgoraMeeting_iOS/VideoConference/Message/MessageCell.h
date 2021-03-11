@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageCell : UITableViewCell
 
-- (void)updateWithTime:(NSInteger)time message:(NSString *)msg username:(NSString*)username;
+- (void)updateWithTime:(NSInteger)time
+               message:(NSString *)msg
+              username:(NSString*)username;
 
 @end
 

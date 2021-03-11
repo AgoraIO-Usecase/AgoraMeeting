@@ -54,6 +54,7 @@
         [self.rtcEngineKit startPreview];
     }
     
+    [self.rtcEngineKit setParameters:@"{\" che.video.keepLastFrame\":false}"];
     [self.rtcEngineKit setParameters:@"{\"che.audio.specify.codec\":\"OPUSFB\"}"];
     [self.rtcEngineKit setAudioProfile:AgoraAudioProfileDefault scenario:AgoraAudioScenarioGameStreaming];
 }
