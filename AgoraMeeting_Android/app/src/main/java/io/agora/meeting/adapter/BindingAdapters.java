@@ -2,6 +2,7 @@ package io.agora.meeting.adapter;
 
 import android.graphics.Color;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
@@ -49,9 +50,9 @@ public class BindingAdapters {
     }, requireAll = false)
     public static void bindVideo(View view, boolean scale, boolean enable, int uid, boolean overlay, @RenderMode int renderMode) {
         if (view instanceof ViewGroup) {
-            if(scale && enable){
+            if (scale && enable) {
                 TextureView textureView = findTextView(view);
-                if(textureView != null){
+                if (textureView != null) {
                     Object tag = textureView.getTag();
                     if (tag instanceof Integer) {
                         int oUid = (int) tag;
@@ -60,9 +61,8 @@ public class BindingAdapters {
                             return;
                         }
                     }
-                }else{
-                    textureView = RtcManager.instance().createTextureView(view.getContext());
                 }
+                textureView = RtcManager.instance().createTextureView(view.getContext());
                 textureView.setTag(uid);
                 final TextureView _textView = textureView;
 
@@ -84,8 +84,7 @@ public class BindingAdapters {
                 } else {
                     RtcManager.instance().setupRemoteVideo(textureView, renderMode, uid);
                 }
-            }
-            else if (enable) {
+            } else if (enable) {
                 SurfaceView surfaceView;
                 // get child view from ViewGroup
                 View child = ((ViewGroup) view).getChildAt(0);
@@ -94,16 +93,19 @@ public class BindingAdapters {
                     Object tag = surfaceView.getTag();
                     if (tag instanceof Integer) {
                         int oUid = (int) tag;
-                        Surface surface = surfaceView.getHolder().getSurface();
-                        if (oUid == uid && surface != null && surface.isValid()) {
-                            // return if the SurfaceView has bound this uid
-                            return;
+                        SurfaceHolder holder = surfaceView.getHolder();
+                        if (holder != null) {
+                            Surface surface = holder.getSurface();
+                            if (oUid == uid && surface != null && surface.isValid()) {
+                                // return if the SurfaceView has bound this uid
+                                return;
+                            }
                         }
                     }
-                } else { // SurfaceView not exits
-                    // create new SurfaceView
-                    surfaceView = RtcManager.instance().createRendererView(view.getContext());
                 }
+                // create new SurfaceView
+                surfaceView = RtcManager.instance().createRendererView(view.getContext());
+
                 surfaceView.setZOrderMediaOverlay(overlay);
                 surfaceView.setTag(uid); // bind uid
                 view.setBackground(null);
@@ -124,15 +126,15 @@ public class BindingAdapters {
 
     private static TextureView findTextView(View view) {
         View targetView = view;
-        if(targetView instanceof TextureView){
+        if (targetView instanceof TextureView) {
             return (TextureView) targetView;
         }
-        if(targetView instanceof ViewGroup){
+        if (targetView instanceof ViewGroup) {
             ViewGroup parent = (ViewGroup) targetView;
             int childCount = parent.getChildCount();
             for (int i = 0; i < childCount; i++) {
                 targetView = findTextView(parent.getChildAt(i));
-                if(targetView != null){
+                if (targetView != null) {
                     return (TextureView) targetView;
                 }
             }
