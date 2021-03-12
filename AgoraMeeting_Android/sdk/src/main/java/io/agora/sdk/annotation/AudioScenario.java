@@ -15,6 +15,7 @@ import io.agora.rtc.Constants;
         Constants.AUDIO_SCENARIO_SHOWROOM,
         Constants.AUDIO_SCENARIO_CHATROOM_GAMING,
         Constants.AUDIO_SCENARIO_NUM,
+        Constants.AUDIO_SCENARIO_MEETING,
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface AudioScenario {

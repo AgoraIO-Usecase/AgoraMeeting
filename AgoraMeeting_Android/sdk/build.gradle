@@ -31,6 +31,6 @@ dependencies {
     implementation project(':base')
     implementation project(':log')
 
-    api "io.agora.rtc:full-sdk:${safeExtGet('dependencies', 'io.agora.rtc:full-sdk', '2.9.0.104')}"
+    api "io.agora.rtc:full-sdk:${safeExtGet('dependencies', 'io.agora.rtc:full-sdk', '3.2.1')}"
     api "io.agora.rtm:rtm-sdk:${safeExtGet('dependencies', 'io.agora.rtm:rtm-sdk', '1.2.2')}"
 }

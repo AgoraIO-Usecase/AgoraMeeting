@@ -2,7 +2,7 @@ ext {
     android = [
             'compileSdkVersion': 29,
             'buildToolsVersion': "29.0.3",
-            'minSdkVersion'    : 19,
+            'minSdkVersion'    : 21,
             'targetSdkVersion' : 29,
     ]
     dependencies = [
@@ -28,7 +28,8 @@ ext {
             'com.squareup.okhttp3:logging-interceptor': '4.7.2',
             'com.elvishew:xlog'                       : '1.6.1',
             'com.aliyun.dpa:oss-android-sdk'          : '2.9.4',
-            'io.agora.rtc:full-sdk'                   : '2.9.0.104',
+//            'io.agora.rtc:full-sdk'                   : '2.9.0.104',
+            'io.agora.rtc:full-sdk'                   : '3.2.1',
             'io.agora.rtm:rtm-sdk'                    : '1.2.2',
             'com.github.duty-os:white-sdk-android'    : '2.6.4',
     ]

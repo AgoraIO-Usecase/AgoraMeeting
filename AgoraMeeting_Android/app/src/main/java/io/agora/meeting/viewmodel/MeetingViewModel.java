@@ -37,6 +37,7 @@ import io.agora.meeting.service.body.req.InviteReq;
 import io.agora.meeting.service.body.req.MemberReq;
 import io.agora.meeting.service.body.req.RoomEntryReq;
 import io.agora.meeting.service.body.req.RoomReq;
+import io.agora.meeting.service.body.req.ScreenReq;
 import io.agora.meeting.service.body.res.RoomBoardRes;
 import io.agora.meeting.util.Events;
 
@@ -60,6 +61,13 @@ public class MeetingViewModel extends ViewModel {
         Room room = this.room.getValue();
         if (room == null) return null;
         return room.roomId;
+    }
+
+    @Nullable
+    public String getChannelName() {
+        Room room = this.room.getValue();
+        if (room == null) return null;
+        return room.channelName;
     }
 
     @GlobalModuleState
@@ -368,6 +376,14 @@ public class MeetingViewModel extends ViewModel {
                 }
             }
         }
+    }
+
+    public void switchScreenState(Member target) {
+        if (target == null) return;
+
+        helper.screen(target.userId, new ScreenReq() {{
+            state = isGrantScreen(target) ? ModuleState.DISABLE : ModuleState.ENABLE;
+        }});
     }
 
     @SuppressLint("SwitchIntDef")

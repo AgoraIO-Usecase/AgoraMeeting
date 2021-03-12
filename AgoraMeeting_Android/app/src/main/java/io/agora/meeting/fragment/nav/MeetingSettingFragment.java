@@ -19,8 +19,8 @@ import io.agora.meeting.R;
 import io.agora.meeting.base.AppBarDelegate;
 import io.agora.meeting.base.BaseFragment;
 import io.agora.meeting.data.Me;
-import io.agora.meeting.fragment.InviteFragment;
 import io.agora.meeting.util.LogUtil;
+import io.agora.meeting.util.ShareUtils;
 import io.agora.meeting.viewmodel.MeetingViewModel;
 
 public class MeetingSettingFragment extends PreferenceFragmentCompat implements AppBarDelegate {
@@ -100,7 +100,7 @@ public class MeetingSettingFragment extends PreferenceFragmentCompat implements 
         if (TextUtils.equals(key, getString(R.string.key_about))) {
             Navigation.findNavController(requireView()).navigate(MeetingSettingFragmentDirections.actionMeetingSettingFragmentToAboutFragment());
         } else if (TextUtils.equals(key, getString(R.string.key_invite))) {
-            new InviteFragment().show(getChildFragmentManager(), null);
+            ShareUtils.shareMeetingInfo(requireContext(), meetingVM.room.getValue(), meetingVM.me.getValue());
         } else if (TextUtils.equals(key, getString(R.string.key_upload))) {
             LogUtil.upload(requireActivity(), meetingVM.getRoomId());
         }

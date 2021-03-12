@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AgoraMeeting</string>
+    <string name="app_name">PICC Meeting</string>
     <string name="request_error">服务器请求失败：%1$d</string>
     <string name="upload_success">上传成功，请保存日志编号帮助我们排查问题！</string>
     <string name="clipboard">成功保存到剪贴板</string>
@@ -45,6 +45,8 @@
     <string name="more">更多</string>
     <string name="member_enter">"%1$s"进入房间</string>
     <string name="member_leave">"%1$s"离开房间</string>
+    <string name="restore_screen">还原屏幕</string>
+    <string name="board_apply_sent">申请已发送</string>
 
     <!-- AlertDialog -->
     <string name="mute_audio_title">主持人开启了静音控制</string>
@@ -137,5 +139,8 @@
     <string name="android_link">Android下载链接：%1$s</string>
     <string name="ios_link">iOS下载链接：%1$s</string>
     <string name="copy_meeting_info">复制会议信息</string>
+
+    <string name="open_screen">开启屏幕共享</string>
+    <string name="close_screen">关闭屏幕共享</string>
 
 </resources>

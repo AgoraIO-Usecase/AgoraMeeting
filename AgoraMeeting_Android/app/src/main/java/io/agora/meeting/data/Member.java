@@ -10,7 +10,7 @@ import java.io.Serializable;
 import io.agora.meeting.annotaion.member.ModuleState;
 import io.agora.meeting.annotaion.member.Role;
 
-public class Member implements Serializable {
+public class Member implements Serializable{
     public String userId;
     public String userName;
     @Role
@@ -33,6 +33,8 @@ public class Member implements Serializable {
     public Integer grantBoard;
     @ModuleState
     public Integer grantScreen;
+
+    public Member(){}
 
     public Member(Member member) {
         userId = member.userId;
@@ -83,6 +85,11 @@ public class Member implements Serializable {
         return super.equals(obj);
     }
 
+    @Override
+    public int hashCode() {
+        return userId.hashCode();
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -91,4 +98,5 @@ public class Member implements Serializable {
                 ", userName='" + userName + '\'' +
                 '}';
     }
+
 }

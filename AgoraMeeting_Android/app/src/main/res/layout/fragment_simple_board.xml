@@ -26,8 +26,7 @@
             android:id="@+id/white_board_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dp_130"
-            android:layout_marginBottom="@dimen/dp_120"
+            android:layout_marginBottom="@dimen/dp_50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,12 +50,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_25"
-            android:background="@drawable/bg_et_def"
+            android:background="@drawable/bg_board_tools"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/dp_10"
             app:isGone="@{!viewModel.me.host &amp;&amp; !viewModel.shareBoard.shareBoardUsers.contains(viewModel.me)}"
+            android:layout_marginBottom="@dimen/dp_60"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/white_board_view">
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <RadioGroup
                 android:id="@+id/rg_appliance"
@@ -117,9 +117,10 @@
             android:text="@string/apply_board"
             android:textColor="@android:color/white"
             android:textSize="@dimen/sp_14"
+            android:layout_marginBottom="@dimen/dp_60"
             app:isGone="@{viewModel.me.host || viewModel.shareBoard.shareBoardUsers.contains(viewModel.me)}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/white_board_view" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

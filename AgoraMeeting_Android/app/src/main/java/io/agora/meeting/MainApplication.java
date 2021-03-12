@@ -45,9 +45,9 @@ public class MainApplication extends Application {
             sdk.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
             sdk.setClientRole(Constants.CLIENT_ROLE_BROADCASTER);
             sdk.setParameters("che.audio.specify.codec", "OPUSFB");
-            sdk.setAudioProfile(Constants.AUDIO_PROFILE_DEFAULT, Constants.AUDIO_SCENARIO_CHATROOM_ENTERTAINMENT);
+            sdk.setAudioProfile(Constants.AUDIO_PROFILE_DEFAULT, Constants.AUDIO_SCENARIO_MEETING);
             sdk.setVideoEncoderConfiguration(new VideoEncoderConfiguration(
-                    VideoEncoderConfiguration.VD_360x360,
+                    VideoEncoderConfiguration.VD_480x480,
                     VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15,
                     VideoEncoderConfiguration.STANDARD_BITRATE,
                     VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT

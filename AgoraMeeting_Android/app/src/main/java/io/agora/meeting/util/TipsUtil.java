@@ -127,13 +127,19 @@ public class TipsUtil {
             }
         } else {
             if (!viewModel.isMe(member)) return 0;
-
-            // TODO hide open whiteboard interaction
-            return 0;
-//            return R.string.open_board;
+            return R.string.open_board;
         }
     }
-
+	
+    @StringRes
+    public static int getScreenMenuTitle(@NonNull MeetingViewModel viewModel, @Nullable Member member) {
+        if (viewModel.getMeValue().isGrantScreen()) {
+            return R.string.close_screen;
+        } else {
+            return R.string.open_screen;
+        }
+    }
+	
     public static String getMemberName(@NotNull Member member) {
         StringBuilder builder = new StringBuilder(member.userName);
         if (member instanceof Me) {

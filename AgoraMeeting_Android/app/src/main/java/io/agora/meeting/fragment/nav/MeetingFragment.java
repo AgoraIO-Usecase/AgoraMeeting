@@ -2,6 +2,8 @@ package io.agora.meeting.fragment.nav;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,12 +31,13 @@ import io.agora.meeting.annotaion.room.AudioRoute;
 import io.agora.meeting.annotaion.room.GlobalModuleState;
 import io.agora.meeting.annotaion.room.MeetingState;
 import io.agora.meeting.base.BaseFragment;
+import io.agora.meeting.data.Me;
 import io.agora.meeting.data.PeerMsg;
 import io.agora.meeting.databinding.FragmentMeetingBinding;
 import io.agora.meeting.databinding.LayoutRatingBinding;
 import io.agora.meeting.fragment.ActionSheetFragment;
-import io.agora.meeting.fragment.InviteFragment;
 import io.agora.meeting.util.Events;
+import io.agora.meeting.util.ShareUtils;
 import io.agora.meeting.util.TimeUtil;
 import io.agora.meeting.util.TipsUtil;
 import io.agora.meeting.viewmodel.MeetingViewModel;
@@ -42,10 +45,14 @@ import io.agora.meeting.viewmodel.MessageViewModel;
 import io.agora.meeting.viewmodel.RenderVideoModel;
 import io.agora.meeting.viewmodel.RtcViewModel;
 import io.agora.meeting.viewmodel.RtmEventHandler;
+import io.agora.rtc.ss.ScreenSharingClient;
+import io.agora.rtc.video.VideoEncoderConfiguration;
 import io.agora.sdk.manager.RtmManager;
 import q.rorbin.badgeview.QBadgeView;
 
 public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implements BottomNavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = MeetingFragment.class.getSimpleName();
+
     private BottomNavigationItemView mic, video, chat;
     private QBadgeView qBadgeView;
     private RtcViewModel rtcVM;
@@ -53,12 +60,29 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
     private RenderVideoModel renderVM;
     private MessageViewModel messageVM;
     private VideoFragmentAdapter adapter;
+    private ScreenSharingClient mSSClient;
+    private VideoEncoderConfiguration mVEC;
+    private boolean mSS = false;
 
     private RtmEventHandler rtmEventHandler;
     private OnBackPressedCallback callback = new OnBackPressedCallback(true) {
         @Override
         public void handleOnBackPressed() {
             showExitDialog();
+        }
+    };
+
+    private final ScreenSharingClient.IStateListener mListener = new ScreenSharingClient.IStateListener() {
+        @Override
+        public void onError(int error) {
+            Log.e(TAG, "Screen share service error happened: " + error);
+        }
+
+        @Override
+        public void onTokenWillExpire() {
+            Log.d(TAG, "Screen share service token will expire");
+            if (meetingVM.getMeValue() == null) return;
+            mSSClient.renewToken(meetingVM.getMeValue().screenToken); // Replace the token with your valid token
         }
     };
 
@@ -81,6 +105,13 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
 
         rtmEventHandler = new RtmEventHandler(meetingVM, messageVM);
         RtmManager.instance().registerListener(rtmEventHandler);
+
+        mSSClient = ScreenSharingClient.getInstance();
+        mSSClient.setListener(mListener);
+        mVEC = new VideoEncoderConfiguration(VideoEncoderConfiguration.VD_840x480,
+                VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_24,
+                VideoEncoderConfiguration.STANDARD_BITRATE,
+                VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_ADAPTIVE);
     }
 
     @Override
@@ -119,6 +150,9 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
         rtcVM.leaveChannel();
         RtmManager.instance().unregisterListener(rtmEventHandler);
         requireActivity().getViewModelStore().clear();
+        if (mSS) {
+            mSSClient.stop(getContext());
+        }
     }
 
     private void subscribeOnActivity() {
@@ -163,11 +197,11 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
                     break;
             }
         });
-        meetingVM.room.observe(getViewLifecycleOwner(), room -> updateSubTitle(room.startTime));
-        meetingVM.me.observe(getViewLifecycleOwner(), me -> {
-            mic.setActivated(me.isAudioEnable());
-            video.setActivated(me.isVideoEnable());
+        meetingVM.room.observe(getViewLifecycleOwner(), room -> {
+            updateSubTitle(room.startTime);
+            updateMedia(meetingVM.getMeValue());
         });
+        meetingVM.me.observe(getViewLifecycleOwner(), this::updateMedia);
         renderVM.renders.observe(getViewLifecycleOwner(), renders -> adapter.setItemCount(renders.size()));
         messageVM.unReadChatMsgs.observe(getViewLifecycleOwner(), messages -> {
             qBadgeView.bindTarget(chat);
@@ -179,6 +213,26 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
             }
         });
         Events.TimeEvent.addListener(getViewLifecycleOwner(), timeEvent -> updateSubTitle(timeEvent.time));
+    }
+
+    private void updateMedia(Me me) {
+        mic.setActivated(me.isAudioEnable());
+        video.setActivated(me.isVideoEnable());
+        String channelName = meetingVM.getChannelName();
+        if(!TextUtils.isEmpty(channelName)){
+            if (me.isGrantScreen()) {
+                if (!mSS) {
+                    mSSClient.start(getContext(), getResources().getString(R.string.agora_app_id), me.screenToken,
+                            channelName, me.screenId, mVEC);
+                    mSS = true;
+                }
+            } else {
+                if (mSS) {
+                    mSSClient.stop(getContext());
+                    mSS = false;
+                }
+            }
+        }
     }
 
     private void updateSubTitle(long startTime) {
@@ -233,10 +287,12 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
 
     private void showActionSheet() {
         final int boardMenuTitle = TipsUtil.getBoardMenuTitle(meetingVM, meetingVM.getMeValue());
+        final int screenMenuTitle = TipsUtil.getScreenMenuTitle(meetingVM, meetingVM.getMeValue());
         ActionSheetFragment actionSheet = ActionSheetFragment.getInstance(R.menu.more_action);
         actionSheet.resetMenuTitle(new HashMap<Integer, Integer>() {{
             put(R.id.menu_mute_all, meetingVM.getMuteAllAudio() == GlobalModuleState.ENABLE ? R.string.mute_all : R.string.unmute_all);
             put(R.id.menu_board, boardMenuTitle);
+            put(R.id.menu_screen, screenMenuTitle);
         }});
         actionSheet.removeMenu(new ArrayList<Integer>() {{
             // TODO not implement
@@ -248,10 +304,13 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
             if (boardMenuTitle == 0) {
                 add(R.id.menu_board);
             }
+            if (screenMenuTitle == 0) {
+                add(R.id.menu_screen);
+            }
         }});
         actionSheet.setOnItemClickListener((view, position, id) -> {
             if (id == R.id.menu_invite) {
-                new InviteFragment().show(getChildFragmentManager(), null);
+                ShareUtils.shareMeetingInfo(requireContext(), meetingVM.room.getValue(), meetingVM.me.getValue());
             } else if (id == R.id.menu_mute_all) {
                 meetingVM.switchMuteAllAudio(requireContext());
             } else if (id == R.id.menu_record) {
@@ -260,6 +319,8 @@ public class MeetingFragment extends BaseFragment<FragmentMeetingBinding> implem
                 meetingVM.switchBoardState(meetingVM.getMeValue());
             } else if (id == R.id.menu_setting) {
                 Navigation.findNavController(requireView()).navigate(MeetingFragmentDirections.actionMeetingFragmentToMeetingSettingFragment());
+            } else if (id == R.id.menu_screen) {
+                meetingVM.switchScreenState(meetingVM.getMeValue());
             }
         });
         actionSheet.show(getChildFragmentManager(), null);
