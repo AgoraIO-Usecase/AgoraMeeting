@@ -133,9 +133,7 @@ public class FloatNotifyAdapter extends ListAdapter<ActionWrapMsg, FNViewHolder>
     private static class DiffCallback extends DiffUtil.ItemCallback<ActionWrapMsg> {
         @Override
         public boolean areItemsTheSame(@NonNull ActionWrapMsg oldItem, @NonNull ActionWrapMsg newItem) {
-            return oldItem.message != null && newItem.message != null
-                    && oldItem.message.timestamp == newItem.message.timestamp
-                    && oldItem.message.equals(newItem.message);
+            return oldItem == newItem;
         }
 
         @Override
