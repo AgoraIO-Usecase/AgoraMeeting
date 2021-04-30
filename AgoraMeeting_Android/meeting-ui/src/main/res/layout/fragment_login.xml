@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.agora.meeting.ui.viewmodel.PreferenceViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.LoginFragment">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:menu="@menu/fragment_login"
+                app:titleTextColor="@color/global_text_color_gray" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="40dp">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/ic_logo_little" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/global_text_color_black"
+                    android:textSize="@dimen/global_text_size_large" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="30dp">
+
+                <io.agora.meeting.ui.widget.AutoEditText
+                    android:id="@+id/aet_room_name"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/global_edit_text_height"
+                    android:hint="@string/login_room_name"
+                    android:inputType="textPersonName"
+                    app:maxLength="50"
+                    app:minLength="3"
+                    app:tipEmpty="@string/login_tip_room_name_empty"
+                    app:tipOver="@string/login_tip_room_name_over"
+                    app:tipShort="@string/login_tip_room_name_short"
+                    app:banEmoji="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <io.agora.meeting.ui.widget.AutoEditText
+                    android:id="@+id/aet_room_pwd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/global_edit_text_height"
+                    android:hint="@string/login_room_pwd"
+                    android:inputType="textPassword"
+                    app:maxLength="20"
+                    app:minLength="3"
+                    app:tipOver="@string/login_tip_room_pass_over"
+                    app:rightIconSrc="@drawable/ic_tips"
+                    app:banEmoji="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aet_room_name"/>
+
+                <io.agora.meeting.ui.widget.AutoEditText
+                    android:id="@+id/aet_name"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/global_edit_text_height"
+                    android:hint="@string/login_name"
+                    android:inputType="textPersonName"
+                    android:text="@={viewModel.name}"
+                    app:tipEmpty="@string/login_tip_user_name_empty"
+                    app:tipOver="@string/login_tip_user_name_over"
+                    app:tipShort="@string/login_tip_user_name_short"
+                    app:banEmoji="true"
+                    app:maxLength="20"
+                    app:minLength="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aet_room_pwd" />
+
+                <TextView
+                    android:id="@+id/tv_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/login_enter_setting"
+                    android:textColor="@color/global_text_color_gray"
+                    android:textSize="@dimen/global_text_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aet_name" />
+
+                <TextView
+                    android:id="@+id/tv_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:text="@string/login_open_camera"
+                    android:textColor="@color/global_text_color_black"
+                    android:textSize="@dimen/global_text_size_middle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_tips" />
+
+                <Switch
+                    android:id="@+id/sw_camera"
+                    android:layout_width="88dp"
+                    android:layout_height="23dp"
+                    android:checked="@={viewModel.camera}"
+                    android:saveEnabled="false"
+                    android:text="@null"
+                    android:thumb="@drawable/switch_ios_thumb"
+                    android:track="@drawable/switch_ios_track_selector"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_camera"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_camera" />
+
+                <TextView
+                    android:id="@+id/tv_mic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:text="@string/login_open_mic"
+                    android:textColor="@color/global_text_color_black"
+                    android:textSize="@dimen/global_text_size_middle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_camera" />
+
+                <Switch
+                    android:id="@+id/sw_mic"
+                    android:layout_width="88dp"
+                    android:layout_height="23dp"
+                    android:checked="@={viewModel.mic}"
+                    android:saveEnabled="false"
+                    android:text="@null"
+                    android:thumb="@drawable/switch_ios_thumb"
+                    android:track="@drawable/switch_ios_track_selector"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_mic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_mic" />
+
+                <io.agora.meeting.ui.widget.LoadingButton
+                    android:id="@+id/btn_enter"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="34dp"
+                    android:background="@color/global_accent"
+                    app:pbText="@string/login_enter"
+                    app:pbTextColor="@color/global_text_color_white"
+                    app:pbProgressColor="@android:color/white"
+                    app:pbTextSize="@dimen/global_text_size_middle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_mic" />
+
+                <LinearLayout
+                    android:id="@+id/layout_limit_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/bg_tv_tip"
+                    android:padding="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_enter" >
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_speaker"/>
+
+                    <TextView
+                        android:id="@+id/tv_limit_tip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/login_limit_tip"
+                        android:textColor="@color/global_text_color_white"
+                        android:layout_marginStart="10dp"
+                        android:textSize="@dimen/global_text_size_small"/>
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

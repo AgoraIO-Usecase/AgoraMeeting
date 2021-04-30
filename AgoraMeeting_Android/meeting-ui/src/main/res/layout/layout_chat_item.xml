@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="message"
+            type="io.agora.meeting.ui.data.ChatWrapMsg" />
+        <import type="io.agora.meeting.ui.annotation.ChatState"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/global_text_color_black"
+            android:textSize="@dimen/global_text_size_small" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_below="@+id/tv_time"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_failed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_msg_send_failed"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/layout_content"
+                android:layout_centerVertical="true"
+                app:isGone="@{message.state != ChatState.FAILED}"/>
+
+            <ImageView
+                android:id="@+id/iv_sending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_msg_sending"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/layout_content"
+                android:layout_centerVertical="true"
+                app:isGone="@{message.state != ChatState.SENDING}"/>
+
+            <LinearLayout
+                android:id="@+id/layout_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="@{message.isFromMyself}"
+                android:background="@{message.isFromMyself ? @drawable/bg_chat_me : @drawable/bg_chat_other}"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{message.message.fromUserName}"
+                    android:textColor="@color/global_text_color_black"
+                    android:layout_above="@+id/tv_content"
+                    android:textSize="@dimen/global_text_size_small"
+                    app:isGone="@{message.isFromMyself}" />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:autoLink="web"
+                    android:text="@{message.message.content}"
+                    android:textColor="@{message.isFromMyself ? @android:color/white : @color/global_text_color_black}"
+                    android:textColorLink="@{message.isFromMyself ? @android:color/white : @color/global_accent}"
+                    android:textSize="@dimen/global_text_size_middle" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</layout>

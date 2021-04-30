@@ -1,3 +1,5 @@
+apply plugin: 'com.android.library'
+
 def safeExtGet(prop, key, fallback) {
     if (rootProject.ext.has(prop)) {
         def map = rootProject.ext.get(prop)
@@ -8,7 +10,18 @@ def safeExtGet(prop, key, fallback) {
     return fallback
 }
 
-apply plugin: 'com.android.library'
+// add the maven publish script if existed
+def maven_gradle_path = "${rootDir.absolutePath}/maven.gradle"
+if (new File(maven_gradle_path).exists()) {
+    apply from: maven_gradle_path
+}
+
+// special the version using when publishing to maven
+// the group name is defined in setting.gradle
+project.group="io.github.agoraio-usecase.meeting"
+project.version="${safeExtGet('meeting', 'versionName', '1.0.0')}"
+project.description = "AgoraMeetingWhiteBoard"
+project.ext.url = "https://bitbucket.agoralab.co/projects/ADUC/repos/cloudmeeting-android/browse/AgoraMeeting_Android/whiteboard?at=refs%2Fheads%2Fdev%2Fandroid_210114"
 
 android {
     compileSdkVersion safeExtGet('android', 'compileSdkVersion', 29)
@@ -17,10 +30,17 @@ android {
     defaultConfig {
         minSdkVersion safeExtGet('android', 'minSdkVersion', 19)
         targetSdkVersion safeExtGet('android', 'minSdkVersion', 29)
+        versionCode safeExtGet('meeting', 'versionCode', 1)
+        versionName "${project.version}"
 
         consumerProguardFiles 'consumer-rules.pro'
+    }
 
-        buildConfigField 'String', 'API_BASE_URL', '"https://cloudcapiv4.herewhite.com/"'
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
 
     compileOptions {
@@ -30,8 +50,5 @@ android {
 }
 
 dependencies {
-    implementation project(':base')
-    implementation project(':log')
-
     api "com.github.duty-os:white-sdk-android:${safeExtGet('dependencies', 'com.github.duty-os:white-sdk-android', '2.6.4')}"
 }

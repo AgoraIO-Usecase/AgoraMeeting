@@ -1,5 +1,0 @@
-<resources>
-    <string-array name="mute_all">
-        <item>@string/allow_self_unmute</item>
-    </string-array>
-</resources>

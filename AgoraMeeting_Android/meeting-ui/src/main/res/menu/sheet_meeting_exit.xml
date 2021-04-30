@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_close_meeting"
+        android:title="@string/main_close_meeting" />
+
+    <item
+        android:id="@+id/menu_exist_meeting"
+        android:title="@string/main_exit_room" />
+
+
+</menu>

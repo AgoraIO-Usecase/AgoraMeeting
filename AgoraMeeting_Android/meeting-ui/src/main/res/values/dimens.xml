@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 全局尺寸/间隔 -->
+    <dimen name="global_text_size_large">18sp</dimen>
+    <dimen name="global_text_size_middle">15sp</dimen>
+    <dimen name="global_text_size_small">10sp</dimen>
+    <dimen name="global_edit_text_height">44dp</dimen>
+    <dimen name="loading_dialog_padding">30dp</dimen>
+
+
+
+    <!-- whiteboard -->
+    <dimen name="whiteboard_tool_padding">3dp</dimen>
+    <dimen name="whiteboard_tools_margin_start">10dp</dimen>
+    <dimen name="whiteboard_tools_margin_bottom">120dp</dimen>
+
+
+    <!-- MeetingFragment -->
+    <dimen name="meeting_speaker_video_offset">12dp</dimen>
+    <dimen name="meeting_grid_audio_height">520dp</dimen>
+    <dimen name="meeting_grid_audio_padding">18dp</dimen>
+    <dimen name="meeting_pop_dialog_width">160dp</dimen>
+    <dimen name="meeting_pop_dialog_offset">6dp</dimen>
+    <dimen name="meeting_float_notify_bottom_margin_max">200dp</dimen>
+    <dimen name="meeting_float_notify_bottom_margin_min">30dp</dimen>
+
+    <!-- MessageFragment -->
+    <dimen name="message_input_layout_height">50dp</dimen>
+
+
+
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_other">
+    <fragment
+        android:id="@+id/gridVideoFragment"
+        android:name="io.agora.meeting.ui.fragment.GridVideoFragment"
+        tools:layout="@layout/fragment_grid_video">
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/gridAudioFragment"
+        android:name="io.agora.meeting.ui.fragment.GridAudioFragment"
+        tools:layout="@layout/fragment_grid_audio">
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/speakerVideoFragment"
+        android:name="io.agora.meeting.ui.fragment.SpeakerVideoFragment"
+        tools:layout="@layout/fragment_speaker_video">
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/actionSheetFragment"
+        android:name="io.agora.meeting.ui.fragment.ActionSheetFragment"
+        tools:layout="@layout/layout_action_sheet">
+        <argument
+            android:name="menuRes"
+            app:argType="reference" />
+        <argument
+            android:name="userName"
+            app:argType="string"/>
+        <argument
+            android:name="userId"
+            app:argType="string"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="io.agora.meeting.ui.fragment.ChatFragment"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/notifyFragment"
+        android:name="io.agora.meeting.ui.fragment.NotifyFragment"
+        tools:layout="@layout/fragment_notify" />
+</navigation>

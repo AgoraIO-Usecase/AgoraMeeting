@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="notify"
+            type="io.agora.meeting.ui.data.ActionWrapMsg" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        tools:background="#2e3848">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/global_text_color_gray"
+            android:textSize="@dimen/global_text_size_small"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="12:00" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_notify_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@{notify.content}"
+                android:textColor="@color/global_text_color_black"
+                android:textSize="@dimen/global_text_size_middle"
+                tools:text="李明明申请打开摄像头" />
+
+            <io.agora.meeting.ui.widget.CountDownTextView
+                android:id="@+id/cdTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_blue"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="10dp"
+                android:textSize="@dimen/global_text_size_small"
+                tools:text="@string/cmm_accept"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

@@ -1,6 +1,24 @@
-rootProject.name = 'AgoraMeeting'
 include ':app'
-include ':base'
-include ':whiteboard'
-include ':log'
-include ':sdk'
+
+def compileDependencies=true
+if (compileDependencies) {
+    include ':meeting-core'
+    include ':meeting-ui'
+    include ':screensharing'
+    include ':whiteboard'
+
+    def rteSrcPath = new File(settingsDir, 'common-scene-sdk/Android/AgoraRte/rte')
+    if (rteSrcPath.exists()) {
+        include ':rte'
+        project(':rte').projectDir = rteSrcPath
+    }
+
+    def statisticSrcPath = new File(settingsDir, 'Tools/AgoraSceneStatistic-Android/statistic')
+    if (statisticSrcPath.exists()) {
+        include ':statistic'
+        project(':statistic').projectDir = statisticSrcPath
+    }
+}
+
+
+

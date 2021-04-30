@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/meeting_main_bg"
+    android:id="@+id/local_screen_layout">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/main_screen_sharing"
+        android:paddingHorizontal="20dp"
+        android:gravity="center"
+        android:textColor="@color/global_text_color_white"
+        android:textSize="@dimen/global_text_size_middle" />
+
+
+</FrameLayout>

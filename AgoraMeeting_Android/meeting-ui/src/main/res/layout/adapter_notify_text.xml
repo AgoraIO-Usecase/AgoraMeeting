@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="notify"
+            type="io.agora.meeting.ui.data.ActionWrapMsg" />
+
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/global_text_size_small"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/global_text_color_gray"
+            android:visibility="gone"
+            tools:text="12:00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_notify_black"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/global_text_size_middle"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@{notify.content}"
+            tools:text="xxxx-离开房间" />
+
+    </LinearLayout>
+
+</layout>

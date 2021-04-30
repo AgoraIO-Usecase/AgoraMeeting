@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.SpeakerVideoFragment">
+
+    <data>
+        <variable
+            name="speakerStream"
+            type="io.agora.meeting.core.model.StreamModel" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fl_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"/>
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_logo_little"
+            app:isGone="@{speakerStream.hasVideo()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_tiled_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingHorizontal="15dp"
+            android:paddingTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_tiled"/>
+
+
+        <TextView
+            android:id="@+id/tv_enter_whiteboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/whiteboard_enter"
+            android:background="@drawable/bg_btn_blue"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp"
+            android:layout_marginEnd="18dp"
+            app:isGone="@{!speakerStream.board}"
+            app:layout_constraintTop_toBottomOf="@id/iv_tiled_switch"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_stop_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more_close_screen"
+            android:background="@drawable/bg_btn_red"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp"
+            android:layout_marginEnd="18dp"
+            app:isGone="@{!speakerStream.screen || !speakerStream.owner.local || !speakerStream.owner.screenOwner}"
+            app:layout_constraintTop_toBottomOf="@id/iv_tiled_switch"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/bg_speaker_tag"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            app:isGone="@{speakerStream == null}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_host"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_round_host"
+                app:isGone="@{!speakerStream.owner.host}" />
+
+            <ImageView
+                android:id="@+id/iv_share"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_round_share"
+                app:isGone="@{!speakerStream.screen &amp;&amp; !speakerStream.board}" />
+
+            <ImageView
+                android:id="@+id/iv_mic"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/sel_round_mic"
+                app:activated="@{speakerStream.hasAudio()}" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="60dp"
+                android:paddingEnd="3dp"
+                android:text="@{speakerStream.ownerUserName}"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@android:color/white"
+                tools:text="111111111111111111111111111111111111111"
+                android:textSize="@dimen/global_text_size_small" />
+
+        </LinearLayout>
+
+        <io.agora.meeting.ui.widget.TouchRecyclerView
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

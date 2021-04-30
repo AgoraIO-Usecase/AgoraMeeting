@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="agora_app_id" translatable="false"><#YOUR APP ID#></string>
-    <string name="agora_auth" translatable="false"><#YOUR AUTH#></string>
+    <string name="agora_customer_id" translatable="false"><#YOUR CUSTOMER ID#></string>
+    <string name="agora_customer_cer" translatable="false"><#YOUR CUSTOMER CRE#></string>
+    <string name="bugly_app_id" translatable="false"></string>
+
 </resources>

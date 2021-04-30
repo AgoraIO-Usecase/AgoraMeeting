@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoEditText">
+        <attr name="android:text"/>
+        <attr name="android:hint"/>
+        <attr name="android:inputType"/>
+        <attr name="maxLength" format="integer"/>
+        <attr name="minLength" format="integer"/>
+        <attr name="tipOver" format="string"/>
+        <attr name="tipShort" format="string"/>
+        <attr name="tipEmpty" format="string"/>
+        <attr name="banEmoji" format="boolean"/>
+        <attr name="rightIconSrc" format="reference"/>
+        <attr name="rightIconClick" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="LoadingButton">
+        <attr name="pbText" format="string"/>
+        <attr name="pbLoadingText" format="string"/>
+        <attr name="pbTextSize" format="dimension"/>
+        <attr name="pbTextColor" format="color|reference"/>
+        <attr name="pbProgressColor" format="color|reference"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="notify"
+            type="io.agora.meeting.ui.data.ActionWrapMsg" />
+
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/global_text_size_small"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:textColor="@color/global_text_color_black"
+            tools:text="12:00"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_notify_white"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/global_text_color_black"
+                android:textSize="@dimen/global_text_size_middle"
+                android:text="@{notify.message.userName}"
+                tools:text="云录制已完成" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/global_text_color_black"
+                android:textSize="@dimen/global_text_size_middle"
+                android:text="@{notify.message.userName}"
+                tools:text="请复制链接保存，录制保存14天" />
+
+            <TextView
+                android:id="@+id/tv_copy_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/global_text_color_white"
+                android:textSize="@dimen/global_text_size_small"
+                android:background="@drawable/bg_btn_blue"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="8dp"
+                android:text="@string/invite_copy_link"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

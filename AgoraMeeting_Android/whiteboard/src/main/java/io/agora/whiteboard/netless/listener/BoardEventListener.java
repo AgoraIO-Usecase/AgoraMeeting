@@ -10,4 +10,6 @@ public interface BoardEventListener {
     void onSceneStateChanged(SceneState state);
 
     void onMemberStateChanged(MemberState state);
+
+    void onError(Throwable error);
 }

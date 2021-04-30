@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_popup"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/login_pwd_tips"
+        android:textColor="#323c47"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/iv_arrow"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_arrow_drop_down"
+        tools:rotation="180"
+        tools:translationX="130dp" />
+
+</FrameLayout>

@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+
+
+def safeExtGet(prop, key, fallback) {
+    if (rootProject.ext.has(prop)) {
+        def map = rootProject.ext.get(prop)
+        if (map.containsKey(key)) {
+            return map.get(key)
+        }
+    }
+    return fallback
+}
+
+// add the maven publish script if existed
+def maven_gradle_path = "${rootDir.absolutePath}/maven.gradle"
+if (new File(maven_gradle_path).exists()) {
+    apply from: maven_gradle_path
+}
+
+// special the version using when publishing to maven
+// the group name is defined in setting.gradle
+project.group="io.github.agoraio-usecase.meeting"
+project.version="${safeExtGet('meeting', 'versionName', '1.0.0')}"
+project.description = "AgoraMeetingCore"
+project.ext.url = "https://bitbucket.agoralab.co/projects/ADUC/repos/cloudmeeting-android/browse/AgoraMeeting_Android/meeting-core?at=refs%2Fheads%2Fdev%2Fandroid_210114"
+
+
+android {
+    compileSdkVersion safeExtGet('android', 'compileSdkVersion', 29)
+    buildToolsVersion safeExtGet('android', 'buildToolsVersion', '29.0.3')
+
+    defaultConfig {
+        minSdkVersion safeExtGet('android', 'minSdkVersion', 19)
+        targetSdkVersion safeExtGet('android', 'minSdkVersion', 29)
+        versionCode safeExtGet('meeting', 'versionCode', 1)
+        versionName safeExtGet('meeting', 'versionName', '1.0.0')
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation project(':screensharing')
+    implementation project(':whiteboard')
+
+    implementation rootProject.findProject(':rte') != null ? project(':rte') : "io.github.agoraio-usecase.common:rte:${safeExtGet('maven_version', 'io.github.agoraio-usecase.common:rte', '1.0.0')}"
+    implementation rootProject.findProject(':statistic') != null ? project(':statistic') : "io.github.agoraio-usecase.tools:statistic:${safeExtGet('maven_version', 'io.github.agoraio-usecase.tools:statistic', '1.0.1')}"
+
+    implementation "androidx.recyclerview:recyclerview:${safeExtGet('dependencies', 'androidx.recyclerview:recyclerview', '1.1.0')}"
+    implementation "com.google.code.gson:gson:${safeExtGet('dependencies', 'com.google.code.gson:gson', '2.8.6')}"
+    implementation "com.squareup.retrofit2:retrofit:${safeExtGet('dependencies', 'com.squareup.retrofit2:retrofit', '2.9.0')}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${safeExtGet('dependencies', 'com.squareup.okhttp3:logging-interceptor', '4.7.2')}"
+    implementation "com.squareup.retrofit2:converter-gson:${safeExtGet('dependencies', 'com.squareup.retrofit2:converter-gson', '2.9.0')}"
+
+    implementation "io.agora.rtc:full-sdk:${safeExtGet('dependencies', 'io.agora.rtc:full-sdk', '3.2.1')}"
+    implementation "com.github.AgoraIO-Usecase:Tools:${safeExtGet('dependencies', 'com.github.AgoraIO-Usecase:Tools', 'log_java_1.0.4')}"
+    implementation "com.aliyun.dpa:oss-android-sdk:${safeExtGet('dependencies', 'com.aliyun.dpa:oss-android-sdk', '2.9.4')}"
+}
+
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_invite"
+        android:title="@string/more_invite" />
+
+    <item
+        android:id="@+id/menu_mute_all_mic"
+        android:title="@string/more_mute_all_mic" />
+
+    <item
+        android:id="@+id/menu_mute_all_camera"
+        android:title="@string/more_mute_all_camera" />
+
+    <item
+        android:id="@+id/menu_screen"
+        android:title="@string/more_join_board" />
+
+    <item
+        android:id="@+id/menu_board"
+        android:title="@string/more_join_board" />
+
+    <item
+        android:id="@+id/menu_record"
+        android:title="@string/more_record" />
+
+    <item
+        android:id="@+id/menu_setting"
+        android:title="@string/setting_title" />
+</menu>
