@@ -17,19 +17,17 @@
 1.将代码克隆到本地
 
 ```
-git clone https://github.com/AgoraIO-Usecase/AgoraMeeting.git
+git clone https://github.com/AgoraIO-Community/eConferencing-iOS
 ```
 
-2.进入项目目录
+2.下载AgoraRte Framework
+
+下载 [AgoraRte](https://github.com/AgoraIO-Community/eConferencing-iOS/releases/download/iOS_2.0.0/AgoraRte.framework.zip) 并解压，然后将 "AgoraRte.framework" 文件移动到 "eConferencing-iOS/AgoraRte" 文件夹下。
+
+3.进入项目目录
 
 ```
-cd AgoraMeeting_iOS
-```
-
-3.配置sdk
-
-```
-sh install.sh
+cd eConferencing-iOS/VideoConference
 ```
 
 4.安装项目依赖库
@@ -57,10 +55,13 @@ open VideoConference.xcworkspace
      return <#Your Agora App Id#>;
 }
 
-+ (NSString *)authorization {
-     return <#Your Authorization#>;
++ (NSString *)customerId {
+     return <#Your customerId#>;
 }
 
++ (NSString *)customerCertificate {
+     return <#Your customerCertificate#>;
+}
 ```
 
 7.通过 `command + r` 运行项目

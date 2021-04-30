@@ -18,20 +18,12 @@ Follow these steps to run the sample project:
 1.Clone the repository to your local machine.
 
 ```
-git clone https://github.com/AgoraIO-Usecase/AgoraMeeting.git
+git clone https://github.com/AgoraIO-Community/eConferencing-iOS
 ```
 
-2.Enter the directory of the Android project.
+2.Download AgoraRte Framework
 
-```
-cd AgoraMeeting_iOS
-```
-
-3.Setup sdk.
-
-```
-sh install.sh
-```
+Download [AgoraRte](https://github.com/AgoraIO-Community/eConferencing-iOS/releases/download/iOS_2.0.0/AgoraRte.framework.zip), unzip and move "AgoraRte.framework" to "eConferencing-iOS/AgoraRte".
 
 4.Install dependencies.
 
@@ -59,10 +51,13 @@ For details, see the [prerequisites](https://github.com/AgoraIO-Usecase/AgoraMee
      return <#Your Agora App Id#>;
 }
 
-+ (NSString *)authorization {
-     return <#Your Authorization#>;
++ (NSString *)customerId {
+     return <#Your customerId#>;
 }
 
++ (NSString *)customerCertificate {
+     return <#Your customerCertificate#>;
+}
 ```
 
 7. Run the project with `command + r`.

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="WNy-mH-voO" customClass="ShareView" customModule="Agora_Meeting" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="349"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jC-VZ-qKG">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="349"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ts3-c6-WwE">
+                    <rect key="frame" x="0.0" y="-30" width="414" height="379"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh0-2a-lln">
+                            <rect key="frame" x="9" y="322" width="396" height="57"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="57" id="fac-jp-Shk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.14901960780000001" green="0.54901960780000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOP-Os-bp1">
+                            <rect key="frame" x="9" y="34" width="396" height="279"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议名：Meeting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="un5-RL-1no">
+                                    <rect key="frame" x="20" y="20" width="356" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="4Z3-dm-4QX"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1960784314" green="0.23529411759999999" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请人：Meeting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBv-Di-zP2">
+                                    <rect key="frame" x="20" y="56" width="356" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="c5K-3r-ZiF"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1960784314" green="0.23529411759999999" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会议密码：Meeting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDG-L1-y3N">
+                                    <rect key="frame" x="20" y="92" width="356" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="4od-pz-Cee"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1960784314" green="0.23529411759999999" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请链接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJc-rR-w3v">
+                                    <rect key="frame" x="20" y="128" width="356" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="2xt-5s-dUn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1960784314" green="0.23529411759999999" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://videocall.agora.io/#/391830718" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="by1-r5-aVD">
+                                    <rect key="frame" x="20" y="164" width="356" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1960784314" green="0.23529411759999999" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfP-fG-yYG">
+                                    <rect key="frame" x="20" y="213" width="356" height="45"/>
+                                    <color key="backgroundColor" red="0.30196078430000001" green="0.63137254899999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="oiI-5f-o1r"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="复制会议信息">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="un5-RL-1no" firstAttribute="top" secondItem="pOP-Os-bp1" secondAttribute="top" constant="20" id="06d-Jl-kbZ"/>
+                                <constraint firstAttribute="trailing" secondItem="rBv-Di-zP2" secondAttribute="trailing" constant="20" id="27u-Dl-IDV"/>
+                                <constraint firstItem="GJc-rR-w3v" firstAttribute="top" secondItem="YDG-L1-y3N" secondAttribute="bottom" constant="15" id="5rd-mU-r8Q"/>
+                                <constraint firstItem="AfP-fG-yYG" firstAttribute="leading" secondItem="pOP-Os-bp1" secondAttribute="leading" constant="20" id="5zh-m7-RwO"/>
+                                <constraint firstItem="un5-RL-1no" firstAttribute="leading" secondItem="pOP-Os-bp1" secondAttribute="leading" constant="20" id="6Bb-lA-OwU"/>
+                                <constraint firstItem="rBv-Di-zP2" firstAttribute="leading" secondItem="pOP-Os-bp1" secondAttribute="leading" constant="20" id="89E-m8-YwR"/>
+                                <constraint firstAttribute="bottom" secondItem="AfP-fG-yYG" secondAttribute="bottom" constant="21" id="KHD-db-Rop"/>
+                                <constraint firstItem="by1-r5-aVD" firstAttribute="leading" secondItem="pOP-Os-bp1" secondAttribute="leading" constant="20" id="On5-E6-GMU"/>
+                                <constraint firstAttribute="trailing" secondItem="GJc-rR-w3v" secondAttribute="trailing" constant="20" id="Qag-48-WA6"/>
+                                <constraint firstAttribute="trailing" secondItem="un5-RL-1no" secondAttribute="trailing" constant="20" id="R6L-n3-SeD"/>
+                                <constraint firstAttribute="trailing" secondItem="by1-r5-aVD" secondAttribute="trailing" constant="20" id="TxR-5E-XrD"/>
+                                <constraint firstAttribute="trailing" secondItem="AfP-fG-yYG" secondAttribute="trailing" constant="20" id="XCJ-gh-4id"/>
+                                <constraint firstItem="GJc-rR-w3v" firstAttribute="leading" secondItem="pOP-Os-bp1" secondAttribute="leading" constant="20" id="XgX-WK-MeP"/>
+                                <constraint firstAttribute="trailing" secondItem="YDG-L1-y3N" secondAttribute="trailing" constant="20" id="bYD-SU-cpA"/>
+                                <constraint firstAttribute="height" constant="279" id="ir8-iY-IY1"/>
+                                <constraint firstItem="YDG-L1-y3N" firstAttribute="leading" secondItem="pOP-Os-bp1" secondAttribute="leading" constant="20" id="oIm-KY-Kzi"/>
+                                <constraint firstItem="rBv-Di-zP2" firstAttribute="top" secondItem="un5-RL-1no" secondAttribute="bottom" constant="15" id="tpR-8T-lPn"/>
+                                <constraint firstItem="YDG-L1-y3N" firstAttribute="top" secondItem="rBv-Di-zP2" secondAttribute="bottom" constant="15" id="xh0-Wl-koc"/>
+                                <constraint firstItem="by1-r5-aVD" firstAttribute="top" secondItem="GJc-rR-w3v" secondAttribute="bottom" constant="15" id="yC4-or-iaJ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pOP-Os-bp1" firstAttribute="leading" secondItem="ts3-c6-WwE" secondAttribute="leading" constant="9" id="8MH-sG-2vv"/>
+                        <constraint firstItem="Rh0-2a-lln" firstAttribute="leading" secondItem="ts3-c6-WwE" secondAttribute="leading" constant="9" id="IBz-0M-aZf"/>
+                        <constraint firstAttribute="bottom" secondItem="Rh0-2a-lln" secondAttribute="bottom" id="M1B-Fv-H8w"/>
+                        <constraint firstAttribute="height" constant="379" id="Sic-gD-Zbr"/>
+                        <constraint firstItem="Rh0-2a-lln" firstAttribute="top" secondItem="pOP-Os-bp1" secondAttribute="bottom" constant="9" id="YiI-Dt-w4M"/>
+                        <constraint firstAttribute="trailing" secondItem="pOP-Os-bp1" secondAttribute="trailing" constant="9" id="swi-JW-W9N"/>
+                        <constraint firstAttribute="trailing" secondItem="Rh0-2a-lln" secondAttribute="trailing" constant="9" id="wwd-IM-hva"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="WyF-LX-9P9"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="7jC-VZ-qKG" firstAttribute="top" secondItem="WNy-mH-voO" secondAttribute="top" id="GZO-8d-C7k"/>
+                <constraint firstAttribute="bottom" secondItem="ts3-c6-WwE" secondAttribute="bottom" id="HMJ-hh-2Is"/>
+                <constraint firstAttribute="trailing" secondItem="ts3-c6-WwE" secondAttribute="trailing" id="SUk-0v-jQx"/>
+                <constraint firstAttribute="bottom" secondItem="7jC-VZ-qKG" secondAttribute="bottom" id="UTI-vK-9Ii"/>
+                <constraint firstItem="ts3-c6-WwE" firstAttribute="leading" secondItem="WNy-mH-voO" secondAttribute="leading" id="cNj-iG-32e"/>
+                <constraint firstAttribute="trailing" secondItem="7jC-VZ-qKG" secondAttribute="trailing" id="d1E-wD-r4N"/>
+                <constraint firstItem="7jC-VZ-qKG" firstAttribute="leading" secondItem="WNy-mH-voO" secondAttribute="leading" id="mPC-HM-efa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgView" destination="pOP-Os-bp1" id="7J8-Xj-mQD"/>
+                <outlet property="cancleButton" destination="Rh0-2a-lln" id="RNF-j6-onh"/>
+                <outlet property="copyButton" destination="AfP-fG-yYG" id="zuJ-vn-270"/>
+                <outlet property="invitedLabel" destination="rBv-Di-zP2" id="Smy-Ku-GzD"/>
+                <outlet property="psdLabel" destination="YDG-L1-y3N" id="w4t-1y-QOV"/>
+                <outlet property="roomNameLabel" destination="un5-RL-1no" id="8nr-se-972"/>
+                <outlet property="urlLabel" destination="by1-r5-aVD" id="MRa-9P-GcO"/>
+            </connections>
+            <point key="canvasLocation" x="-433.33333333333337" y="-17.075892857142858"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

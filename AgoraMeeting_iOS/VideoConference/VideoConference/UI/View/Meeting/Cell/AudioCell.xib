@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AudioCell" id="gTV-IL-0wX" customClass="AudioCell">
+            <rect key="frame" x="0.0" y="0.0" width="161" height="163"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="161" height="163"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_0" translatesAutoresizingMaskIntoConstraints="NO" id="bGG-Rv-Gcw">
+                        <rect key="frame" x="44.5" y="35.5" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="Og6-Rs-ToD"/>
+                            <constraint firstAttribute="height" constant="72" id="tLp-wv-GCh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="田涵育" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7k-HF-K8S">
+                        <rect key="frame" x="75.5" y="114.5" width="34" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="45" id="yla-BB-IED"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="member-audio4" translatesAutoresizingMaskIntoConstraints="NO" id="gfD-yl-f4U">
+                        <rect key="frame" x="51.5" y="108.5" width="24" height="24"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bGG-Rv-Gcw" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-10" id="1AY-i4-DI1"/>
+                <constraint firstItem="bGG-Rv-Gcw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="BmR-xy-nXK"/>
+                <constraint firstItem="I7k-HF-K8S" firstAttribute="centerX" secondItem="bGG-Rv-Gcw" secondAttribute="centerX" constant="12" id="Zlz-FE-Weg"/>
+                <constraint firstItem="gfD-yl-f4U" firstAttribute="centerY" secondItem="I7k-HF-K8S" secondAttribute="centerY" constant="-1" id="dRt-3n-MFX"/>
+                <constraint firstItem="I7k-HF-K8S" firstAttribute="top" secondItem="bGG-Rv-Gcw" secondAttribute="bottom" constant="7" id="mky-p9-22n"/>
+                <constraint firstItem="I7k-HF-K8S" firstAttribute="leading" secondItem="gfD-yl-f4U" secondAttribute="trailing" id="tRJ-g7-qOo"/>
+            </constraints>
+            <size key="customSize" width="150" height="115"/>
+            <connections>
+                <outlet property="headImageHeightConstraints" destination="tLp-wv-GCh" id="yol-9O-PdY"/>
+                <outlet property="headImageView" destination="bGG-Rv-Gcw" id="ZLB-uh-1yo"/>
+                <outlet property="headImageWidthConstraints" destination="Og6-Rs-ToD" id="D7W-R5-XyT"/>
+                <outlet property="titleLabel" destination="I7k-HF-K8S" id="F2Z-i4-8Ik"/>
+                <outlet property="voiceImageView" destination="gfD-yl-f4U" id="byp-e2-CuH"/>
+            </connections>
+            <point key="canvasLocation" x="209.42028985507247" y="121.54017857142857"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="avatar_0" width="500" height="500"/>
+        <image name="member-audio4" width="24" height="24"/>
+    </resources>
+</document>
