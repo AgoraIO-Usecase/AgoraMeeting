@@ -31,10 +31,10 @@ android {
             def prpe = new Properties()
             def input = project.rootProject.file('local.properties').newInputStream();
             prpe.load(input)
-            storeFile new File(prpe.getProperty('sign.store.file'))
-            storePassword prpe.getProperty('sign.store.password')
-            keyAlias prpe.getProperty('sign.alias')
-            keyPassword prpe.getProperty('sign.alias.password')
+            storeFile prpe.getProperty('sign.store.file') == null ? signingConfigs.debug.storeFile : new File(prpe.getProperty('sign.store.file'))
+            storePassword prpe.getProperty('sign.store.password') == null ? signingConfigs.debug.storePassword : prpe.getProperty('sign.store.password')
+            keyAlias prpe.getProperty('sign.alias') == null ? signingConfigs.debug.keyAlias : prpe.getProperty('sign.alias')
+            keyPassword prpe.getProperty('sign.alias.password') == null ? signingConfigs.debug.keyPassword : prpe.getProperty('sign.alias.password')
         }
     }
 
