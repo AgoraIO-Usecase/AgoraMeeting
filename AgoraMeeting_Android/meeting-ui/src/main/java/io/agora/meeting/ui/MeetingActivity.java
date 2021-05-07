@@ -110,7 +110,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
             if (appVersionResp == null) {
                 return;
             }
-            if (StringUtil.compareVersion(appVersionResp.appVersion, BuildConfig.VERSION_NAME) > 0) {
+            if (appVersionResp.forcedUpgrade != ModuleState.DISABLE) {
                 showUpgradeDialog(appVersionResp);
             }
         });
@@ -208,22 +208,15 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
     }
 
     private void showUpgradeDialog(@NonNull AppVersionResp versionInfo) {
-        boolean cancelable = versionInfo.forcedUpgrade == ModuleState.DISABLE;
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.about_upgrade_title)
-                .setMessage(versionInfo.upgradeDescription)
-                .setCancelable(cancelable)
+                .setMessage(R.string.about_upgrade_title)
+                .setCancelable(false)
                 .setPositiveButton(R.string.cmm_update, null)
-                .setNegativeButton(R.string.cmm_cancel, (dialog1, which) -> {
-                    if (cancelable) {
-                        dialog1.dismiss();
-                    } else {
-                        finish();
-                    }
-                })
                 .show();
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v ->
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.download_url, getLocalCountry())))));
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.download_url, getLocalCountry()))));
+        });
     }
 
     private String getLocalCountry() {
