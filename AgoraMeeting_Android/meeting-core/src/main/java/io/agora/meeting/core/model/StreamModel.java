@@ -25,6 +25,7 @@ import io.agora.meeting.core.http.BaseCallback;
 import io.agora.meeting.core.http.body.req.UserPermCloseReq;
 import io.agora.meeting.core.http.body.req.UserPermOpenReq;
 import io.agora.meeting.core.log.Logger;
+import io.agora.rte.AgoraRteAudioScenario;
 import io.agora.rte.AgoraRteCameraSource;
 import io.agora.rte.AgoraRteCameraVideoTrack;
 import io.agora.rte.AgoraRteError;
@@ -285,7 +286,7 @@ public final class StreamModel extends BaseModel<StreamModel.CallBack> {
      * @return 方法调用是否成功
      */
     public boolean setEnableSpeakerphone(boolean enable){
-        if(mLocalAudioTrack != null){
+        if (mLocalAudioTrack != null && context.config.audioEncoderConfig.getScenario() != AgoraRteAudioScenario.meeting) {
             AgoraRteError agoraRteError = mLocalAudioTrack.setEnableSpeakerphone(enable);
             return agoraRteError.getCode() == 0;
         }

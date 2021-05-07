@@ -253,7 +253,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
         bindRatingBarAndTv(binding.rbGeneralExperience, binding.tvGeneralExperience);
         new AlertDialog.Builder(this)
                 .setTitle(R.string.rating_title)
-                .setCancelable(false)
+                .setCancelable(true)
                 .setView(binding.getRoot())
                 .setPositiveButton(R.string.cmm_submit, (dialog1, which1) -> {
                     MeetingApplication.getMeetingEngine().userRate(

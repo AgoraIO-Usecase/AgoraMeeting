@@ -1,5 +1,8 @@
 package io.agora.meeting.core;
 
+import io.agora.rte.AgoraRteAudioEncoderConfig;
+import io.agora.rte.AgoraRteAudioProfile;
+import io.agora.rte.AgoraRteAudioScenario;
 import io.agora.rte.AgoraRteDegradationPreference;
 import io.agora.rte.AgoraRteVideoEncoderConfig;
 import io.agora.rte.AgoraRteVideoOutputOrientationMode;
@@ -34,6 +37,10 @@ public final class MeetingConfig {
             0,
             AgoraRteVideoOutputOrientationMode.Adaptive,
             AgoraRteDegradationPreference.Quality
+    );
+    public AgoraRteAudioEncoderConfig audioEncoderConfig = new AgoraRteAudioEncoderConfig(
+            AgoraRteAudioProfile.defaultt,
+            AgoraRteAudioScenario.meeting
     );
 
 }
