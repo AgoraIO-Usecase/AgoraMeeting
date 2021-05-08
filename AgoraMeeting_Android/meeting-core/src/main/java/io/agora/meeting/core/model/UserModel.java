@@ -393,7 +393,7 @@ public final class UserModel extends BaseModel<UserModel.CallBack> {
 
         @Override
         public void onUserInfoUpdated(AgoraRteUserInfo user) {
-            boolean roleChanged = !user.getRole().equals(mUserInfo.getRole());
+            boolean roleChanged = Boolean.compare(UserRole.HOST.equals(user.getRole()), UserRole.HOST.equals(mUserInfo.getRole())) != 0;
             boolean userNameChanged = !user.getUserName().equals(mUserInfo.getUserName());
             if (!roleChanged && !userNameChanged) {
                 return;
