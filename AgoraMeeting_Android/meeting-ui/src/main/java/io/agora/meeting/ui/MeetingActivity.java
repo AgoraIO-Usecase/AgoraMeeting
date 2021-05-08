@@ -221,10 +221,10 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
 
     private String getLocalCountry() {
         Locale locale = Locale.getDefault();
-        if (!Locale.SIMPLIFIED_CHINESE.toString().equals(locale.toString())) {
-            locale = Locale.US;
+        if (!Locale.SIMPLIFIED_CHINESE.getLanguage().equalsIgnoreCase(locale.getLanguage())) {
+            return "en";
         }
-        return locale.getCountry().toLowerCase();
+        return "cn";
     }
 
     private void showForceExitDialog(String roomId, String userId, @StringRes int titleRes, Runnable dismiss) {

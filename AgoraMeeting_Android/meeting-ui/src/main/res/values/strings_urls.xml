@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="web_url" translatable="false">https://solutions.agora.io/meeting/web</string>
-    <string name="android_url" translatable="false">https://agora-adc-artifacts.oss-cn-beijing.aliyuncs.com/apk/app-AgoraMeeting.apk</string>
+    <string name="android_url" translatable="false">https://download.agora.io/demo/release/app-AgoraMeeting.apk</string>
     <string name="download_url" translatable="false">https://docs.agora.io/%1$s/All/downloads?platform=Android</string>
-    <string name="document_url" translatable="false">https://docs.agora.io/cn/agora-meeting/agora_meeting_overview</string>
+    <string name="document_url" translatable="false">https://docs.agora.io/%1$s/agora-meeting/agora_meeting_overview</string>
     <string name="ios_url" translatable="false">https://www.pgyer.com/EUWO</string>
     <string name="proxy_url" translatable="false">https://www.agora.io/%1$s/privacy-policy/</string>
     <string name="sign_up_url" translatable="false">https://sso.agora.io/%1$s/signup</string>
