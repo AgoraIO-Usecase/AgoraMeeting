@@ -59,7 +59,7 @@ public final class MeetingEngine {
      * 检查是否是最新版本
      */
     public void checkVersion(BaseCallback.SuccessCallback<AppVersionResp> success, BaseCallback.FailureCallback failure) {
-        mContext.systemService.checkVersion(OS.ANDROID, Terminal.PHONE, BuildConfig.VERSION_NAME)
+        mContext.systemService.checkVersion(mContext.config.appId, OS.ANDROID, Terminal.PHONE, BuildConfig.VERSION_NAME)
                 .enqueue(new BaseCallback<>(data -> {
                     if (data != null && data.config != null) {
                         BaseCallback.setErrorMessagesDict(data.config.multiLanguage);

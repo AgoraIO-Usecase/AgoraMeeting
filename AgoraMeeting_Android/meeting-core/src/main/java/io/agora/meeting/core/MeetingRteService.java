@@ -290,8 +290,7 @@ public final class MeetingRteService {
         if (mRteEngine == null) {
             return;
         }
-        mRteEngine.getAgoraRteMediaControl().getAudioMediaTrack().setAudioEncoderConfig(
-                new AgoraRteAudioEncoderConfig(AgoraRteAudioProfile.defaultt, AgoraRteAudioScenario.meeting));
+        mRteEngine.getAgoraRteMediaControl().getAudioMediaTrack().setAudioEncoderConfig(config.audioEncoderConfig);
         mRteScene = mRteEngine.createAgoraRteScene(new AgoraRteSceneConfig(roomId));
 
         mRteScene.join(new AgoraRteSceneJoinOptions(

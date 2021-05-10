@@ -137,7 +137,7 @@ public class NotifyAdapter extends ListAdapter<ActionWrapMsg, NotifyAdapter.View
     private static class DiffCallback extends DiffUtil.ItemCallback<ActionWrapMsg> {
         @Override
         public boolean areItemsTheSame(@NonNull ActionWrapMsg oldItem, @NonNull ActionWrapMsg newItem) {
-            return oldItem.message.timestamp == newItem.message.timestamp;
+            return oldItem == newItem;
         }
 
         @Override

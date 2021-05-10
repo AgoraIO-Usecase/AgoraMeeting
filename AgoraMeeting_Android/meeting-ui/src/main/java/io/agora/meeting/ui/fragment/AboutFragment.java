@@ -51,7 +51,7 @@ public class AboutFragment extends BaseFragment<FragmentAboutBinding> {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.sign_up_url, getLocalLanguage()))));
             }
             else if(v.getId() == R.id.btn_document){
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.document_url))));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.document_url, getLocalLanguage()))));
             }
             else if(v.getId() == R.id.btn_update){
                 commonVM.checkVersion();
@@ -62,9 +62,9 @@ public class AboutFragment extends BaseFragment<FragmentAboutBinding> {
     private String getLocalLanguage(){
         Locale locale = Locale.getDefault();
         if (!Locale.SIMPLIFIED_CHINESE.getLanguage().equalsIgnoreCase(locale.getLanguage())) {
-            locale = Locale.US;
+            return "en";
         }
-        return locale.getLanguage().toLowerCase();
+        return "cn";
     }
 
     @Override
