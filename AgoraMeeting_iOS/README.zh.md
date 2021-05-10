@@ -17,19 +17,17 @@
 1.将代码克隆到本地
 
 ```
-git clone https://github.com/AgoraIO-Usecase/AgoraMeeting.git
+git clone https://github.com/AgoraIO-Community/eConferencing-iOS
 ```
 
-2.进入项目目录
+2.下载AgoraRte Framework
+
+下载 [AgoraRte](https://github.com/AgoraIO-Community/eConferencing-iOS/releases/download/iOS_2.0.0/AgoraRte.framework.zip) 并解压，然后将 "AgoraRte.framework" 文件移动到 "eConferencing-iOS/AgoraRte" 文件夹下。
+
+3.进入项目目录
 
 ```
-cd AgoraMeeting_iOS
-```
-
-3.配置sdk
-
-```
-sh install.sh
+cd eConferencing-iOS/VideoConference
 ```
 
 4.安装项目依赖库
@@ -57,13 +55,22 @@ open VideoConference.xcworkspace
      return <#Your Agora App Id#>;
 }
 
-+ (NSString *)authorization {
-     return <#Your Authorization#>;
++ (NSString *)customerId {
+     return <#Your customerId#>;
 }
 
++ (NSString *)customerCertificate {
+     return <#Your customerCertificate#>;
+}
 ```
 
-7.通过 `command + r` 运行项目
+7.App Groups 的支持。屏幕共享时一个单独的扩展进程，需要App Groups，如果需要屏幕共享的功能：
+
+- 为项目配置App Groups，可以获得一个App Groups字符串；
+- 修改MeetingVM.Swift 的AppGroupsString字符串为项目配置的App Groups字符串；
+- 修改SampleHandler.swift`的AppGroupsString字符串为项目配置的App Groups字符串；
+
+8.通过 `command + r` 运行项目
 
 ## 联系我们
 

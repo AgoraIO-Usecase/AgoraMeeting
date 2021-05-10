@@ -16,31 +16,39 @@ android {
         applicationId "io.agora.meeting"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0.0"
+        versionCode rootProject.ext.meeting.versionCode
+        versionName rootProject.ext.meeting.versionName
 
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField 'String', 'CODE', '"conf-demo"'
-        buildConfigField 'String', 'EXTRA', '"AgoraMeeting"'
-
-        buildConfigField 'String', 'API_BASE_URL', '"https://api.agora.io/scenario/"'
-        buildConfigField 'String', 'POLICY_URL', '"https://www.agora.io/privacy-policy"'
 
         ndk {
             abiFilters 'armeabi-v7a', 'x86'
         }
     }
 
+    signingConfigs {
+        release {
+            def prpe = new Properties()
+            def input = project.rootProject.file('local.properties').newInputStream();
+            prpe.load(input)
+            storeFile prpe.getProperty('sign.store.file') == null ? signingConfigs.debug.storeFile : new File(prpe.getProperty('sign.store.file'))
+            storePassword prpe.getProperty('sign.store.password') == null ? signingConfigs.debug.storePassword : prpe.getProperty('sign.store.password')
+            keyAlias prpe.getProperty('sign.alias') == null ? signingConfigs.debug.keyAlias : prpe.getProperty('sign.alias')
+            keyPassword prpe.getProperty('sign.alias.password') == null ? signingConfigs.debug.keyPassword : prpe.getProperty('sign.alias.password')
+        }
+    }
+
+
     buildTypes {
         debug {
             minifyEnabled false
             applicationIdSuffix ".debug"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -53,23 +61,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':base')
-    implementation project(':log')
-    implementation project(':sdk')
-    implementation project(':whiteboard')
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${rootProject.ext.dependencies['com.squareup.leakcanary:leakcanary-android']}"
 
-    testImplementation rootProject.ext.dependencies['junit']
-    androidTestImplementation rootProject.ext.dependencies['androidx.junit']
-    androidTestImplementation rootProject.ext.dependencies['espresso-core']
+    implementation rootProject.findProject(':meeting-ui') != null ? project(':meeting-ui') : "io.github.agoraio-usecase.meeting:meeting-ui:${rootProject.ext.maven_version['io.github.agoraio-usecase.meeting:meeting-ui']}"
+    implementation rootProject.findProject(':meeting-core') != null ? project(':meeting-core') : "io.github.agoraio-usecase.meeting:meeting-core:${rootProject.ext.maven_version['io.github.agoraio-usecase.meeting:meeting-core']}"
 
-    implementation rootProject.ext.dependencies['constraintlayout']
-    implementation rootProject.ext.dependencies['navigation-fragment']
-    implementation rootProject.ext.dependencies['lifecycle-extensions']
-    implementation rootProject.ext.dependencies['recyclerview']
-    implementation rootProject.ext.dependencies['material']
-    implementation rootProject.ext.dependencies['BasePopup']
-    implementation rootProject.ext.dependencies['easypermissions']
-    implementation rootProject.ext.dependencies['badgeview']
-    implementation rootProject.ext.dependencies['colorpicker']
-    implementation rootProject.ext.dependencies['live-event-bus-x']
 }

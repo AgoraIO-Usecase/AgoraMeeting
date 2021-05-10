@@ -1,35 +1,72 @@
 ext {
+
+    meeting = [
+            'versionCode' : 200,
+            'versionName' : "2.0.0"
+    ]
     android = [
-            'compileSdkVersion': 29,
-            'buildToolsVersion': "29.0.3",
-            'minSdkVersion'    : 19,
-            'targetSdkVersion' : 29,
+            'compileSdkVersion': 30,
+            'buildToolsVersion': "30.0.3",
+            'minSdkVersion'    : 21,
+            'targetSdkVersion' : 30,
+    ]
+    agora_scene_statistic = [
+            "versionCode" : 1,
+            "versionName" : "1.0.1"
+    ]
+    agora_rte = [
+            "versionCode" : 1,
+            "versionName" : "1.0.0-alpha"
+    ]
+    maven_version = [
+            "io.github.agoraio-usecase.common:rte"              : rootProject.ext.agora_rte.versionName,
+            "io.github.agoraio-usecase.tools:statistic"         : rootProject.ext.agora_scene_statistic.versionName,
+            "io.github.agoraio-usecase.meeting:whiteboard"      : rootProject.ext.meeting.versionName,
+            "io.github.agoraio-usecase.meeting:screensharing"   : rootProject.ext.meeting.versionName,
+            "io.github.agoraio-usecase.meeting:meeting-core"    : rootProject.ext.meeting.versionName,
+            "io.github.agoraio-usecase.meeting:meeting-ui"      : rootProject.ext.meeting.versionName,
     ]
     dependencies = [
-            'junit'                                   : 'junit:junit:4.12',
-            'androidx.junit'                          : 'androidx.test.ext:junit:1.1.1',
-            'espresso-core'                           : 'androidx.test.espresso:espresso-core:3.2.0',
-            'constraintlayout'                        : 'androidx.constraintlayout:constraintlayout:1.1.3',
-            'navigation-fragment'                     : 'androidx.navigation:navigation-fragment:2.2.2',
-            'lifecycle-extensions'                    : 'androidx.lifecycle:lifecycle-extensions:2.2.0',
-            'recyclerview'                            : 'androidx.recyclerview:recyclerview:1.1.0',
-            'material'                                : 'com.google.android.material:material:1.1.0',
-            'BasePopup'                               : 'com.github.razerdp:BasePopup:2.2.3',
-            'easypermissions'                         : 'pub.devrel:easypermissions:3.0.0',
-            'badgeview'                               : 'q.rorbin:badgeview:1.1.3',
-            'colorpicker'                             : 'com.github.QuadFlask:colorpicker:0.0.15',
-            'live-event-bus-x'                        : 'com.jeremyliao:live-event-bus-x:1.6.1',
+            'junit:junit'                                   : '4.13.1',
+            'androidx.test.ext:junit'                       : '1.1.1',
+            'androidx.test.espresso:espresso-core'          : '3.2.0',
+            'org.jetbrains.kotlin:kotlin-stdlib'            : '1.4.21',
+            'androidx.core:core-ktx'                        : '1.3.2',
+            'com.squareup.leakcanary:leakcanary-android'    : '2.6',
 
-            'androidx.annotation:annotation'          : '1.1.0',
-            'androidx.preference:preference'          : '1.1.1',
-            'com.google.code.gson:gson'               : '2.8.6',
-            'com.squareup.retrofit2:retrofit'         : '2.9.0',
-            'com.squareup.retrofit2:converter-gson'   : '2.9.0',
-            'com.squareup.okhttp3:logging-interceptor': '4.7.2',
-            'com.elvishew:xlog'                       : '1.6.1',
-            'com.aliyun.dpa:oss-android-sdk'          : '2.9.4',
-            'io.agora.rtc:full-sdk'                   : '2.9.0.104',
-            'io.agora.rtm:rtm-sdk'                    : '1.2.2',
-            'com.github.duty-os:white-sdk-android'    : '2.6.4',
+
+            'androidx.annotation:annotation'                : '1.1.0',
+            'androidx.preference:preference'                : '1.1.1',
+            'androidx.appcompat:appcompat'                  : '1.1.0',
+            'androidx.constraintlayout:constraintlayout'    : '1.1.3',
+            'androidx.navigation:navigation-fragment'       : '2.3.4',
+            'androidx.lifecycle:lifecycle-extensions'       : '2.2.0',
+            'androidx.recyclerview:recyclerview'            : '1.1.0',
+            'com.google.android.material:material'          : '1.1.0',
+            'androidx.swiperefreshlayout:swiperefreshlayout': '1.0.0',
+
+            'com.google.code.gson:gson'                     : '2.8.6',
+            'com.squareup.retrofit2:retrofit'               : '2.9.0',
+            'com.squareup.retrofit2:converter-gson'         : '2.9.0',
+            'com.squareup.okhttp3:logging-interceptor'      : '4.7.2',
+
+            'com.github.razerdp:BasePopup'                  : '2.2.3',
+            'com.yanzhenjie:permission'                     : '2.0.3',
+            'q.rorbin:badgeview'                            : '1.1.3',
+            'com.github.QuadFlask:colorpicker'              : '0.0.15',
+            'com.jeremyliao:live-event-bus-x'               : '1.6.1',
+            'com.elvishew:xlog'                             : '1.6.1',
+            'com.aliyun.dpa:oss-android-sdk'                : '2.9.4',
+            'com.github.bumptech.glide:glide'               : '4.12.0',
+            'com.github.bumptech.glide:compiler'            : '4.12.0',
+            'com.contrarywind:wheelview'                    : '4.1.0',
+
+            'io.agora.rtc:full-sdk'                         : '3.3.1',
+            'io.agora.rtm:rtm-sdk'                          : '1.4.2',
+            'com.github.AgoraIO-Usecase:Tools'              : 'log_java_1.0.4',
+            'com.github.duty-os:white-sdk-android'          : '2.6.4',
+
+            'com.tencent.bugly:crashreport'                 : '3.3.7',
+            'com.tencent.bugly:nativecrashreport'           : '3.6.0.1'
     ]
 }

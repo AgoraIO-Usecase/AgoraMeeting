@@ -1,0 +1,215 @@
+
+
+//* Login *
+login_t0 = "Please enter the room name";
+login_t1 = "Please enter the user name";
+login_t2 = "Room name min length is 3 characters";
+login_t3 = "User name min length is 3 characters";
+login_t4 = "Room name max length is 50 characters";
+login_t5 = "User name max length is 20 characters";
+login_t6 = "Password max length is 50 characters";
+login_t7 = "Update";
+login_t8 = "Enter failed";
+login_t9 = "Agora Meeting has a new version";
+login_t10 = "• When the room already exists, you need to enter the correct password";
+login_t11 = "• When the room does not exist, the password entered will become the password of this room";
+login_t12 = "• The room can be without password";
+
+/** Set **/
+set_t1 = "AI audio noice reduction";
+set_t2 = "Upload log";
+set_t3 = "Admin";
+set_t4 = "About";
+set_t5 = "Turn off  in/out notifications";
+set_t6 = "Cancle";
+set_t7 = "User name";
+set_t8 = "Room password";
+set_t9 = "Permission needed to turn cam on";
+set_t10 = "Permission needed to turn mic on";
+set_t11 = "Room name";
+set_t12 = "Camera";
+set_t13 = "User name";
+set_t14 = "Yes";
+set_t15 = "Member";
+set_t16 = "Role";
+set_t17 = "Settings";
+set_t18 = "Mic";
+set_t19 = "Profile picture";
+set_t20 = "Image Enhancement";
+set_t21 = "Upload successfully";
+set_t22 = "Failed to upload. Please check your network status.";
+set_t23 = "Ai audio noise reduction (Coming soon)";
+set_t24 = "Room setting";
+
+/** Member **/
+mem_t1 = "Attendees list ";
+mem_t2 = "Close video";
+mem_t3 = "Cancle";
+mem_t4 = "Become admin";
+mem_t5 = "Open camera";
+mem_t6 = "Open mic";
+mem_t7 = "Search for attendees";
+mem_t8 = "Renounce admin";
+mem_t9 = "No result";
+mem_t10 = "Apply";
+mem_t11 = "Move out";
+mem_t12 = "Set as admin";
+mem_t13 = "Mute";
+mem_t14 = "No Result";
+mem_t15 = "(Host、Me)";
+mem_t16 = "(Host)";
+mem_t17 = "(Me)";
+
+/** Message **/
+msg_t2 = "No chat history";
+msg_t3 = "No notification history";
+msg_t4 = "Messages";
+msg_t5 = "Chat";
+msg_t6 = "Notification";
+msg_t7 = "Send Failed, please retry";
+msg_t8 = "can use for iOS 12.0 later ";
+
+/** WhiteBoard **/
+wb_t1 = "Join editing";
+wb_t2 = "Quit editing";
+wb_t3 = "Whiteboard";
+wb_t4 = "End";
+
+/** About **/
+ab_t1 = "Product disclaimer";
+ab_t2 = "About";
+ab_t3 = "Privacy policy";
+ab_t4 = "Agora Privacy policy";
+ab_t5 = "Version:V";
+ab_t6 = ",Release Time:";
+ab_t7 = "RTC SDK Version:V";
+ab_t8 = ",RTM SDK Version:V";
+ab_t9 = "WhiteBoard Version:V";
+
+
+/** Meeting **/
+meeting_t1 = "Host turns off your cam";
+meeting_t2 = "Host turns off you mic";
+meeting_t3 = "The meeting has ended";
+meeting_t4 = "Edit";
+meeting_t5 = "All attendees cam off";
+meeting_t6 = "All attendees mic off";
+meeting_t7 = "All members cam off";
+meeting_t8 = "All members mic off";
+meeting_t9 = "Join editing";
+meeting_t10 = "Initiate whiteboard";
+meeting_t11 = "Cancle";
+meeting_t12 = "You can turn cam on freely";
+meeting_t13 = "You can turn mic on freely";
+meeting_t14 = "Allow";
+meeting_t15 = "Request to turn cam on.\n Please prepare to present in 20 seconds. ";
+meeting_t16 = "Request to turn mic on.\n Please prepare to speak in 20 seconds. ";
+meeting_t17 = "Screen share";
+meeting_t18 = "Screen share has ended";
+meeting_t19 = "Permission needed to turn cam on";
+meeting_t20 = "Permission needed to turn mic on";
+meeting_t21 = "Start sharing";
+meeting_t22 = "started screen share";
+meeting_t23 = "started whiteboard";
+meeting_t24 = "You have been removed from the room";
+meeting_t25 = "Become host";
+meeting_t28 = "In/out notification muted always.";
+meeting_t31 = "Camera access is denied.";
+meeting_t32 = "Yes";
+meeting_t33 = "Apply";
+meeting_t34 = "applied to turn on the camera.";
+meeting_t35 = "applied to turn on the mic.";
+meeting_t36 = "whiteboard ended";
+meeting_t37 = "end white board error";
+meeting_t39 = "End";
+meeting_t40 = "End meeting";
+meeting_t41 = "Settings";
+meeting_t42 = "entered the room";
+meeting_t43 = "Exit room";
+meeting_t44 = "Invite";
+meeting_t45 = "Mic access is denied";
+meeting_t46 = "Audio";
+meeting_t47 = "Video";
+meeting_t48 = "Member";
+meeting_t49 = "Cahet";
+meeting_t50 = "More";
+meeting_t51 = "Meeting info has been saved to clipboard successfully";
+meeting_t52 = "Start";
+meeting_t53 = "Screen share will show everything on your screen. Please update your notification setting accordingly.";
+meeting_t54 = "You have ongoing whiteboard. Do you want to end it?";
+meeting_t55 = "You have ongoing screen share. Do you want to end it?";
+meeting_t56 = "Continue";
+meeting_t57 = "Permission needed to turn mic on";
+meeting_t58 = "Permission needed to turn cam on";
+meeting_t59 = "Over";
+meeting_t60 = "attendees, in/out notification muted.";
+meeting_t61 = "I got it";
+meeting_t62 = "End Screen Share";
+
+///** noti **/
+noti_t1 = "Accepted";
+noti_t2 = "Always mute";
+noti_t3 = "and above";
+noti_t4 = "Never mute";
+noti_t5 = " Become host";
+noti_t6 = " left room";
+noti_t7 = " entered the room";
+noti_t8 = "No host in the room.";
+noti_t9 = " started whiteboard";
+noti_t10 = " started screen share";
+noti_t11 = "‘s whiteboard ended";
+noti_t12 = " joined whiteboard";
+noti_t13 = "Open";
+noti_t14 = " is host";
+
+/** score **/
+score_t1 = "Call Quality";
+score_t2 = "Function Completeness";
+score_t3 = "General Experience";
+score_t4 = "Comment";
+score_t5 = "Comment";
+score_t6 = "Submit";
+score_t7 = "Share your experience";
+score_t8 = " Star";
+
+/** invite **/
+invite_t1 = "Meeting name: ";
+invite_t2 = "Meeting password: ";
+invite_t3 = "Invited by: ";
+invite_t4 = "Web link: ";
+invite_t5 = "Android link: ";
+invite_t6 = "iOS link: ";
+
+/** UI **/
+ui_t2 = "disply in main screen";
+ui_t3 = "You are screen sharing";
+ui_t4 = "sharing whiteBoard";
+ui_t7 = " End screen share ";
+ui_t8 = " Enter WhiteBoard ";
+
+/** HTTP **/
+http_t1 = "Password is incorrect";
+http_t2 = "User is already is the host";
+http_t3 = "Target user cannot be yourself";
+http_t4 = "This room already has max number of admin";
+http_t5 = "There is already a host in the room, please contact the host to designate you as the host, up to 3 people at the same time as the host";
+http_t6 = "No online users";
+http_t7 = "User is not host";
+http_t8 = "Turn off no devices";
+http_t9 = "Only one device can be turned off at the same time";
+http_t10 = "Unknown requestID";
+http_t11 = "Only one device access can be applied for at the same time";
+http_t12 = "Apply for no device access";
+http_t13 = "Device access is already opened, no need to reapply";
+http_t14 = "Illegal turn off screen sharing";
+http_t15 = "Illegal turn off white board";
+http_t16 = "Screen sharing is not in the room";
+http_t17 = "White board is not in the room";
+http_t18 = "Screen share is ongoing";
+http_t19 = "Whiteboard is ongoing";
+http_t20 = "The whiteboard participants has reached max number";
+http_t21 = "Your network signal is poor";
+
+/** Other **/
+
+

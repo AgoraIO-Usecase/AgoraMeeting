@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MeetingAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/global_accent</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="alertDialogTheme">@style/AlertDialog.Theme.IOS</item>
+        <item name="alertDialogStyle">@style/AlertDialog.IOS</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:ratingBarStyle">@style/CuteRatingBar</item>
+    </style>
+
+    <style name="PreferenceTheme" parent="PreferenceThemeOverlay">
+        <item name="android:layout">@layout/fragment_preference</item>
+    </style>
+
+    <style name="AlertDialog.IOS" parent="AlertDialog.AppCompat">
+        <item name="android:layout">@layout/layout_alert_ios</item>
+    </style>
+
+    <style name="AlertDialog.Theme.IOS" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_ios_alert</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.DropDownUp</item>
+    </style>
+
+    <style name="CuteRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_indicator</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_indicator</item>
+    </style>
+
+</resources>

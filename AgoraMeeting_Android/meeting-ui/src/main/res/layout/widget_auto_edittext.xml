@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@android:id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sel_et_bg"
+        android:ems="10"
+        android:saveEnabled="false"
+        android:paddingStart="12dp"
+        android:paddingEnd="34dp"
+        android:textColor="#2e3848"
+        android:textColorHint="#6d7278"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="6dp"
+        android:layout_gravity="end|center_vertical">
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="#DDE2E5"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:background="@null"
+            app:srcCompat="@drawable/ic_close"/>
+
+        <ImageButton
+            android:id="@+id/btn_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="3dp"
+            android:visibility="gone"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+</merge>

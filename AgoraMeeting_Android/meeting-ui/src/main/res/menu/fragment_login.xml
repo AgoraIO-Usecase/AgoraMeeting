@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_signal"
+        android:icon="@drawable/ic_signal_idle"
+        android:title="@string/login_signal"
+        app:showAsAction="ifRoom|collapseActionView" />
+    <item
+        android:id="@+id/action_to_settingFragment"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/setting_title"
+        app:showAsAction="ifRoom|collapseActionView" />
+</menu>

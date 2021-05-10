@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>io.github.agoraio-usecase.common</groupId>
+  <artifactId>rte</artifactId>
+  <versioning>
+    <latest>1.0.0-alpha</latest>
+    <release>1.0.0-alpha</release>
+    <versions>
+      <version>1.0.0-alpha</version>
+    </versions>
+    <lastUpdated>20210508102416</lastUpdated>
+  </versioning>
+</metadata>

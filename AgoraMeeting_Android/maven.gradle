@@ -1,0 +1,77 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = project.group
+                artifactId = project.name
+                version = project.version
+
+                pom {
+                    name = project.name
+                    description = project.description
+                    url = project.ext.url
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'Agora'
+                            name = 'Agora'
+                            email = 'devrel@agora.io'
+                        }
+                    }
+                    scm {
+                        connection = project.ext.url
+                        developerConnection = project.ext.url
+                        url = project.ext.url
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                def prpe = new Properties()
+                def input = project.rootProject.file('local.properties').newInputStream();
+                prpe.load(input)
+
+                def pLocal = prpe.getProperty("maven.local")
+                def pJitpackAuthToken = prpe.getProperty("maven.jitpack.authToken")
+                if( pLocal == "false" && pJitpackAuthToken != ""){
+                    url "https://jitpack.io"
+                    credentials {
+                        username "${pJitpackAuthToken}"
+                    }
+                }
+                else if(pLocal == "false" && prpe.getProperty("maven.oss.username") != ""){
+                    url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    credentials {
+                        username prpe.getProperty("maven.oss.username")
+                        password prpe.getProperty("maven.oss.password")
+                    }
+                }
+                else{
+                    url = "file://${rootDir}/maven"
+                }
+                println("maven publish to ${url}")
+            }
+        }
+    }
+
+    signing {
+        def signKeyId = findProperty("signing.keyId")
+        if(signKeyId != null && signKeyId != ""){
+            sign publishing.publications.release
+        }
+    }
+}

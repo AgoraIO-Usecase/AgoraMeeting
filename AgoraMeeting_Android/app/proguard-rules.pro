@@ -1,4 +1,15 @@
--dontwarn com.jeremyliao.liveeventbus.**
--keep class com.jeremyliao.liveeventbus.** { *; }
--keep class androidx.lifecycle.** { *; }
--keep class androidx.arch.core.** { *; }
+
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontskipnonpubliclibraryclassmembers
+-dontpreverify
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+#meeting-core
+-keep class io.agora.meeting.core.**{*;}
+#meeting-ui
+-keep class io.agora.meeting.ui.**{*;}

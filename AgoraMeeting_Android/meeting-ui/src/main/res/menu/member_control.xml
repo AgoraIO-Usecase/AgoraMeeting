@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_mic"
+        android:title="@string/more_mute_audio" />
+    <item
+        android:id="@+id/menu_video"
+        android:title="@string/more_close_video" />
+
+    <item
+        android:id="@+id/menu_renounce_host"
+        android:title="@string/more_renounce_admin" />
+
+    <item
+        android:id="@+id/menu_become_host"
+        android:title="@string/more_become_admin" />
+
+    <item
+        android:id="@+id/menu_set_host"
+        android:title="@string/more_set_host" />
+    <item
+        android:id="@+id/menu_move_out"
+        android:title="@string/more_move_out" />
+</menu>

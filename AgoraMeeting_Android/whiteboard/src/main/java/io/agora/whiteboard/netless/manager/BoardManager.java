@@ -14,12 +14,10 @@ import com.herewhite.sdk.domain.RoomState;
 import com.herewhite.sdk.domain.SDKError;
 import com.herewhite.sdk.domain.SceneState;
 
-import io.agora.log.LogManager;
 import io.agora.whiteboard.netless.annotation.Appliance;
 import io.agora.whiteboard.netless.listener.BoardEventListener;
 
 public class BoardManager extends NetlessManager<Room> implements RoomCallbacks {
-    private final LogManager log = new LogManager(this.getClass().getSimpleName());
 
     private String appliance;
     private int[] strokeColor;
@@ -35,7 +33,6 @@ public class BoardManager extends NetlessManager<Room> implements RoomCallbacks 
     }
 
     public void init(WhiteSdk sdk, RoomParams params) {
-        log.d("init");
         sdk.joinRoom(params, this, promise);
     }
 
@@ -46,6 +43,12 @@ public class BoardManager extends NetlessManager<Room> implements RoomCallbacks 
             t.setMemberState(state);
         } else {
             this.appliance = appliance;
+        }
+    }
+
+    public void cleanScene(boolean retainPpt){
+        if (t != null) {
+            t.cleanScene(retainPpt);
         }
     }
 
@@ -165,6 +168,10 @@ public class BoardManager extends NetlessManager<Room> implements RoomCallbacks 
         this.writable = writable;
     }
 
+    public boolean isWritable() {
+        return writable == null ? false : writable;
+    }
+
     public void disconnect() {
         if (t != null) {
             t.disconnect();
@@ -214,7 +221,6 @@ public class BoardManager extends NetlessManager<Room> implements RoomCallbacks 
 
     @Override
     void onSuccess(Room room) {
-        log.i("onSuccess");
         if (appliance != null) {
             setAppliance(appliance);
         }
@@ -237,6 +243,8 @@ public class BoardManager extends NetlessManager<Room> implements RoomCallbacks 
 
     @Override
     void onFail(SDKError error) {
-        log.e("onFail %s", error.toString());
+        if (listener != null) {
+            listener.onError(error);
+        }
     }
 }

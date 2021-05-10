@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="i1v-sf-gbC" customClass="EEWhiteboardToolView" customModule="Agora_Meeting" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="318"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-Ni-07U">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="318"/>
+                    <subviews>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rz9-GQ-Xhs">
+                            <rect key="frame" x="3" y="240" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="tool-color"/>
+                            <state key="selected" image="tool-color1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="Qua-yS-gsb"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtW-pN-MKc">
+                            <rect key="frame" x="3" y="200" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="tool-eraser"/>
+                            <state key="selected" image="tool-eraser1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="JjR-CP-HcZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kll-Eb-2IQ">
+                            <rect key="frame" x="3" y="160" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="tool-text"/>
+                            <state key="selected" image="tool-text1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="zeA-an-p56"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rft-kK-V6l">
+                            <rect key="frame" x="3" y="80" width="40" height="40"/>
+                            <state key="normal" image="tool-re"/>
+                            <state key="selected" image="tool-re1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="i1K-6r-d3Q"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15m-pz-CaW">
+                            <rect key="frame" x="3" y="120" width="40" height="40"/>
+                            <state key="normal" image="tool-or"/>
+                            <state key="selected" image="tool-or1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="Ydg-Ge-R9R"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiF-1H-L8e">
+                            <rect key="frame" x="3" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Uw5-im-dsS"/>
+                                <constraint firstAttribute="width" constant="40" id="mjG-KM-COg"/>
+                            </constraints>
+                            <state key="normal" image="tool-select"/>
+                            <state key="selected" image="tool-select1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="xdl-7F-XX2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYh-J9-TuV">
+                            <rect key="frame" x="3" y="40" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="tool-pen"/>
+                            <state key="selected" image="tool-pen1"/>
+                            <connections>
+                                <action selector="ButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="aMf-NJ-kri"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVf-DE-Ste">
+                            <rect key="frame" x="6" y="280" width="34" height="34"/>
+                            <state key="normal" image="tool-clean"/>
+                            <state key="selected" image="tool-clean1"/>
+                            <connections>
+                                <action selector="cleanButtonTap:" destination="i1v-sf-gbC" eventType="touchUpInside" id="QZe-ao-OXb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="PtW-pN-MKc" firstAttribute="height" secondItem="NiF-1H-L8e" secondAttribute="height" id="2FD-66-DXZ"/>
+                        <constraint firstItem="rft-kK-V6l" firstAttribute="top" secondItem="hYh-J9-TuV" secondAttribute="bottom" id="6NL-Jf-zuJ"/>
+                        <constraint firstItem="Kll-Eb-2IQ" firstAttribute="width" secondItem="NiF-1H-L8e" secondAttribute="width" id="7dy-2Q-3aF"/>
+                        <constraint firstItem="PtW-pN-MKc" firstAttribute="width" secondItem="NiF-1H-L8e" secondAttribute="width" id="8Ri-tt-pNB"/>
+                        <constraint firstItem="Rz9-GQ-Xhs" firstAttribute="centerX" secondItem="PtW-pN-MKc" secondAttribute="centerX" id="9Og-77-zda"/>
+                        <constraint firstItem="hYh-J9-TuV" firstAttribute="height" secondItem="NiF-1H-L8e" secondAttribute="height" id="AqN-c1-ppJ"/>
+                        <constraint firstItem="Rz9-GQ-Xhs" firstAttribute="width" secondItem="NiF-1H-L8e" secondAttribute="width" id="Ena-Yb-U0Y"/>
+                        <constraint firstItem="Kll-Eb-2IQ" firstAttribute="centerX" secondItem="15m-pz-CaW" secondAttribute="centerX" id="Frd-rk-37f"/>
+                        <constraint firstItem="hYh-J9-TuV" firstAttribute="width" secondItem="NiF-1H-L8e" secondAttribute="width" id="Jo0-Fl-4IA"/>
+                        <constraint firstItem="rft-kK-V6l" firstAttribute="height" secondItem="NiF-1H-L8e" secondAttribute="height" id="KER-4P-Ga2"/>
+                        <constraint firstItem="rft-kK-V6l" firstAttribute="width" secondItem="NiF-1H-L8e" secondAttribute="width" id="M7H-IJ-I7q"/>
+                        <constraint firstItem="rft-kK-V6l" firstAttribute="centerX" secondItem="NiF-1H-L8e" secondAttribute="centerX" id="NIs-Ih-PIO"/>
+                        <constraint firstItem="Kll-Eb-2IQ" firstAttribute="top" secondItem="15m-pz-CaW" secondAttribute="bottom" id="Rbd-OR-4n4"/>
+                        <constraint firstItem="15m-pz-CaW" firstAttribute="top" secondItem="rft-kK-V6l" secondAttribute="bottom" id="Stz-mJ-1ze"/>
+                        <constraint firstItem="15m-pz-CaW" firstAttribute="width" secondItem="NiF-1H-L8e" secondAttribute="width" id="Wfb-C7-MrX"/>
+                        <constraint firstItem="15m-pz-CaW" firstAttribute="height" secondItem="NiF-1H-L8e" secondAttribute="height" id="ZlY-Rb-qps"/>
+                        <constraint firstItem="PtW-pN-MKc" firstAttribute="centerX" secondItem="Kll-Eb-2IQ" secondAttribute="centerX" id="aMV-Aw-iNP"/>
+                        <constraint firstItem="hYh-J9-TuV" firstAttribute="top" secondItem="NiF-1H-L8e" secondAttribute="bottom" id="iju-ma-7pq"/>
+                        <constraint firstItem="Rz9-GQ-Xhs" firstAttribute="height" secondItem="NiF-1H-L8e" secondAttribute="height" id="jam-Ig-Qfx"/>
+                        <constraint firstItem="15m-pz-CaW" firstAttribute="centerX" secondItem="NiF-1H-L8e" secondAttribute="centerX" id="lkn-Tp-DSi"/>
+                        <constraint firstItem="Rz9-GQ-Xhs" firstAttribute="top" secondItem="PtW-pN-MKc" secondAttribute="bottom" id="n6a-v3-efW"/>
+                        <constraint firstItem="Kll-Eb-2IQ" firstAttribute="height" secondItem="NiF-1H-L8e" secondAttribute="height" id="nkx-0O-GTE"/>
+                        <constraint firstItem="VVf-DE-Ste" firstAttribute="centerX" secondItem="Rz9-GQ-Xhs" secondAttribute="centerX" id="pZP-20-CSJ"/>
+                        <constraint firstItem="VVf-DE-Ste" firstAttribute="top" secondItem="Rz9-GQ-Xhs" secondAttribute="bottom" id="pef-8h-ybL"/>
+                        <constraint firstItem="PtW-pN-MKc" firstAttribute="top" secondItem="Kll-Eb-2IQ" secondAttribute="bottom" id="rdI-Gz-tHl"/>
+                        <constraint firstItem="NiF-1H-L8e" firstAttribute="top" secondItem="Y9c-Ni-07U" secondAttribute="top" id="sN2-ub-ciJ"/>
+                        <constraint firstItem="hYh-J9-TuV" firstAttribute="centerX" secondItem="NiF-1H-L8e" secondAttribute="centerX" id="weh-YF-CTe"/>
+                        <constraint firstItem="NiF-1H-L8e" firstAttribute="centerX" secondItem="Y9c-Ni-07U" secondAttribute="centerX" id="zRI-FH-adL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="no8-1T-9UK"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Y9c-Ni-07U" secondAttribute="trailing" id="93b-dm-hgp"/>
+                <constraint firstItem="Y9c-Ni-07U" firstAttribute="bottom" secondItem="no8-1T-9UK" secondAttribute="bottom" id="DRB-9O-sA4"/>
+                <constraint firstItem="Y9c-Ni-07U" firstAttribute="top" secondItem="i1v-sf-gbC" secondAttribute="top" id="Hmf-oi-OVi"/>
+                <constraint firstItem="Y9c-Ni-07U" firstAttribute="leading" secondItem="i1v-sf-gbC" secondAttribute="leading" id="vI1-Lt-geT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button1" destination="NiF-1H-L8e" id="o77-aH-zBS"/>
+                <outlet property="button2" destination="hYh-J9-TuV" id="knI-nH-u2m"/>
+                <outlet property="button3" destination="rft-kK-V6l" id="sRH-KU-Pfk"/>
+                <outlet property="button4" destination="15m-pz-CaW" id="7Ma-Gp-0Mo"/>
+                <outlet property="button5" destination="Kll-Eb-2IQ" id="xyf-qv-0sd"/>
+                <outlet property="button6" destination="PtW-pN-MKc" id="vv3-ao-OFP"/>
+                <outlet property="cleanButton" destination="VVf-DE-Ste" id="Zpn-2o-K72"/>
+            </connections>
+            <point key="canvasLocation" x="-34.782608695652179" y="-47.544642857142854"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tool-clean" width="34" height="34"/>
+        <image name="tool-clean1" width="34" height="34"/>
+        <image name="tool-color" width="35" height="34"/>
+        <image name="tool-color1" width="35" height="34"/>
+        <image name="tool-eraser" width="35" height="34"/>
+        <image name="tool-eraser1" width="35" height="34"/>
+        <image name="tool-or" width="35" height="34"/>
+        <image name="tool-or1" width="35" height="34"/>
+        <image name="tool-pen" width="34" height="35"/>
+        <image name="tool-pen1" width="34" height="35"/>
+        <image name="tool-re" width="26.5" height="25.5"/>
+        <image name="tool-re1" width="35" height="34"/>
+        <image name="tool-select" width="34" height="34"/>
+        <image name="tool-select1" width="34" height="34"/>
+        <image name="tool-text" width="35" height="34"/>
+        <image name="tool-text1" width="35" height="34"/>
+    </resources>
+</document>

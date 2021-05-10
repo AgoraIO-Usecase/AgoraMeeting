@@ -1,0 +1,60 @@
+
+
+
+
+/* Class = "UIButton"; normalTitle = "进入"; ObjectID = "5hc-kq-gtz"; */
+"5hc-kq-gtz.normalTitle" = "加入";
+
+/* Class = "UILabel"; text = "Agora Meeting"; ObjectID = "61Z-pv-RY8"; */
+"61Z-pv-RY8.text" = "Agora Meeting";
+
+/* Class = "UILabel"; text = "版本号：V2.0.0.1，发版时间：2020.2.2\\nasda"; ObjectID = "7Fa-NC-2XV"; */
+"7Fa-NC-2XV.text" = "版本号：V2.0.0.1，发版时间：2020.2.2\\nasda";
+
+/* Class = "UILabel"; text = "Agora Meeting"; ObjectID = "8G1-pp-uBt"; */
+"8G1-pp-uBt.text" = "Agora Meeting";
+
+/* Class = "UILabel"; text = "• 房间可以不设置密码"; ObjectID = "91l-Sw-DLz"; */
+"91l-Sw-DLz.text" = "• 房间可以不设置密码";
+
+/* Class = "UILabel"; text = "打开麦克风"; ObjectID = "BFT-GR-j0S"; */
+"BFT-GR-j0S.text" = "打开麦克风";
+
+/* Class = "UILabel"; text = "• 房间不存在时，输入的密码将成为这个房间的密码"; ObjectID = "Ewv-My-rX1"; */
+"Ewv-My-rX1.text" = "• 房间不存在时，输入的密码将成为这个房间的密码";
+
+/* Class = "UITextField"; placeholder = "房间名"; ObjectID = "HFh-j1-F2X"; */
+"HFh-j1-F2X.placeholder" = "房间名";
+
+/* Class = "UILabel"; text = "本应用为测试产品，请勿商用。单次会议最长45分钟"; ObjectID = "NBk-aH-LK0"; */
+"NBk-aH-LK0.text" = "本应用为测试产品，请勿商用。单次会议最长45分钟";
+
+/* Class = "UIButton"; normalTitle = "注册声网账号"; ObjectID = "Oy8-nr-2l2"; */
+"Oy8-nr-2l2.normalTitle" = "注册声网账号";
+
+/* Class = "UITextField"; placeholder = "用户名"; ObjectID = "Pxr-Nc-k0S"; */
+"Pxr-Nc-k0S.placeholder" = "用户名";
+
+/* Class = "UILabel"; text = "www.agora.io"; ObjectID = "Q8M-vn-nsE"; */
+"Q8M-vn-nsE.text" = "www.agora.io";
+
+/* Class = "UIButton"; normalTitle = "隐私政策"; ObjectID = "VqI-z9-odB"; */
+"VqI-z9-odB.normalTitle" = "隐私政策";
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "XCq-ZK-Bad"; */
+"XCq-ZK-Bad.placeholder" = "房间密码";
+
+/* Class = "UIButton"; normalTitle = "Debug"; ObjectID = "ct0-Xl-URY"; */
+"ct0-Xl-URY.normalTitle" = "Debug";
+
+/* Class = "UILabel"; text = "入会前设置"; ObjectID = "eA2-35-e7a"; */
+"eA2-35-e7a.text" = "入会前设置";
+
+/* Class = "UILabel"; text = "• 房间已存在时，需要输入正确的密码"; ObjectID = "fjR-5Q-HFi"; */
+"fjR-5Q-HFi.text" = "• 房间已存在时，需要输入正确的密码";
+
+/* Class = "UIButton"; normalTitle = "查看文档"; ObjectID = "i6h-sy-arN"; */
+"i6h-sy-arN.normalTitle" = "查看文档";
+
+/* Class = "UILabel"; text = "打开摄像头"; ObjectID = "jU6-86-dyu"; */
+"jU6-86-dyu.text" = "打开摄像头";

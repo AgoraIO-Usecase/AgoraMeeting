@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="pge-K5-9Xo" customClass="MessageInputView" customModule="Agora_Meeting" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9Q-jr-91j">
+                    <rect key="frame" x="8" y="10" width="346" height="40"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="这里输入聊天内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lXv-OI-HJs">
+                            <rect key="frame" x="5" y="0.0" width="336" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="lXv-OI-HJs" firstAttribute="top" secondItem="u9Q-jr-91j" secondAttribute="top" id="Aeo-dz-z6f"/>
+                        <constraint firstAttribute="trailing" secondItem="lXv-OI-HJs" secondAttribute="trailing" constant="5" id="KlM-ve-fmS"/>
+                        <constraint firstItem="lXv-OI-HJs" firstAttribute="leading" secondItem="u9Q-jr-91j" secondAttribute="leading" constant="5" id="N52-Y5-fht"/>
+                        <constraint firstAttribute="height" constant="40" id="YCa-wZ-KjU"/>
+                        <constraint firstAttribute="bottom" secondItem="lXv-OI-HJs" secondAttribute="bottom" id="xvM-Ra-8sb"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-3U-DRs">
+                    <rect key="frame" x="361" y="7.5" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="94G-PN-At6"/>
+                        <constraint firstAttribute="height" constant="45" id="G6b-K4-BzK"/>
+                    </constraints>
+                    <state key="disabled">
+                        <color key="titleColor" systemColor="systemGray2Color"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="pge-K5-9Xo" eventType="touchUpInside" id="FAK-NF-cvM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="u0Q-gY-BUb"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="u0Q-gY-BUb" firstAttribute="trailing" secondItem="8NE-3U-DRs" secondAttribute="trailing" constant="8" id="1Zm-2N-k2X"/>
+                <constraint firstAttribute="trailing" secondItem="u9Q-jr-91j" secondAttribute="trailing" constant="60" id="Bm5-Fh-8jS"/>
+                <constraint firstItem="8NE-3U-DRs" firstAttribute="centerY" secondItem="u9Q-jr-91j" secondAttribute="centerY" id="UmZ-nu-vmA"/>
+                <constraint firstItem="u9Q-jr-91j" firstAttribute="top" secondItem="pge-K5-9Xo" secondAttribute="top" constant="10" id="bOo-TG-dN7"/>
+                <constraint firstItem="u9Q-jr-91j" firstAttribute="leading" secondItem="pge-K5-9Xo" secondAttribute="leading" constant="8" id="s0e-Ka-dmd"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="sendButton" destination="8NE-3U-DRs" id="wuJ-tE-Bel"/>
+                <outlet property="textField" destination="lXv-OI-HJs" id="Bcq-BI-8Jc"/>
+                <outlet property="textFiledBgView" destination="u9Q-jr-91j" id="kfA-tR-Xbx"/>
+            </connections>
+            <point key="canvasLocation" x="-517.39130434782612" y="-399.77678571428572"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <FrameLayout
+        android:id="@+id/whiteboard_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/tools_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_whiteboard_tool"
+        android:layout_marginBottom="@dimen/whiteboard_tools_margin_bottom"
+        android:layout_marginStart="@dimen/whiteboard_tools_margin_start"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="start|center_vertical">
+
+        <RadioGroup
+            android:id="@+id/rg_tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RadioButton
+                android:id="@+id/rb_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/whiteboard_tool_padding"
+                android:button="@drawable/sel_appliance_selector" />
+
+            <RadioButton
+                android:id="@+id/rb_pencil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/whiteboard_tool_padding"
+                android:button="@drawable/sel_appliance_pencil"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb_rectangle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/whiteboard_tool_padding"
+                android:button="@drawable/sel_appliance_rectangle"/>
+
+            <RadioButton
+                android:id="@+id/rb_ellipse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/whiteboard_tool_padding"
+                android:button="@drawable/sel_appliance_ellipse"/>
+
+            <RadioButton
+                android:id="@+id/rb_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/whiteboard_tool_padding"
+                android:button="@drawable/sel_appliance_text" />
+
+            <RadioButton
+                android:id="@+id/rb_eraser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/whiteboard_tool_padding"
+                android:button="@drawable/sel_appliance_eraser" />
+
+        </RadioGroup>
+
+        <ImageButton
+            android:id="@+id/btn_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/whiteboard_tool_padding"
+            android:background="@null"
+            app:srcCompat="@drawable/sel_appliance_color" />
+
+        <ImageButton
+            android:id="@+id/btn_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/whiteboard_tool_padding"
+            android:background="@null"
+            app:srcCompat="@drawable/sel_appliance_clean" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

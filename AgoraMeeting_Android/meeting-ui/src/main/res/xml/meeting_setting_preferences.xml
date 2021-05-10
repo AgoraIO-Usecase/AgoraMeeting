@@ -1,0 +1,100 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:layout="@layout/layout_preference_category_empty">
+        <Preference
+            android:layout="@layout/layout_preference_edittext"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_room_name"
+            app:title="@string/login_room_name" />
+
+        <Preference
+            android:layout="@layout/layout_preference_edittext"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_room_pwd"
+            app:title="@string/login_room_pwd" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:layout="@layout/layout_preference_category_empty">
+        <Preference
+            android:layout="@layout/layout_preference_image"
+            app:icon="@drawable/ic_logo_little"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_avatar"
+            app:title="@string/setting_avatar" />
+
+        <Preference
+            android:layout="@layout/layout_preference_edittext"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_name"
+            app:title="@string/login_name" />
+
+        <Preference
+            android:layout="@layout/layout_preference_edittext"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_role"
+            app:title="@string/login_role" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:layout="@layout/layout_preference_category_title"
+        app:title="@string/setting_room_setting">
+      <SwitchPreferenceCompat
+            android:layout="@layout/layout_preference_switch"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_camera_approve"
+            app:title="@string/setting_camera_approve" />
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/layout_preference_switch"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_mic_approve"
+            app:title="@string/setting_mic_approve" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:layout="@layout/layout_preference_category_empty">
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/layout_preference_switch"
+            app:enabled="false"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_beauty"
+            app:title="@string/setting_beauty" />
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/layout_preference_switch"
+            android:enabled="false"
+            app:iconSpaceReserved="false"
+            app:key="@string/key_ai_noise"
+            app:title="@string/setting_ai_noise" />
+
+        <io.agora.meeting.ui.widget.OptionsDialogPreference
+            android:key="@string/key_notify_max_num"
+            android:layout="@layout/layout_preference_edittext"
+            app:iconSpaceReserved="false"
+            app:title="@string/setting_turn_off_notify" />
+
+        <Preference
+            android:key="@string/key_about"
+            android:layout="@layout/layout_preference_image"
+            app:icon="@drawable/ic_arrow_right"
+            app:iconSpaceReserved="false"
+            app:title="@string/about_title" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:layout="@layout/layout_preference_category_empty">
+        <Preference
+            android:key="@string/key_upload"
+            android:layout="@layout/layout_preference_button"
+            app:iconSpaceReserved="false"
+            app:title="@string/setting_upload_log" />
+    </PreferenceCategory>
+
+    <PreferenceCategory>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

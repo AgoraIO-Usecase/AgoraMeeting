@@ -1,0 +1,220 @@
+
+
+//* Login *
+login_t0 = "请输入房间名";
+login_t1 = "请输入用户名";
+login_t2 = "房间名必须不小于3位";
+login_t3 = "用户名必须不小于3位";
+login_t4 = "房间名最多为50个字符";
+login_t5 = "用户名最多为20个字符";
+login_t6 = "密码最多为20个字符";
+login_t7 = "更新";
+login_t8 = "进入失败";
+login_t9 = "Agora Meeting 有了新版本";
+login_t10 = "• 房间已存在时，需要输入正确的密码";
+login_t11 = "• 房间不存在时，输入的密码将成为这个房间的密码";
+login_t12 = "• 房间可以不设置密码";
+
+/** Set **/
+set_t1 = "AI降噪";
+set_t2 = "上传日志";
+set_t3 = "主持人";
+set_t4 = "关于";
+set_t5 = "关闭进出通知";
+set_t6 = "取消";
+set_t7 = "姓名";
+set_t8 = "房间密码";
+set_t9 = "开启摄像头需要审批";
+set_t10 = "开启麦克风需要审批";
+set_t11 = "房间名";
+set_t12 = "摄像头";
+set_t13 = "用户名";
+set_t14 = "确定";
+set_t15 = "成员";
+set_t16 = "角色";
+set_t17 = "设置";
+set_t18 = "麦克风";
+set_t19 = "头像";
+set_t20 = "美颜（敬请期待）";
+set_t21 = "上传成功";
+set_t22 = "上传失败，请检查您的网络状态。";
+set_t23 = "AI降噪（敬请期待）";
+set_t24 = "房间设置";
+
+/** Member **/
+mem_t1 = "与会者列表";
+mem_t2 = "关闭视频";
+mem_t3 = "取消";
+mem_t4 = "成为主持人";
+mem_t5 = "打开摄像头";
+mem_t6 = "打开麦克风";
+mem_t7 = "搜索与会者";
+mem_t8 = "放弃主持人";
+mem_t9 = "没有结果";
+mem_t10 = "申请";
+mem_t11 = "移出房间";
+mem_t12 = "设为主持人";
+mem_t13 = "静音";
+mem_t14 = "无结果";
+mem_t15 = "(主持人、我)";
+mem_t16 = "(主持人)";
+mem_t17 = "(我)";
+
+/** Message **/
+msg_t1 = "接受成功";
+msg_t2 = "无聊天信息";
+msg_t3 = "无通知信息";
+msg_t4 = "消息";
+msg_t5 = "聊天";
+msg_t6 = "通知";
+msg_t7 = "消息发送失败，请重新发送";
+msg_t8 = "系统版本12.0以上系统可用分享";
+
+/** WhiteBoard **/
+wb_t1 = "加入白板互动";
+wb_t2 = "放弃白板互动";
+wb_t3 = "白板";
+wb_t4 = "结束白板";
+
+/** About **/
+ab_t1 = "免责声明";
+ab_t2 = "关于";
+ab_t3 = "隐私政策";
+ab_t4 = "Agora隐私政策";
+ab_t5 = "版本号：V";
+ab_t6 = "，发版时间：";
+ab_t7 = "视频 SDK版本：";
+ab_t8 = "，RTM SDK版本：";
+ab_t9 = "白板 SDK版本：";
+ab_t7 = "RTC SDK版本号：V";
+ab_t8 = "，RTM SDK版本：V";
+ab_t9 = "白板版本号：V";
+
+/** Meeting **/
+meeting_t1 = "主持人关闭了您的摄像头";
+meeting_t2 = "主持人关闭了您的麦克风";
+meeting_t3 = "会议已结束";
+meeting_t4 = "修改";
+meeting_t5 = "全员摄像头关闭";
+meeting_t6 = "全员麦克风关闭";
+meeting_t7 = "关闭全员摄像头";
+meeting_t8 = "关闭全员麦克风";
+meeting_t9 = "加入白板互动";
+meeting_t10 = "发起白板";
+meeting_t11 = "取消";
+meeting_t12 = "可以自由打开摄像头";
+meeting_t13 = "可以自由打开麦克风";
+meeting_t14 = "同意";
+meeting_t15 = "向主持人申请打开摄像头\n请20秒内准备亮相";
+meeting_t16 = "向主持人申请打开麦克风\n请20秒内准备发言";
+meeting_t17 = "屏幕共享";
+meeting_t18 = "屏幕分享已结束";
+meeting_t19 = "开启摄像头需要主持人批准";
+meeting_t20 = "开启麦克风需要主持人批准";
+meeting_t21 = "开始共享";
+meeting_t22 = "开始屏幕共享";
+meeting_t23 = "开始白板分享";
+meeting_t24 = "您已被移出房间";
+meeting_t25 = "成为主持人";
+meeting_t28 = "所有成员进出通知都已关闭";
+meeting_t31 = "摄像头未授权。";
+meeting_t32 = "是";
+meeting_t33 = "申请";
+meeting_t34 = "申请打开摄像头";
+meeting_t35 = "申请打开麦克风";
+meeting_t36 = "白板已结束";
+meeting_t37 = "白板结束异常";
+meeting_t39 = "结束";
+meeting_t40 = "结束会议";
+meeting_t41 = "设置";
+meeting_t42 = "进入房间";
+meeting_t43 = "退出房间";
+meeting_t44 = "邀请";
+meeting_t45 = "麦克风未授权。";
+meeting_t46 = "音频";
+meeting_t47 = "视频";
+meeting_t48 = "成员";
+meeting_t49 = "聊天";
+meeting_t50 = "更多";
+meeting_t51 = "会议信息已复制";
+meeting_t52 = "开始";
+meeting_t53 = "屏幕共享会展示您屏幕上所有的内容。请酌情调整您的通知设置";
+meeting_t54 = "您有正在进行的白板分享，需要结束分享吗？";
+meeting_t55 = "您有正在进行的屏幕分享，需要结束分享吗？";
+meeting_t56 = "继续";
+meeting_t57 = "开启麦克风需审批";
+meeting_t58 = "开启摄像头需审批";
+meeting_t59 = "超过";
+meeting_t60 = "人，成员进出通知关闭。";
+meeting_t61 = "我知道了";
+meeting_t62 = "结束屏幕共享";
+
+/** noti **/
+noti_t1 = "已同意";
+noti_t2 = "总是关闭";
+noti_t3 = "人以上";
+noti_t4 = "总是开启";
+noti_t5 = "成为主持人";
+noti_t6 = "离开房间";
+noti_t7 = "进入房间";
+noti_t8 = "房间内没有主持人。";
+noti_t9 = "开始白板分享";
+noti_t10 = "开始屏幕共享";
+noti_t11 = "的白板已结束";
+noti_t12 = "加入白板互动";
+noti_t13 = "打开";
+noti_t14 = "成为主持人";
+
+/** score **/
+score_t1 = "音视频质量";
+score_t2 = "功能完整性";
+score_t3 = "使用体验";
+score_t4 = "评价";
+score_t5 = "撰写评价";
+score_t6 = "提交";
+score_t7 = "分享您的体验心得";
+score_t8 = "星";
+
+/** invite **/
+invite_t1 = "会议名：";
+invite_t2 = "会议密码：";
+invite_t3 = "邀请人：";
+invite_t4 = "Web端：";
+invite_t5 = "Android下载链接：";
+invite_t6 = "iOS下载链接：";
+
+/** UI **/
+ui_t1 = "发送";
+ui_t2 = "已在主屏幕显示";
+ui_t3 = "您正在进行屏幕共享";
+ui_t4 = "您正在进行白板共享";
+ui_t5 = "置顶点击后状态";
+ui_t6 = "置顶默认状态";
+ui_t7 = "结束屏幕共享";
+ui_t8 = "进入白板";
+
+/** HTTP **/
+http_t1 = "密码不正确";
+http_t2 = "用户已经是主持人";
+http_t3 = "目标用户不能为自己";
+http_t4 = "该房间主持人数量已经达到最大值";
+http_t5 = "房间内已经有主持人，请联系主持人指定您为主持人，最多3人同时为主持人";
+http_t6 = "没有在线的用户";
+http_t7 = "用户不是主持人角色";
+http_t8 = "没有关闭任何设备";
+http_t9 = "同时只能关闭一种设备";
+http_t10 = "未知的申请ID";
+http_t11 = "同时只能申请一种设备权限";
+http_t12 = "没有申请任何设备权限";
+http_t13 = "设备权限已经打开，无需重复申请";
+http_t14 = "非法关闭屏幕共享";
+http_t15 = "非法关闭白板";
+http_t16 = "房间内未在进行屏幕共享";
+http_t17 = "房间内未在进行白板操作";
+http_t18 = "房间内正在进行屏幕共享";
+http_t19 = "白板分享正在进行中";
+http_t20 = "白板已达到最大人数";
+http_t21 = "您的网络信号不佳";
+
+/** Other **/
+

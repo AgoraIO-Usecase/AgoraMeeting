@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PageCtrlView">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="24"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="llr-YT-2nP">
+                    <rect key="frame" x="-26.5" y="-2" width="123" height="28"/>
+                </pageControl>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD5-rc-6cT">
+                    <rect key="frame" x="22" y="4" width="26" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.1843137255" green="0.18823529410000001" blue="0.18823529410000001" alpha="0.32919520549999998" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="llr-YT-2nP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="21U-2R-qdw"/>
+                <constraint firstItem="llr-YT-2nP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6L9-Es-gqp"/>
+                <constraint firstItem="vD5-rc-6cT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bs2-3T-ayB"/>
+                <constraint firstItem="vD5-rc-6cT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cHc-gk-g91"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="numberLabel" destination="vD5-rc-6cT" id="AmP-gR-9QC"/>
+                <outlet property="pageCtrl" destination="llr-YT-2nP" id="bmx-T8-aSH"/>
+            </connections>
+            <point key="canvasLocation" x="-78.260869565217391" y="-173.77232142857142"/>
+        </view>
+    </objects>
+</document>

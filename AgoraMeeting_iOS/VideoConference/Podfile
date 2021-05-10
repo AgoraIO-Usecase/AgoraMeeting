@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+workspace 'VideoConference.xcworkspace'
+
+target 'VideoConference' do
+  use_frameworks!
+  pod 'YYModel'
+  pod 'Bugly'
+  pod 'Presentr'
+  pod 'LXFProtocolTool/EmptyDataSetable'
+  pod 'AgoraRte', :path => '../AgoraRte/AgoraRte_Binary.podspec'
+  pod 'AgoraRoom', :path => '../Modules/AgoraRoom/AgoraRoom.podspec'
+  pod 'SVProgressHUD'
+  pod 'WhiteModule', :path => '../Modules/WhiteModule/WhiteModule.podspec'
+  pod 'AgoraSceneStatistic', :path => '/Users/zyp/Agora/Tools/AgoraSceneStatistic-Objective-C/AgoraSceneStatistic.podspec'
+  pod 'DifferenceKit'
+  
+end
+
+
+target 'ScreenSharingBroadcast' do
+  use_frameworks!
+  pod 'AgoraRte', :path => '../AgoraRte/AgoraRte_Binary.podspec'
+end

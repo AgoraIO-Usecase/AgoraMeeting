@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 全局色调 -->
+    <color name="global_accent">#4da1ff</color>
+
+    <color name="global_text_color_black">#2e3848</color>
+    <color name="global_text_color_white">#FFFFFF</color>
+    <color name="global_text_color_gray">#808fa3</color>
+
+
+    <color name="meeting_main_bg">#353636</color>
+
+    <!-- whiteboard -->
+    <color name="whiteboard_tools_bg">#88E9EFF4</color>
+
+</resources>

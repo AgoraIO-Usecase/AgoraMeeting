@@ -1,0 +1,109 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="io.agora.meeting.ui.viewmodel.StreamsVideoModel"/>
+
+        <variable
+            name="stream"
+            type="io.agora.meeting.core.model.StreamModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fl_video"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#525353"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            tools:src="@drawable/ic_logo_little"
+            app:isGone="@{stream.hasVideo()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_host"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_round_host"
+            app:activated="@{stream.hasAudio()}"
+            app:isGone="@{!stream.owner.host}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_mic"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/sel_round_mic"
+            app:activated="@{stream.hasAudio()}"
+            app:isGone="@{stream.board || stream.screen}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_host" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{stream.ownerUserName}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/global_text_size_small"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_mic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_mic"
+            app:layout_constraintTop_toTopOf="@+id/iv_mic" />
+
+
+        <CheckBox
+            android:id="@+id/cb_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/sel_top"
+            android:button="@null"
+            android:checked="@{StreamsVideoModel.isTop(stream)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/cb_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/sel_more"
+            android:button="@null"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_top" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

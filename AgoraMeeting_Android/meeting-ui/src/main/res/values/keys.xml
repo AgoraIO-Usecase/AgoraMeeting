@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_avatar" translatable="false">avatar</string>
+    <string name="key_name" translatable="false">name</string>
+    <string name="key_role" translatable="false">role</string>
+    <string name="key_camera" translatable="false">camera</string>
+    <string name="key_camera_front" translatable="false">camera_front</string>
+    <string name="key_camera_approve" translatable="false">camera_approve</string>
+    <string name="key_mic" translatable="false">mic</string>
+    <string name="key_mic_approve" translatable="false">mic_approve</string>
+    <string name="key_beauty" translatable="false">beauty</string>
+    <string name="key_ai_noise" translatable="false">ai_noise</string>
+    <string name="key_about" translatable="false">about</string>
+    <string name="key_notify_max_num" translatable="false">notify_max_num</string>
+    <string name="key_meeting_duration" translatable="false">meeting_duration</string>
+    <string name="key_meeting_max_people" translatable="false">meeting_max_people</string>
+    <string name="key_upload" translatable="false">upload</string>
+    <string name="key_mute_all" translatable="false">mute_all</string>
+    <string name="key_allow_self_unmute" translatable="false">allow_self_unmute</string>
+    <string name="key_room_name" translatable="false">room_name</string>
+    <string name="key_room_pwd" translatable="false">room_pwd</string>
+    <string name="key_invite" translatable="false">invite</string>
+</resources>

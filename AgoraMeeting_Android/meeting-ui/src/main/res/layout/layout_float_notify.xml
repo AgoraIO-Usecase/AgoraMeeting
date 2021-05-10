@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_float_notify"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp">
+
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="#88FFFFFF"
+                android:textSize="@dimen/global_text_size_small"
+                tools:text="111111111111" />
+
+            <io.agora.meeting.ui.widget.CountDownTextView
+                android:id="@+id/btn_any"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:minWidth="50dp"
+                android:gravity="center"
+                android:background="@drawable/bg_btn_blue"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/global_text_size_small"
+                android:visibility="gone"
+                android:text="@string/cmm_accept"
+                tools:text="接受" />
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

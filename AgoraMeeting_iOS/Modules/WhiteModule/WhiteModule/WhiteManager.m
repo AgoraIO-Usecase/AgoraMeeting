@@ -38,7 +38,8 @@ WhiteApplianceKey const WhiteApplianceEraser = @"eraser";
 
     WhiteBoardView *whiteBoardView = (WhiteBoardView*)boardView;
     if(whiteBoardView){
-        self.whiteSDK = [[WhiteSDK alloc] initWithWhiteBoardView: whiteBoardView config:[WhiteSdkConfiguration defaultConfig] commonCallbackDelegate:self];
+        WhiteSdkConfiguration *config = [[WhiteSdkConfiguration alloc] initWithApp:@"646/P8Kb7e_DJZVAQw"];
+        self.whiteSDK = [[WhiteSDK alloc] initWithWhiteBoardView: whiteBoardView config:config commonCallbackDelegate:self];
 
         self.whitePlayerDelegate = whitePlayerDelegate;
     } else {
@@ -110,6 +111,13 @@ WhiteApplianceKey const WhiteApplianceEraser = @"eraser";
 
     } else if([applianceName isEqualToString:ApplianceEraser]) {
         _applianceName = ApplianceEraser;
+        
+    } else if([applianceName isEqualToString:ApplianceEllipse]) {
+        _applianceName = ApplianceEllipse;
+        
+    } else if([applianceName isEqualToString:ApplianceRectangle]) {
+        _applianceName = ApplianceRectangle;
+        
     } else {
         NSAssert(1 == 0, @"appliance name not exist");
         return;

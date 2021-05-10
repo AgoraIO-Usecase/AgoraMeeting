@@ -14,7 +14,6 @@ import com.herewhite.sdk.domain.PlayerState;
 import com.herewhite.sdk.domain.PlayerTimeInfo;
 import com.herewhite.sdk.domain.SDKError;
 
-import io.agora.base.ToastManager;
 import io.agora.whiteboard.netless.listener.ReplayEventListener;
 
 public class ReplayManager extends NetlessManager<Player> implements PlayerEventListener {
@@ -120,6 +119,8 @@ public class ReplayManager extends NetlessManager<Player> implements PlayerEvent
 
     @Override
     void onFail(SDKError error) {
-        ToastManager.showShort(error.toString());
+        if (listener != null) {
+            handler.post(() -> listener.onError(error));
+        }
     }
 }
