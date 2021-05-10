@@ -73,6 +73,8 @@ extension MeetingVM {
             return
         }
         let streamId = info.type == .av ? info.avInfo.streamId : info.screenInfo.streamId
+        let s = "\(info.user.userId) \(info.avInfo.streamType.rawValue) \(streamId)"
+        Log.info(text: s, tag: "localUser.subscribeVideo")
         localUser.subscribeRemoteVideoStreamOptions(streamId, options: options)
     }
     

@@ -64,7 +64,13 @@ open VideoConference.xcworkspace
 }
 ```
 
-7.通过 `command + r` 运行项目
+7.App Groups 的支持。屏幕共享时一个单独的扩展进程，需要App Groups，如果需要屏幕共享的功能：
+
+- 为项目配置App Groups，可以获得一个App Groups字符串；
+- 修改MeetingVM.Swift 的AppGroupsString字符串为项目配置的App Groups字符串；
+- 修改SampleHandler.swift`的AppGroupsString字符串为项目配置的App Groups字符串；
+
+8.通过 `command + r` 运行项目
 
 ## 联系我们
 

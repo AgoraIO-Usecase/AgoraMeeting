@@ -36,7 +36,9 @@ extension MeetingVM {
            let index = infos.firstIndex(of: oldLocalUserInfo) {
             let user = Info.User(userId: userId, userName: userName, userRole: userRole)
             let avInfo = Info.AVInfo(streamId: streamId, streamType: oldLocalUserInfo.avInfo.streamType)
-            let info = MeetingVM.Info(type: .av, user: user, avInfo: avInfo)
+            var info = MeetingVM.Info(type: .av, user: user, avInfo: avInfo)
+            info.setUpType(type: oldLocalUserInfo.getUpType)
+            info.setOpTime(time: oldLocalUserInfo.getOpTime)
             infos[index] = info
             return
         }

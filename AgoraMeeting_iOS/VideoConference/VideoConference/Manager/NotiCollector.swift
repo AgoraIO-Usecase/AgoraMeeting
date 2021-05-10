@@ -15,6 +15,7 @@ protocol NotiObserver: NSObject {
 
 class NotiCollector: NSObject {
     static let `default` = NotiCollector()
+    var mustUpdate = false
     private var messages = [Info]()
     private let timerSource = NotiTimerSource()
     private var successQueue = [TimeInterval]()
@@ -93,6 +94,9 @@ extension NotiCollector: NotiTimerSourceDelegate {
                 messages[i].updateCount()
                 for time in successQueue {
                     messages[i].updateSuccess(timeStamp: time)
+                }
+                if successQueue.count > 0 {
+                    mustUpdate = true
                 }
             }
         }

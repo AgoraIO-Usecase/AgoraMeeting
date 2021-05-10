@@ -9,6 +9,7 @@
 #import "HttpManager+Url.h"
 
 static NSString *_appId = @"";
+static NSString *_auth = @"";
 
 @implementation HttpManager (Url)
 
@@ -157,5 +158,9 @@ static NSString *_appId = @"";
 + (void)setAppId:(NSString *)appId {
     _appId = appId;
 }
+
+
+
+
 
 @end

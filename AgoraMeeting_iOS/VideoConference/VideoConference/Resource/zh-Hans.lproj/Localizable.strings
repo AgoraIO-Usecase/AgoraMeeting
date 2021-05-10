@@ -81,11 +81,14 @@ ab_t1 = "免责声明";
 ab_t2 = "关于";
 ab_t3 = "隐私政策";
 ab_t4 = "Agora隐私政策";
-ab_t5 = "版本号：";
+ab_t5 = "版本号：V";
 ab_t6 = "，发版时间：";
 ab_t7 = "视频 SDK版本：";
 ab_t8 = "，RTM SDK版本：";
 ab_t9 = "白板 SDK版本：";
+ab_t7 = "RTC SDK版本号：V";
+ab_t8 = "，RTM SDK版本：V";
+ab_t9 = "白板版本号：V";
 
 /** Meeting **/
 meeting_t1 = "主持人关闭了您的摄像头";

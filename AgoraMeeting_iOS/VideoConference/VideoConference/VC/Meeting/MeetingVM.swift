@@ -37,6 +37,8 @@ class MeetingVM: NSObject {
     var endRoomFromMe = false
     var hasRecvRtmFailState = false
     var lastUpdate: UpdateInfo?
+    var shouldAutoUp = true
+    let appGroupsString = "group.io.agora.meetingInternal"
     
     convenience init(loginInfo: LoginVM.Info) {
         self.init()

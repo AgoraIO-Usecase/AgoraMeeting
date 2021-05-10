@@ -25,7 +25,6 @@ class MessageInputView: UIView {
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {
-        endEditing(true)
         sendButton.isEnabled = false
     }
     

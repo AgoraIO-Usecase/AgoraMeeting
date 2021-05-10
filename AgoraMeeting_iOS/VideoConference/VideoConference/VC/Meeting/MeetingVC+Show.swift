@@ -59,7 +59,7 @@ extension MeetingVC {
         let pasteboard = UIPasteboard.general
         let webLink = "https://solutions.agora.io/meeting/web"
         let androidLink = "https://agora-adc-artifacts.oss-cn-beijing.aliyuncs.com/apk/app-AgoraMeeting.apk"
-        let iOSLink = "https://www.pgyer.com/EUWO"
+        let iOSLink = "https://apps.apple.com/cn/app/agora-meeting/id1515428313"
         var str = ""
         let roomNameInd = NSLocalizedString("invite_t1", comment: "")
         let roomPsdInd = NSLocalizedString("invite_t2", comment: "")
@@ -155,7 +155,7 @@ extension MeetingVC {
     
     func showKickoutAlert() {
         let vc = UIAlertController(title: nil, message: NSLocalizedString("meeting_t24", comment: ""), preferredStyle: .alert)
-        let a1 = UIAlertAction(title: NSLocalizedString("是", comment: ""), style: .default, handler: { _ in
+        let a1 = UIAlertAction(title: NSLocalizedString("meeting_t61", comment: ""), style: .default, handler: { _ in
             self.dismiss(animated: true) {
                 self.meetingVMDidLeaveRoom()
             }

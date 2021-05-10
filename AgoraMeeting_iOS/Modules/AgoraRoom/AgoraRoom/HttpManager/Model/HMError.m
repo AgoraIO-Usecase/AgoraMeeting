@@ -64,6 +64,11 @@
             return NSLocalizedString(@"http_t19", @"");
         case 30404420:
             return NSLocalizedString(@"http_t20", @"");
+        case 20403002:
+            return NSLocalizedString(@"http_t22", @"");
+        case 20403001:
+            return NSLocalizedString(@"http_t23", @"");
+
         case -1009:
             return NSLocalizedString(@"http_t21", @"");
         default:

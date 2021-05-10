@@ -149,13 +149,6 @@
 }
 
 + (AgoraRteEngineConfig *)setDefaultHost:(AgoraRteEngineConfig *)config {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        /// rte切换到开发环境
-        SEL func = NSSelectorFromString(@"updateServerHost:");
-        NSString *host = @"http://api-solutions-dev.bj2.agoralab.co/scene";
-        [config performSelector:func withObject:host];
-#pragma clang diagnostic pop
     return config;
 }
 

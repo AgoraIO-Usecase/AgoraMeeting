@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [HttpManager setAppId: [KeyCenter agoraAppid]];
-    
+    [HttpManager setCustomerId:[KeyCenter customerId] customerCer:[KeyCenter customerCertificate]];
     return YES;
 }
 

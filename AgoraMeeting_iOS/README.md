@@ -60,7 +60,11 @@ For details, see the [prerequisites](https://github.com/AgoraIO-Usecase/AgoraMee
 }
 ```
 
-7. Run the project with `command + r`.
+7. Supported by App Groups.When screen sharing is an extension process, App Groups is required, if screen sharing function is required:
+   - Configure App Groups for the project, you can get an App Groups string;
+   - Modify the AppGroupsString string of MeetingVM.Swift to the App Groups string configured by the project;
+   - Modify the AppGroupsString string of SampleHandler.swift` to the App Groups string configured by the project;
+8. Run the project with `command + r`.
 
 ## Connect us
 

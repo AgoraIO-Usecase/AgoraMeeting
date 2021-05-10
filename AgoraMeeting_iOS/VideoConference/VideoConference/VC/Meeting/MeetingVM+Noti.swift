@@ -407,9 +407,7 @@ extension MeetingVM {
         let hasCountTime = temps.filter({ ($0.timeCount ?? 0 > 0) }).count > 0
         let hasNewInfo = lastNotiTime != temps.first?.timeStamp
         
-        if !hasNewInfo, !hasCountTime {
-            return
-        }
+        
         
         let ms = temps.map({ noti -> MeetingMessageModel in
             let m = MeetingMessageModel()
@@ -424,6 +422,15 @@ extension MeetingVM {
             m.timeStamp = noti.timeStamp
             return m
         })
+        
+        if NotiCollector.default.mustUpdate {
+            NotiCollector.default.mustUpdate = false
+            invokeMeetingVMShouldUpdateNoti(models: ms)
+        }
+        
+        if !hasNewInfo, !hasCountTime {
+            return
+        }
          
         if (hasNewInfo && !hasCountTime) || (hasNewInfo && hasCountTime) {
             lastNotiTime = temps.first?.timeStamp

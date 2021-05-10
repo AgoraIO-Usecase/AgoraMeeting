@@ -67,7 +67,7 @@ msg_t4 = "Messages";
 msg_t5 = "Chat";
 msg_t6 = "Notification";
 msg_t7 = "Send Failed, please retry";
-msg_t8 = "系统版本12.0以上系统可用分享";
+msg_t8 = "can use for iOS 12.0 later ";
 
 /** WhiteBoard **/
 wb_t1 = "Join editing";
@@ -80,11 +80,11 @@ ab_t1 = "Product disclaimer";
 ab_t2 = "About";
 ab_t3 = "Privacy policy";
 ab_t4 = "Agora Privacy policy";
-ab_t5 = "Version:";
+ab_t5 = "Version:V";
 ab_t6 = ",Release Time:";
-ab_t7 = "RTC SDK Version:";
-ab_t8 = ",RTM SDK Version:";
-ab_t9 = "WhiteBoard Version:";
+ab_t7 = "RTC SDK Version:V";
+ab_t8 = ",RTM SDK Version:V";
+ab_t9 = "WhiteBoard Version:V";
 
 
 /** Meeting **/

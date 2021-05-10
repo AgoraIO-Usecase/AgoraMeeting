@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.dependency "AgoraLog", "1.0.2"
   spec.dependency "YYModel", "1.0.4"
   spec.dependency "AgoraRtm_iOS", "1.4.2"
-  spec.dependency "AgoraRtcEngine_iOS", "3.3.0"
+  spec.dependency "AgoraRtcEngine_iOS", "3.3.1"
   spec.dependency "SSZipArchive", "2.2.3"
   spec.dependency "AliyunOSSiOS"
 end

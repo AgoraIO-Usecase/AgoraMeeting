@@ -85,7 +85,7 @@ class MeetingVC: BaseViewController {
         meetingView.topView.startTimer(withCount: vm.getRoomTime())
         if #available(iOS 12.0, *) {
             let rpPickerView = RPSystemBroadcastPickerView()
-            rpPickerView.frame = CGRect(x: UIScreen.width/2 - 30, y: UIScreen.height/2 - 30, width: 60, height: 60)
+            rpPickerView.frame = CGRect(x: UIScreen.width/2 - 30, y: UIScreen.height/2 - 30 - 30, width: 60, height: 60)
             rpPickerView.showsMicrophoneButton = false
             if let url = Bundle.main.url(forResource: "ScreenSharingBroadcast", withExtension: "appex", subdirectory: "PlugIns") {
                 if let bundle = Bundle(url: url) {
@@ -198,7 +198,10 @@ extension MeetingVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let `cell` = cell as? VideoCell, let info = cell.getInfo {
+        
+        if meetingView.collectionViewVideo == collectionView,
+           let `cell` = cell as? VideoCell,
+           let info = cell.getInfo {
             vm.subscribeVideoOnQueue(userId: info.userId,
                                      streamId: info.streamId,
                                      options: .hight)
@@ -214,7 +217,16 @@ extension MeetingVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let `cell` = cell as? VideoCell, let info = cell.getInfo {
+        
+        let userInteraction = (collectionView.isDragging || collectionView.isDecelerating || collectionView.isTracking)
+        
+        guard userInteraction else {
+            return
+        }
+        
+        if meetingView.collectionViewVideo == collectionView,
+           let `cell` = cell as? VideoCell,
+           let info = cell.getInfo {
             vm.unsubscribeOnQueue(userId: info.userId, streamId: info.streamId)
             return
         }
@@ -363,6 +375,12 @@ extension MeetingVC: MeetingVMProtocol {
     }
     
     func meetingVMShouldUpdateImRedCount(count: Int) {
+        if let lastVc = navigationController?.viewControllers.last,
+           lastVc.isKind(of: MessageVC.self), count > 0  {
+            MessageCollector.default.cleanUnReadCount()
+            return
+        }
+        
         meetingView.bottomView.updateImRedDocCount(count)
     }
     

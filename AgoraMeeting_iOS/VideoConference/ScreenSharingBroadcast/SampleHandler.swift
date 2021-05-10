@@ -9,7 +9,7 @@
 import ReplayKit
 
 class SampleHandler: RPBroadcastSampleHandler {
-
+    let appGroupsString = "group.io.agora.meetingInternal"
     fileprivate var endString = "com.videoconference.shareendbyapp"
     var endByTouchSystemStop = true
     
@@ -51,7 +51,7 @@ class SampleHandler: RPBroadcastSampleHandler {
     
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         
-        let userDefault = UserDefaults.init(suiteName: "group.io.agora.meetingInternal")
+        let userDefault = UserDefaults.init(suiteName: appGroupsString)
         guard let appid = userDefault?.object(forKey: "appid") as? String else {
             return
         }

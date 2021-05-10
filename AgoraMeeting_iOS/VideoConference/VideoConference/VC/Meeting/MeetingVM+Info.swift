@@ -133,6 +133,13 @@ extension MeetingVM {
             }
         }
         
+        mutating func setUpType(type: UpType, isMe: Bool) {
+            self.upType = type
+            if type != .none {
+                self.opTimeInterval = Date().timeIntervalSince1970 + (isMe ? 3 : 0)
+            }
+        }
+        
         mutating func setOpTime(time: TimeInterval) {
             self.opTimeInterval = time
         }

@@ -244,7 +244,7 @@ extension MeetingVM {
             return
         }
         Log.info(text: "saveScreenId, screenId:\(screenId), token:\(token), channnelId:\(channnelId)", tag: "saveScreenParamInUserDefault")
-        let userDefault = UserDefaults(suiteName: "group.io.agora.meetingInternal")
+        let userDefault = UserDefaults(suiteName: appGroupsString)
         userDefault?.setValue(KeyCenter.agoraAppid(), forKey: "appid")
         userDefault?.setValue(screenId, forKey: "screenid")
         userDefault?.setValue(token, forKey: "token")

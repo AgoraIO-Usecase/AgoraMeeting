@@ -121,9 +121,7 @@ class MessageView: UIView {
     @objc func buttonTap(btn: UIButton) {
         if let text = bottomView.textField.text {
             delegate?.messageViewDidTapSend(text: text)
-            
             bottomView.textField.text = ""
-            bottomView.textField.resignFirstResponder()
         }
     }
     
@@ -140,7 +138,6 @@ extension MessageView: UITextFieldDelegate {
         if let text = textField.text, text.count > 0 {
             delegate?.messageViewDidTapSend(text: text)
             bottomView.textField.text = ""
-            textField.resignFirstResponder()
         }
         return textField.text?.count ?? 0 > 0
     }

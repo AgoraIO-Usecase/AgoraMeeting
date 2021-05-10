@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL)checkResp:(HMRespone * _Nonnull)resp failure:(HMFailBlock _Nullable)failure;
 + (NSError *)rebaseSystemError:(NSError *)error;
++ (void)setCustomerId:(NSString *)customerId
+          customerCer:(NSString *)customerCer;
 
 @end
 

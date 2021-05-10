@@ -25,7 +25,17 @@ static NSString *authorization;
     success:(HMSuccessBlock _Nullable)success
     failure:(HMFailBlock _Nullable)failure {
     [self logWithUrl:url headers:headers params:params];
-    [HttpClient.share.sessionManager GET:url parameters:params headers:headers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    
+    NSMutableDictionary *h = [NSMutableDictionary new];
+    h[@"Authorization"] = authorization;
+    
+    NSArray<NSString*> *keys = headers.allKeys;
+    for(NSString *key in keys){
+        [HttpClient.share.sessionManager.requestSerializer setValue:headers[key] forHTTPHeaderField:key];
+    }
+    
+    [HttpClient.share.sessionManager GET:url parameters:params headers:h progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self logWithUrl:url response:responseObject];
         if(success) { success(responseObject); }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -42,7 +52,15 @@ static NSString *authorization;
      success:(HMSuccessBlock _Nullable)success
      failure:(HMFailBlock _Nullable)failure {
     [self logWithUrl:url headers:headers params:params];
-    [HttpClient.share.sessionManager POST:url parameters:params headers:headers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSMutableDictionary *h = [NSMutableDictionary new];
+    h[@"Authorization"] = authorization;
+    
+    NSArray<NSString*> *keys = headers.allKeys;
+    for(NSString *key in keys){
+        [HttpClient.share.sessionManager.requestSerializer setValue:headers[key] forHTTPHeaderField:key];
+    }
+    
+    [HttpClient.share.sessionManager POST:url parameters:params headers:h progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self logWithUrl:url response:responseObject];
         if(success) { success(responseObject); }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -57,8 +75,15 @@ static NSString *authorization;
     headers:(NSDictionary<NSString*, NSString*> * _Nullable)headers
     success:(HMSuccessBlock _Nullable)success
     failure:(HMFailBlock _Nullable)failure {
+    NSMutableDictionary *h = [NSMutableDictionary new];
+    h[@"Authorization"] = authorization;
+    
+    NSArray<NSString*> *keys = headers.allKeys;
+    for(NSString *key in keys){
+        [HttpClient.share.sessionManager.requestSerializer setValue:headers[key] forHTTPHeaderField:key];
+    }
     [self logWithUrl:url headers:headers params:params];
-    [HttpClient.share.sessionManager PUT:url parameters:params headers:headers success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [HttpClient.share.sessionManager PUT:url parameters:params headers:h success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self logWithUrl:url response:responseObject];
         if(success) { success(responseObject); }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -115,6 +140,15 @@ static NSString *authorization;
         return [HMError errorWithCodeType:HMErrorCodeTypeNetWorkFail extCode:error.code msg:@""];
     }
     return error;
+}
+
++ (void)setCustomerId:(NSString *)customerId
+          customerCer:(NSString *)customerCer {
+    NSString *target = [NSString stringWithFormat:@"%@:%@", customerId, customerCer];
+    NSData *data = [target dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64Str = [data base64EncodedStringWithOptions:0];
+    
+    authorization = [NSString stringWithFormat:@"Basic %@", base64Str];
 }
 
 @end

@@ -338,21 +338,16 @@ extension MeetingVM {
             else {
                 info.isSelected = false
             }
-            if (info.isMe || info.isHost), info.getUpType == .none { info.setUpType(type: .up) }
+            if shouldAutoUp, (info.isMe || info.isHost), info.getUpType == .none { info.setUpType(type: .up, isMe: info.isMe) }
             infosCopy.append(info)
         }
+        shouldAutoUp = false
         return infosCopy
     }
     
     private func sortHandle(lhs: Info, rhs: Info) -> Bool {
         /** up */
         if lhs.getUpType == .up, rhs.getUpType == .up {
-            if lhs.isMe, !rhs.isMe {
-                return true
-            }
-            if !lhs.isMe, rhs.isMe {
-                return false
-            }
             return lhs.getOpTime > rhs.getOpTime
         }
         if lhs.getUpType == .up {
