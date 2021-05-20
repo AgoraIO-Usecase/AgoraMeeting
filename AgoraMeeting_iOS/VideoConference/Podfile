@@ -13,7 +13,7 @@ target 'VideoConference' do
   pod 'AgoraRoom', :path => '../Modules/AgoraRoom/AgoraRoom.podspec'
   pod 'SVProgressHUD'
   pod 'WhiteModule', :path => '../Modules/WhiteModule/WhiteModule.podspec'
-  pod 'AgoraSceneStatistic', :path => '/Users/zyp/Agora/Tools/AgoraSceneStatistic-Objective-C/AgoraSceneStatistic.podspec'
+  pod 'AgoraSceneStatistic'
   pod 'DifferenceKit'
   
 end
