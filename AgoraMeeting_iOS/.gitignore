@@ -5,6 +5,8 @@
 ## Build generated
 build/
 DerivedData
+Podfile.lock
+*.xcworkspace
 
 ## Various settings
 *.pbxuser
