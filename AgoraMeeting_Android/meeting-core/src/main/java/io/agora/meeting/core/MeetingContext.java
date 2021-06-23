@@ -43,34 +43,30 @@ public final class MeetingContext {
     private final Application.ActivityLifecycleCallbacks atyCallback = new Application.ActivityLifecycleCallbacks() {
         @Override
         public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-            if (mRootActivity == null) {
+            if (mRootActivity != activity) {
                 mRootActivity = activity;
             }
         }
 
         @Override
-        public void onActivityStarted(@NonNull Activity activity) {
-            if (mRootActivity == null) {
-                mRootActivity = activity;
-            }
-        }
+        public void onActivityStarted(@NonNull Activity activity) {}
 
         @Override
         public void onActivityResumed(@NonNull Activity activity) {
-
+            if (mRootActivity != activity) {
+                mRootActivity = activity;
+            }
         }
 
         @Override
         public void onActivityPaused(@NonNull Activity activity) {
-
-        }
-
-        @Override
-        public void onActivityStopped(@NonNull Activity activity) {
             if (mRootActivity == activity) {
                 mRootActivity = null;
             }
         }
+
+        @Override
+        public void onActivityStopped(@NonNull Activity activity) {}
 
         @Override
         public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
