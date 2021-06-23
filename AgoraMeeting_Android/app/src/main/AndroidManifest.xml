@@ -18,7 +18,7 @@
         tools:replace="android:name"
         tools:targetApi="n">
         <activity
-            android:name=".MainActivity"
+            android:name=".EntranceActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
             android:hardwareAccelerated="true"
@@ -29,6 +29,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="locale|orientation|layoutDirection|screenSize|keyboardHidden">
         </activity>
 
     </application>
