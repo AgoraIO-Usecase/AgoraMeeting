@@ -50,6 +50,15 @@ public class GridVideoFragment extends BaseFragment<FragmentGridVideoBinding> {
         }
     };
 
+    private View.OnLayoutChangeListener listLayoutChangeListener = new View.OnLayoutChangeListener() {
+        @Override
+        public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+            if (adapter != null) {
+                adapter.notifyDataSetChanged();
+            }
+        }
+    };
+
     public static GridVideoFragment getInstance(int index) {
         GridVideoFragment fragment = new GridVideoFragment();
         Bundle bundle = new GridVideoFragmentArgs.Builder(index).build().toBundle();
@@ -80,6 +89,8 @@ public class GridVideoFragment extends BaseFragment<FragmentGridVideoBinding> {
             return;
         }
         final RenderInfo renderInfo = value.get(index);
+
+        binding.list.addOnLayoutChangeListener(listLayoutChangeListener);
         binding.list.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
@@ -128,6 +139,7 @@ public class GridVideoFragment extends BaseFragment<FragmentGridVideoBinding> {
 
     @Override
     public void onDestroyView() {
+        binding.list.removeOnLayoutChangeListener(listLayoutChangeListener);
         adapter = null;
         super.onDestroyView();
     }
