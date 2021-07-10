@@ -110,6 +110,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
             termsDialog.setPrivacyTermsDialogListener(new PrivacyTermsDialog.OnPrivacyTermsDialogListener() {
                 @Override
                 public void onPositiveClick() {
+                    initAfterAgreenPolicy();
                     termsDialog = null;
                     preferenceVM.setShowPrivacy(false);
                 }
@@ -120,7 +121,17 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
                 }
             });
             termsDialog.show();
+        }else{
+            initAfterAgreenPolicy();
         }
+    }
+
+    private void initAfterAgreenPolicy() {
+        doIfNetAvailable(() -> {
+            listenNetworkChange();
+            checkNeedPermissions();
+            commonVM.checkVersion();
+        });
     }
 
     protected void initOnCreated() {
@@ -158,12 +169,6 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
             }
         });
         preferenceVM.setCameraFront(true);
-
-        doIfNetAvailable(() -> {
-            listenNetworkChange();
-            checkNeedPermissions();
-            commonVM.checkVersion();
-        });
     }
 
     /**

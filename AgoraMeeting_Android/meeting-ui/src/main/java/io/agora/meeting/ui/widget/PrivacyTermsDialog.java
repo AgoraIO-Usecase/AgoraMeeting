@@ -77,11 +77,6 @@ public class PrivacyTermsDialog {
                 });
 
         mDialog = mDialogBuilder.create();
-        WindowManager.LayoutParams attributes = mDialog.getWindow().getAttributes();
-        attributes.height = WindowManager.LayoutParams.MATCH_PARENT;
-        attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
-        attributes.gravity = Gravity.CENTER;
-        mDialog.getWindow().setAttributes(attributes);
         mDialog.show();
 
         Button positive = mDialog.getButton(AlertDialog.BUTTON_POSITIVE);

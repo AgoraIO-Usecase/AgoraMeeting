@@ -165,6 +165,16 @@
                     android:textColor="@color/global_text_color_black"
                     android:textSize="@dimen/global_text_size_small" />
 
+                <TextView
+                    android:id="@+id/tv_user_policy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:onClick="@{clickListener}"
+                    android:text="@string/about_user_policy"
+                    android:textColor="@color/global_text_color_black"
+                    android:textSize="@dimen/global_text_size_small" />
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
