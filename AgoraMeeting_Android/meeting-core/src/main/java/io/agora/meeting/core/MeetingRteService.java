@@ -35,9 +35,6 @@ import io.agora.meeting.core.bean.UserProperties;
 import io.agora.meeting.core.http.network.HttpException;
 import io.agora.meeting.core.log.Logger;
 import io.agora.rtc.ss.utils.SimpleSafeData;
-import io.agora.rte.AgoraRteAudioEncoderConfig;
-import io.agora.rte.AgoraRteAudioProfile;
-import io.agora.rte.AgoraRteAudioScenario;
 import io.agora.rte.AgoraRteAudioSourceType;
 import io.agora.rte.AgoraRteCallback;
 import io.agora.rte.AgoraRteCameraVideoTrack;
@@ -63,6 +60,7 @@ import io.agora.rte.AgoraRteSceneConfig;
 import io.agora.rte.AgoraRteSceneConnectionChangeReason;
 import io.agora.rte.AgoraRteSceneConnectionState;
 import io.agora.rte.AgoraRteSceneEventListener;
+import io.agora.rte.AgoraRteSceneInfo;
 import io.agora.rte.AgoraRteSceneJoinOptions;
 import io.agora.rte.AgoraRteStreamEvent;
 import io.agora.rte.AgoraRteStreamInfo;
@@ -75,7 +73,6 @@ import io.agora.rte.NetworkQuality;
 
 /**
  * Description:
- *
  *
  * @since 2/23/21
  */
@@ -159,27 +156,39 @@ public final class MeetingRteService {
      * @return 本地设备登录的用户id
      */
     public String getLocalUserId() {
-        if (mRteScene == null || mRteScene.getLocalUser() == null) {
+        if (mRteScene == null) {
             return "";
         }
-        return mRteScene.getLocalUser().getUserId();
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return "";
+        }
+        return localUser.getUserId();
     }
 
     public String getLocalUserName() {
-        if (mRteScene == null || mRteScene.getLocalUser() == null) {
+        if (mRteScene == null) {
             return "";
         }
-        return mRteScene.getLocalUser().getUserName();
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return "";
+        }
+        return localUser.getUserName();
     }
 
     /**
      * @return 本地设备登录的用户是否是主持人
      */
     public boolean isLocalHost() {
-        if (mRteScene == null || mRteScene.getLocalUser() == null) {
+        if (mRteScene == null) {
             return false;
         }
-        return mRteScene.getLocalUser().getRole().equals(UserRole.HOST);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return false;
+        }
+        return localUser.getRole().equals(UserRole.HOST);
     }
 
 
@@ -190,7 +199,8 @@ public final class MeetingRteService {
         if (mRteScene == null) {
             return "";
         }
-        return mRteScene.getSceneInfo().getSceneId();
+        AgoraRteSceneInfo sceneInfo = mRteScene.getSceneInfo();
+        return sceneInfo.getSceneId();
     }
 
     /**
@@ -206,10 +216,14 @@ public final class MeetingRteService {
      * 发送消息到房间里
      */
     public void sendMessageToRoom(AgoraRteMessage agoraRteMessage) {
-        if(mRteScene == null){
+        if (mRteScene == null) {
             return;
         }
-        mRteScene.getLocalUser().sendSceneMessage(agoraRteMessage, new AgoraRteCallback<Void>() {
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return;
+        }
+        localUser.sendSceneMessage(agoraRteMessage, new AgoraRteCallback<Void>() {
             @Override
             public void success(@Nullable Void param) {
 
@@ -247,35 +261,52 @@ public final class MeetingRteService {
         return mRteEngine.getAgoraRteMediaControl().getAudioMediaTrack();
     }
 
-    public void enableDualStreamMode(boolean enable){
-        if(mRteScene == null || mRteScene.getLocalUser() == null){
+    public void enableDualStreamMode(boolean enable) {
+        if (mRteScene == null) {
             return;
         }
-        AgoraRteError ret = mRteScene.getLocalUser().enableDualStreamMode(enable);
-        Logger.d("enableDualStreamMode ret=" + (ret== null ? 0 : ret.getCode()));
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return;
+        }
+        AgoraRteError ret = localUser.enableDualStreamMode(enable);
+        Logger.d("enableDualStreamMode ret=" + (ret == null ? 0 : ret.getCode()));
     }
 
     public void enableRemoteVideoHighStream(String streamId, boolean enable) {
-        if (mRteScene == null || mRteScene.getLocalUser() == null) {
+        if (mRteScene == null) {
             return;
         }
-        AgoraRteError ret = mRteScene.getLocalUser().subscribeRemoteVideoStreamOptions(streamId,
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return;
+        }
+
+        AgoraRteError ret = localUser.subscribeRemoteVideoStreamOptions(streamId,
                 new AgoraRteSubscribeOptions(enable ? AgoraRteVideoStreamType.high : AgoraRteVideoStreamType.low));
         Logger.d("enableRemoteVideoHighStream streamId= " + streamId + ",highStream=" + enable + ",ret=" + (ret == null ? 0 : ret.getCode()));
     }
 
-    public void subscribeRemoteStream(String streamId, AgoraRteMediaStreamType type){
-        if(mRteScene == null || mRteScene.getLocalUser() == null){
+    public void subscribeRemoteStream(String streamId, AgoraRteMediaStreamType type) {
+        if (mRteScene == null) {
             return;
         }
-        mRteScene.getLocalUser().subscribeRemoteStream(streamId, type);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return;
+        }
+        localUser.subscribeRemoteStream(streamId, type);
     }
 
-    public void unsubscribeRemoteStream(String streamId, AgoraRteMediaStreamType type){
-        if(mRteScene == null || mRteScene.getLocalUser() == null){
+    public void unsubscribeRemoteStream(String streamId, AgoraRteMediaStreamType type) {
+        if (mRteScene == null) {
             return;
         }
-        mRteScene.getLocalUser().unsubscribeRemoteStream(streamId, type);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if (localUser == null) {
+            return;
+        }
+        localUser.unsubscribeRemoteStream(streamId, type);
     }
 
     public void destroy() {
@@ -347,7 +378,7 @@ public final class MeetingRteService {
     private boolean ifMeetingEnd(RoomProperties newValue) {
         if (newValue.isMeetingEnded()) {
             // 房间被关闭
-            runInMainThread(()->callObservers(getRoomId(), mRoomObservers, RoomChangeObserver::onRoomClosed));
+            runInMainThread(() -> callObservers(getRoomId(), mRoomObservers, RoomChangeObserver::onRoomClosed));
             return true;
         }
         return false;
@@ -360,7 +391,7 @@ public final class MeetingRteService {
                     changeScreenStream(newValue.share.screen.ownerInfo.getUserId(), newValue.share.screen.streamInfo.getStreamId(),
                             new AgoraRteStreamInfo(newValue.share.screen.ownerInfo, newValue.share.screen.streamInfo.getStreamId(), "ScreenScreen", AgoraRteVideoSourceType.none, AgoraRteAudioSourceType.none, true, false, System.currentTimeMillis()),
                             true);
-                }else if(oldValue != null){
+                } else if (oldValue != null) {
                     changeScreenStream(oldValue.share.screen.ownerInfo.getUserId(), oldValue.share.screen.streamInfo.getStreamId(), null, false);
                 }
             }
@@ -399,7 +430,7 @@ public final class MeetingRteService {
 
     @Nullable
     private AgoraRteUserInfo findBoardOperator(RoomProperties oldValue, @NotNull RoomProperties newValue) {
-        if(oldValue == null || !newValue.isBoardSharing() || !oldValue.isBoardSharing()){
+        if (oldValue == null || !newValue.isBoardSharing() || !oldValue.isBoardSharing()) {
             return null;
         }
         List<String> newGrantUsers = newValue.board.state.grantUsers;
@@ -407,24 +438,24 @@ public final class MeetingRteService {
 
         String changeUserId = "";
         AgoraRteUserInfo operator = null;
-        if(newGrantUsers.size() > oldGrantUsers.size()){
+        if (newGrantUsers.size() > oldGrantUsers.size()) {
             for (String newGrantUser : newGrantUsers) {
-                if(!oldGrantUsers.contains(newGrantUser)){
+                if (!oldGrantUsers.contains(newGrantUser)) {
                     changeUserId = newGrantUser;
                     break;
                 }
             }
-        }else if (newGrantUsers.size() < oldGrantUsers.size()){
+        } else if (newGrantUsers.size() < oldGrantUsers.size()) {
             for (String oldGrantUser : oldGrantUsers) {
-                if(!newGrantUsers.contains(oldGrantUser)){
+                if (!newGrantUsers.contains(oldGrantUser)) {
                     changeUserId = oldGrantUser;
                     break;
                 }
             }
         }
-        if(!TextUtils.isEmpty(changeUserId)){
+        if (!TextUtils.isEmpty(changeUserId)) {
             for (AgoraRteUserInfo user : mRteScene.getAllUsers()) {
-                if(user.getUserId().equals(changeUserId)){
+                if (user.getUserId().equals(changeUserId)) {
                     operator = user;
                     break;
                 }
@@ -466,7 +497,7 @@ public final class MeetingRteService {
 
 
     private boolean parseSceneUsers() {
-        if(mRteScene == null){
+        if (mRteScene == null) {
             return false;
         }
         boolean success = false;
@@ -478,7 +509,7 @@ public final class MeetingRteService {
             for (AgoraRteStreamInfo userStream : userStreams) {
                 success = true;
                 dealStreamAdd(userInfo.getUserId(), userStream, judgeStreamType(userStream));
-                if(userStream.getStreamId().equals(userInfo.getStreamId())){
+                if (userStream.getStreamId().equals(userInfo.getStreamId())) {
                     containerMainStream = true;
                 }
             }
@@ -495,7 +526,7 @@ public final class MeetingRteService {
     private void dealStreamRemove(String userId, String streamId, @StreamType int streamType) {
         if (streamType == StreamType.SCREEN) {
             changeScreenStream(userId, streamId, null, false);
-        } else if(streamType == StreamType.BOARD){
+        } else if (streamType == StreamType.BOARD) {
             runInMainThread(() -> callObservers(userId, mUserObservers, observer -> observer.onStreamRemove(streamId)));
         }
     }
@@ -503,26 +534,24 @@ public final class MeetingRteService {
     private void dealStreamAdd(String userId, AgoraRteStreamInfo streamInfo, @StreamType int streamType) {
         if (streamType == StreamType.SCREEN) {
             changeScreenStream(userId, streamInfo.getStreamId(), streamInfo, true);
-        }
-        else if(userId.equals(getLocalUserId()) && streamType == StreamType.MEDIA){
-            if(isLocalStreamAdded){
+        } else if (userId.equals(getLocalUserId()) && streamType == StreamType.MEDIA) {
+            if (isLocalStreamAdded) {
                 runInMainThread(() -> callObservers(streamInfo.getStreamId(), mStreamObservers, observer -> observer.onStreamUpdate(streamInfo, null)));
-            }else{
+            } else {
                 isLocalStreamAdded = true;
                 runInMainThread(() -> callObservers(userId, mUserObservers, observer -> observer.onStreamAdd(streamInfo, streamType)));
             }
-        }
-        else {
+        } else {
             runInMainThread(() -> callObservers(userId, mUserObservers, observer -> observer.onStreamAdd(streamInfo, streamType)));
         }
     }
 
-    private void changeScreenStream(String userId, String streamId, AgoraRteStreamInfo streamInfo, boolean open){
+    private void changeScreenStream(String userId, String streamId, AgoraRteStreamInfo streamInfo, boolean open) {
         screenStatusChange.execWhen(
                 status -> {
-                    if(open){
+                    if (open) {
                         runInMainThread(() -> callObservers(userId, mUserObservers, observer -> observer.onStreamAdd(streamInfo, StreamType.SCREEN)));
-                    }else{
+                    } else {
                         runInMainThread(() -> callObservers(userId, mUserObservers, observer -> observer.onStreamRemove(streamId)));
                     }
                 },
@@ -550,7 +579,8 @@ public final class MeetingRteService {
         }
         String _reason = reason;
         int _type = type;
-        runInMainThread(()->callObservers(getRoomId(), mRoomObservers, observer -> observer.onActionCauseReceived(operator, target, _type, _reason)));;
+        runInMainThread(() -> callObservers(getRoomId(), mRoomObservers, observer -> observer.onActionCauseReceived(operator, target, _type, _reason)));
+        ;
     }
 
     private void listenUserChange() {
@@ -559,15 +589,15 @@ public final class MeetingRteService {
             @Override
             public void onUserChanged(AgoraRteUserInfo userInfo, @DataState int state) {
                 runInMainThread(() -> {
-                    switch (state){
+                    switch (state) {
                         case DataState.ADD:
                             dealUserJoin(userInfo);
                             break;
                         case DataState.REMOVE:
-                            callObservers(getRoomId(), mRoomObservers, observer->observer.onUserLeft(userInfo));
+                            callObservers(getRoomId(), mRoomObservers, observer -> observer.onUserLeft(userInfo));
                             break;
                         case DataState.UPDATE:
-                            callObservers(userInfo.getUserId(), mUserObservers, observer->observer.onUserInfoUpdated(userInfo));
+                            callObservers(userInfo.getUserId(), mUserObservers, observer -> observer.onUserInfoUpdated(userInfo));
                             break;
                     }
                 });
@@ -576,7 +606,7 @@ public final class MeetingRteService {
             @Override
             public void onStreamChanged(AgoraRteStreamInfo streamInfo, @DataState int state) {
                 runInMainThread(() -> {
-                    switch (state){
+                    switch (state) {
                         case DataState.ADD:
                             dealStreamAdd(streamInfo.getOwner().getUserId(), streamInfo, judgeStreamType(streamInfo));
                             break;
@@ -584,7 +614,7 @@ public final class MeetingRteService {
                             dealStreamRemove(streamInfo.getOwner().getUserId(), streamInfo.getStreamId(), judgeStreamType(streamInfo));
                             break;
                         case DataState.UPDATE:
-                            callObservers(streamInfo.getStreamId(), mStreamObservers, observer->observer.onStreamUpdate(streamInfo, null));
+                            callObservers(streamInfo.getStreamId(), mStreamObservers, observer -> observer.onStreamUpdate(streamInfo, null));
                             break;
                     }
                 });
@@ -875,7 +905,7 @@ public final class MeetingRteService {
 
         boolean containerUserMainStream = false;
         for (AgoraRteStreamInfo userStream : userStreams) {
-            if(userStream.getStreamId().equals(user.getStreamId())){
+            if (userStream.getStreamId().equals(user.getStreamId())) {
                 containerUserMainStream = true;
             }
         }
@@ -1010,35 +1040,58 @@ public final class MeetingRteService {
     }
 
     public void muteLocalMediaStream(String ownerUserId, String streamId, AgoraRteMediaStreamType type, boolean enable) {
-        mRteScene.getLocalUser().muteLocalMediaStream(ownerUserId, streamId, type, enable, false);
+        if (mRteScene == null) {
+            return;
+        }
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if(localUser == null){
+            return;
+        }
+        localUser.muteLocalMediaStream(ownerUserId, streamId, type, enable, false);
     }
 
     public SurfaceView createSurfaceView(Context context) {
         if (mRteScene == null) {
             return null;
         }
-        return mRteScene.getLocalUser().createSurfaceRenderView(context);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if(localUser == null){
+            return null;
+        }
+        return localUser.createSurfaceRenderView(context);
     }
 
     public TextureView createTextureView(Context context) {
         if (mRteScene == null) {
             return null;
         }
-        return mRteScene.getLocalUser().createTextureRenderView(context);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if(localUser == null){
+            return null;
+        }
+        return localUser.createTextureRenderView(context);
     }
 
     public void renderRemoteVideo(String streamId, View view, AgoraRteRenderConfig config) {
         if (mRteScene == null) {
             return;
         }
-        mRteScene.getLocalUser().renderRemoteStream(streamId, view, config);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if(localUser == null){
+            return;
+        }
+        localUser.renderRemoteStream(streamId, view, config);
     }
 
     public void stopRenderRemoteStream(String streamId) {
         if (mRteScene == null) {
             return;
         }
-        mRteScene.getLocalUser().stopRenderRemoteStream(streamId);
+        AgoraRteLocalUser localUser = mRteScene.getLocalUser();
+        if(localUser == null){
+            return;
+        }
+        localUser.stopRenderRemoteStream(streamId);
     }
 
 
