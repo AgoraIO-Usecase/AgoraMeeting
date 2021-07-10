@@ -46,15 +46,14 @@ import io.agora.meeting.ui.fragment.MeetingFragmentArgs;
 import io.agora.meeting.ui.fragment.SimpleWebFragmentArgs;
 import io.agora.meeting.ui.fragment.WhiteBoardFragmentArgs;
 import io.agora.meeting.ui.util.NetworkUtil;
-import io.agora.meeting.ui.util.StringUtil;
 import io.agora.meeting.ui.util.ToastUtil;
 import io.agora.meeting.ui.viewmodel.CommonViewModel;
 import io.agora.meeting.ui.viewmodel.PreferenceViewModel;
 import io.agora.meeting.ui.viewmodel.RoomViewModel;
+import io.agora.meeting.ui.widget.PrivacyTermsDialog;
 
 /**
  * Description:
- *
  *
  * @since 2/19/21
  */
@@ -67,11 +66,14 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
     private AlertDialog mPoorNetDialog;
     private long lastNavigateTime;
 
+    private PrivacyTermsDialog termsDialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(onCreateSavedInstanceState(savedInstanceState));
         initOnCreated();
         DataBindingUtil.setContentView(this, R.layout.activity_main);
+        initPrivacy();
     }
 
     @Override
@@ -80,7 +82,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
         return navController.navigateUp() || super.onSupportNavigateUp();
     }
 
-    protected Bundle onCreateSavedInstanceState(@Nullable Bundle savedInstanceState){
+    protected Bundle onCreateSavedInstanceState(@Nullable Bundle savedInstanceState) {
         return null;
     }
 
@@ -96,6 +98,28 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
             return true;
         } catch (Exception e) {
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void initPrivacy() {
+        if (preferenceVM.getShowPrivacy()) {
+            if (termsDialog != null) {
+                return;
+            }
+            termsDialog = new PrivacyTermsDialog(MeetingActivity.this);
+            termsDialog.setPrivacyTermsDialogListener(new PrivacyTermsDialog.OnPrivacyTermsDialogListener() {
+                @Override
+                public void onPositiveClick() {
+                    termsDialog = null;
+                    preferenceVM.setShowPrivacy(false);
+                }
+
+                @Override
+                public void onNegativeClick() {
+                    finish();
+                }
+            });
+            termsDialog.show();
         }
     }
 
@@ -117,7 +141,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
         roomVM.failure.observe(this, throwable -> {
             dismissLoadingDialog();
             RoomModel roomModel = roomVM.getRoomModel();
-            if(roomModel == null){
+            if (roomModel == null) {
                 ToastUtil.showShort(throwable.getMessage());
                 return;
             }
@@ -340,6 +364,9 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(downloadReceiver);
+        if (termsDialog != null) {
+            termsDialog.dismiss();
+        }
     }
 
     @Override
@@ -350,7 +377,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
 
     protected void safeNavigate(View view, @IdRes int targetId, Bundle bundle) {
         // 两次点击间隔不能小于1s
-        if(System.currentTimeMillis() - lastNavigateTime < 1000){
+        if (System.currentTimeMillis() - lastNavigateTime < 1000) {
             Logger.d("MeetingActivity", "safeNavigate click interval less than 1s");
             return;
         }
@@ -359,9 +386,9 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
             Navigation.findNavController(view).navigate(targetId, bundle);
         } catch (Exception e) {
             Logger.d(e.toString());
-            try{
+            try {
                 Navigation.findNavController(this, getNavLayout()).navigate(targetId, bundle);
-            }catch (Exception e1){
+            } catch (Exception e1) {
                 Logger.d("MeetingActivity", "findNavController error: " + e1.toString());
             }
         }
@@ -400,7 +427,7 @@ public class MeetingActivity extends AppCompatActivity implements AppBarDelegate
     }
 
     @Keep
-    public static class MainNavHostFragment extends NavHostFragment{
+    public static class MainNavHostFragment extends NavHostFragment {
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
             setReenterTransition(true);

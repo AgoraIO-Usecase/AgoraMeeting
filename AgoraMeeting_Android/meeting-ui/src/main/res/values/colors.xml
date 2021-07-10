@@ -2,6 +2,7 @@
 <resources>
     <!-- 全局色调 -->
     <color name="global_accent">#4da1ff</color>
+    <color name="global_primary">#0087ff</color>
 
     <color name="global_text_color_black">#2e3848</color>
     <color name="global_text_color_white">#FFFFFF</color>
@@ -12,5 +13,9 @@
 
     <!-- whiteboard -->
     <color name="whiteboard_tools_bg">#88E9EFF4</color>
+
+
+    <color name="teams_color_error">#fd3e3f</color>
+
 
 </resources>
