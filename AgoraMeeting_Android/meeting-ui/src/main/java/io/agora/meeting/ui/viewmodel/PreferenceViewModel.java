@@ -17,6 +17,7 @@ public class PreferenceViewModel extends AndroidViewModel {
     private final PreferenceLiveData.IntPreferenceLiveData notifyMaxNum;
     private final PreferenceLiveData.IntPreferenceLiveData meetingDuration;
     private final PreferenceLiveData.IntPreferenceLiveData meetingMaxPeople;
+    private final PreferenceLiveData.BooleanPreferenceLiveData showPrivacy;
 
     public PreferenceViewModel(Application application) {
         super(application);
@@ -28,6 +29,7 @@ public class PreferenceViewModel extends AndroidViewModel {
         notifyMaxNum = new PreferenceLiveData.IntPreferenceLiveData(preferences, application.getString(R.string.key_notify_max_num), 50);
         meetingDuration = new PreferenceLiveData.IntPreferenceLiveData(preferences, application.getString(R.string.key_meeting_duration), 45 * 60);
         meetingMaxPeople = new PreferenceLiveData.IntPreferenceLiveData(preferences, application.getString(R.string.key_meeting_max_people), 1000);
+        showPrivacy = new PreferenceLiveData.BooleanPreferenceLiveData(preferences, application.getString(R.string.key_show_privacy_terms), true);
     }
 
     public PreferenceLiveData.StringPreferenceLiveData getName() {
@@ -54,7 +56,15 @@ public class PreferenceViewModel extends AndroidViewModel {
         this.mic.setValue(mic);
     }
 
-    public PreferenceLiveData.IntPreferenceLiveData getToastMaxNum(){
+    public boolean getShowPrivacy() {
+        return showPrivacy.getValue();
+    }
+
+    public void setShowPrivacy(Boolean show) {
+        this.showPrivacy.setValue(show);
+    }
+
+    public PreferenceLiveData.IntPreferenceLiveData getToastMaxNum() {
         return notifyMaxNum;
     }
 

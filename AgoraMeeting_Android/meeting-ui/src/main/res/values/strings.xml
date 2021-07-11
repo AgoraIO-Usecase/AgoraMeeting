@@ -171,6 +171,7 @@
     <string name="about_agreement">User agreement</string>
     <string name="about_product_disclaimer">Product disclaimer</string>
     <string name="about_policy">Privacy policy</string>
+    <string name="about_user_policy">Terms of service</string>
     <string name="copyright" translatable="false">Copyright © 2020 OVC.</string>
     <string name="copyright_agora" translatable="false">www.agora.io</string>
 

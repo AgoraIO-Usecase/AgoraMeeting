@@ -38,9 +38,13 @@ public class AboutFragment extends BaseFragment<FragmentAboutBinding> {
         setupAppBar(binding.toolbar, false);
         binding.tvProductDisclaimer.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         binding.tvPolicy.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        binding.tvUserPolicy.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         binding.setClickListener(v -> {
             if(v.getId() == R.id.tv_policy){
                 ((MeetingActivity)requireActivity()).navigateToWebPage(requireView(), getString(R.string.proxy_url, getLocalLanguage()));
+            }
+            else if(v.getId() == R.id.tv_user_policy){
+                ((MeetingActivity)requireActivity()).navigateToWebPage(requireView(), getString(R.string.user_proxy_url, getLocalLanguage()));
             }
             else if(v.getId() == R.id.tv_product_disclaimer){
                 // 免费声明

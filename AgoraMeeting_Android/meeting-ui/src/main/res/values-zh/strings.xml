@@ -170,6 +170,7 @@
     <string name="about_agreement">用户协议</string>
     <string name="about_product_disclaimer">免责声明</string>
     <string name="about_policy">隐私政策</string>
+    <string name="about_user_policy">服务条款</string>
 
     <!-- 通知弹窗 -->
     <string name="notify_popup_apply_audio_title">"%1$s"申请打开麦克风</string>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="agree_the_terms">我已阅读以上条款</string>
+
+    <!-- privacy -->
+    <string name="setting_title_user_agreement">Agora 隐私政策和服务条款</string>
+    <string name="got_it">知道了</string>
+    <string name="decline">拒绝</string>
+    <string name="accept">同意</string>
+</resources>
