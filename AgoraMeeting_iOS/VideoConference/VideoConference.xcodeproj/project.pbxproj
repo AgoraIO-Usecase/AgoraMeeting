@@ -169,6 +169,12 @@
 		784D22B724655BFA0065985A /* BottomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 784D22B624655BFA0065985A /* BottomItem.m */; };
 		784D22B924655C040065985A /* BottomItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784D22B824655C040065985A /* BottomItem.xib */; };
 		78F69112246E7212000A0E71 /* ARUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F6910D246E7212000A0E71 /* ARUserDefaults.m */; };
+		86323BEF269AD15F006C9C31 /* Agora_Privacy_Policy_cn.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 86323BED269AD15F006C9C31 /* Agora_Privacy_Policy_cn.rtf */; };
+		86323BF0269AD15F006C9C31 /* Agora_Privacy_Policy_en.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 86323BEE269AD15F006C9C31 /* Agora_Privacy_Policy_en.rtf */; };
+		86323BF3269AD16A006C9C31 /* Policy.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86323BF1269AD16A006C9C31 /* Policy.strings */; };
+		86323BF7269AD184006C9C31 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86323BF5269AD184006C9C31 /* Policy.storyboard */; };
+		86323BFA269AD33B006C9C31 /* TermsAndPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86323BF8269AD33B006C9C31 /* TermsAndPolicyViewController.swift */; };
+		86323BFB269AD33B006C9C31 /* TermsAndPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86323BF9269AD33B006C9C31 /* TermsAndPolicyView.swift */; };
 		8690D8CE25F742E700FF8251 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690D8CD25F742E700FF8251 /* SampleHandler.swift */; };
 		8B98F1A923481A0A48DEA700 /* Pods_VideoConference.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC5E4E14A0F3AD5CA151FEA /* Pods_VideoConference.framework */; };
 		B384AE1E7448A15847731C93 /* Pods_ScreenSharingBroadcast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B07C58FB76CB543251CB17 /* Pods_ScreenSharingBroadcast.framework */; };
@@ -444,6 +450,13 @@
 		78F6910D246E7212000A0E71 /* ARUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARUserDefaults.m; sourceTree = "<group>"; };
 		78F69110246E7212000A0E71 /* ARUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARUserDefaults.h; sourceTree = "<group>"; };
 		80B07C58FB76CB543251CB17 /* Pods_ScreenSharingBroadcast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenSharingBroadcast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86323BED269AD15F006C9C31 /* Agora_Privacy_Policy_cn.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Agora_Privacy_Policy_cn.rtf; sourceTree = "<group>"; };
+		86323BEE269AD15F006C9C31 /* Agora_Privacy_Policy_en.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Agora_Privacy_Policy_en.rtf; sourceTree = "<group>"; };
+		86323BF2269AD16A006C9C31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Policy.strings; sourceTree = "<group>"; };
+		86323BF4269AD174006C9C31 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Policy.strings"; sourceTree = "<group>"; };
+		86323BF6269AD184006C9C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Policy.storyboard; sourceTree = "<group>"; };
+		86323BF8269AD33B006C9C31 /* TermsAndPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndPolicyViewController.swift; sourceTree = "<group>"; };
+		86323BF9269AD33B006C9C31 /* TermsAndPolicyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndPolicyView.swift; sourceTree = "<group>"; };
 		8690D8CD25F742E700FF8251 /* SampleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
 		8DFC4C50A584CD14238C244C /* Pods-ScreenSharingBroadcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenSharingBroadcast.debug.xcconfig"; path = "Target Support Files/Pods-ScreenSharingBroadcast/Pods-ScreenSharingBroadcast.debug.xcconfig"; sourceTree = "<group>"; };
 		A3AA1CDDED4E961CF4E62543 /* Pods-VideoConference.devrelease.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoConference.devrelease.xcconfig"; path = "Target Support Files/Pods-VideoConference/Pods-VideoConference.devrelease.xcconfig"; sourceTree = "<group>"; };
@@ -805,6 +818,9 @@
 		26C93FF1260DE559002D6F70 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				86323BF1269AD16A006C9C31 /* Policy.strings */,
+				86323BED269AD15F006C9C31 /* Agora_Privacy_Policy_cn.rtf */,
+				86323BEE269AD15F006C9C31 /* Agora_Privacy_Policy_en.rtf */,
 				263A9D1925F099F900C9DB7F /* Agora Meeting.entitlements */,
 				78F2325525F0D6BF0035B3D6 /* Agora MeetingDebug.entitlements */,
 				780356132465706D001F9624 /* Localizable.strings */,
@@ -812,6 +828,7 @@
 				784D20AD2463EB820065985A /* Info.plist */,
 				784D20AA2463EB820065985A /* LaunchScreen.storyboard */,
 				784D20A52463EB810065985A /* Main.storyboard */,
+				86323BF5269AD184006C9C31 /* Policy.storyboard */,
 				266740A8262F0644003EB9CD /* DeviceInfo.plist */,
 				26C93FF2260DE56F002D6F70 /* disclaimer_cn.html */,
 				26C93FF3260DE56F002D6F70 /* disclaimer_en.html */,
@@ -999,6 +1016,8 @@
 		78F69101246E71FC000A0E71 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				86323BF9269AD33B006C9C31 /* TermsAndPolicyView.swift */,
+				86323BF8269AD33B006C9C31 /* TermsAndPolicyViewController.swift */,
 				26742FE225CBF0C400B552A1 /* LoginVC.swift */,
 				26174B2B25D91E3500AEC603 /* LoginVM.swift */,
 				262713BA25DF9C2D008E6961 /* LoginVM+Log.swift */,
@@ -1192,11 +1211,14 @@
 				2625250C26130DEE0033BFFB /* MessageCell.xib in Resources */,
 				26DF881B259C305000286DFB /* PageCtrlView.xib in Resources */,
 				2650FA7725B5B66B00F122AC /* UserCell.xib in Resources */,
+				86323BEF269AD15F006C9C31 /* Agora_Privacy_Policy_cn.rtf in Resources */,
 				26C93FF5260DE56F002D6F70 /* disclaimer_en.html in Resources */,
 				2619F117262080F500607FAB /* VideoCellMini.xib in Resources */,
 				262D700A25E63F0500CC0852 /* MessageSelfCell.xib in Resources */,
 				784936E92469351600DE15AB /* SetArrowCell.xib in Resources */,
+				86323BF7269AD184006C9C31 /* Policy.storyboard in Resources */,
 				26743D6F25EB95050050F933 /* EEWhiteboardToolView.xib in Resources */,
+				86323BF3269AD16A006C9C31 /* Policy.strings in Resources */,
 				7808B29C2468449700B320EB /* SetLabelCell.xib in Resources */,
 				26D7146D2637E4E800786A58 /* ASScoreStarView.xib in Resources */,
 				261E0FEF25EE496900383D42 /* VideoCell.xib in Resources */,
@@ -1211,6 +1233,7 @@
 				784D20A72463EB810065985A /* Main.storyboard in Resources */,
 				26C93FF4260DE56F002D6F70 /* disclaimer_cn.html in Resources */,
 				26D714512636DEF300786A58 /* MessageInputView.xib in Resources */,
+				86323BF0269AD15F006C9C31 /* Agora_Privacy_Policy_en.rtf in Resources */,
 				2658628826357C70002E0E66 /* MeetingTopView.xib in Resources */,
 				26DF8802259B283300286DFB /* MeetingBottomView.xib in Resources */,
 			);
@@ -1341,6 +1364,7 @@
 				26C93F2E2609D94C002D6F70 /* NotiCell.swift in Sources */,
 				2650FA3825B18C4100F122AC /* SetTextFieldCell.m in Sources */,
 				263A9BCD25EF3A6300C9DB7F /* WhiteBoardVM.swift in Sources */,
+				86323BFA269AD33B006C9C31 /* TermsAndPolicyViewController.swift in Sources */,
 				26DC692B25F7B7A7002C56D2 /* MeetingVM+Info+Extension.swift in Sources */,
 				261E0FF225EE575000383D42 /* VideoCellSheetView.swift in Sources */,
 				26743D4A25EB54A00050F933 /* WhiteBoardVC.swift in Sources */,
@@ -1436,6 +1460,7 @@
 				269B687425F36840005D7CC5 /* MeetingVM+AV+Apply.swift in Sources */,
 				2625598225DBE29100A1ABD3 /* ShareSheetVC.swift in Sources */,
 				26DC690825F74A8D002C56D2 /* MeetingVCProtocol.swift in Sources */,
+				86323BFB269AD33B006C9C31 /* TermsAndPolicyView.swift in Sources */,
 				269B7F6E25A562A000C003FE /* MeetingMessageModel.m in Sources */,
 				2625594425DBC64500A1ABD3 /* NotiType.swift in Sources */,
 				2619F0DF261ED71900607FAB /* MeetingVM+Delegate+MainQueue.swift in Sources */,
@@ -1524,6 +1549,23 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		86323BF1269AD16A006C9C31 /* Policy.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				86323BF2269AD16A006C9C31 /* en */,
+				86323BF4269AD174006C9C31 /* zh-Hans */,
+			);
+			name = Policy.strings;
+			sourceTree = "<group>";
+		};
+		86323BF5269AD184006C9C31 /* Policy.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				86323BF6269AD184006C9C31 /* Base */,
+			);
+			name = Policy.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1536,7 +1578,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcastDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1561,7 +1603,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingInternalBroadcastDev;
@@ -1582,10 +1624,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcastRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = B8R842N6FS;
+				CURRENT_PROJECT_VERSION = 23;
+				DEVELOPMENT_TEAM = 48TB6ZZL5S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VideoConference",
@@ -1609,10 +1651,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal.Broadcast;
+				MARKETING_VERSION = 2.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingInternalBroadcastDis;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingsScreenSharingDistribution;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1632,7 +1674,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcastRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1657,7 +1699,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingInternalBroadcastDis;
@@ -1680,7 +1722,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenSharingBroadcast/ScreenSharingBroadcast.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1705,7 +1747,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal.Broadcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingInternalBroadcastDis;
@@ -1837,13 +1879,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E518D6B1D22836E711436D1A /* Pods-VideoConference.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Resource/Agora MeetingDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1867,7 +1909,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal;
 				PRODUCT_NAME = "Agora Meeting";
@@ -1883,14 +1925,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FEC05613756A2D985355EFEC /* Pods-VideoConference.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Resource/Agora Meeting.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = B8R842N6FS;
+				CURRENT_PROJECT_VERSION = 23;
+				DEVELOPMENT_TEAM = 48TB6ZZL5S;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/VideoConference/App/VideoConference.pch";
@@ -1913,10 +1955,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal;
+				MARKETING_VERSION = 2.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.VideoConferenceDis;
 				PRODUCT_NAME = "Agora Meeting";
-				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetinginternalDis;
+				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetingsDistribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoConference/App/VideoConference-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1981,13 +2023,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EE07238783FA1EC3CA49D426 /* Pods-VideoConference.qarelease.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Resource/Agora Meeting.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2011,7 +2053,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal;
 				PRODUCT_NAME = "Agora Meeting";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetinginternalDis;
@@ -2079,13 +2121,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3AA1CDDED4E961CF4E62543 /* Pods-VideoConference.devrelease.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "VideoConference/Resource/Agora Meeting.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = B8R842N6FS;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2109,7 +2151,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.AgoraMeetingInternal;
 				PRODUCT_NAME = "Agora Meeting";
 				PROVISIONING_PROFILE_SPECIFIER = AgoraMeetinginternalDis;

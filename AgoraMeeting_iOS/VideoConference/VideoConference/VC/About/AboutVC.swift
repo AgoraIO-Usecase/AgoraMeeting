@@ -49,9 +49,7 @@ class AboutVC: BaseViewController {
         bottomButton2.setAttributedTitle(attributeString2, for: .normal)
         
         versionLabel.text = versionString
-        
     }
-    
     
     func commonInit() {
         bottomButton1.addTarget(self, action: #selector(buttonTap(button:)), for: .touchUpInside)
@@ -68,8 +66,14 @@ class AboutVC: BaseViewController {
         }
         
         if button == bottomButton2 {
-            let vc = BrowserVC(contentType: .privacyPolicy)
-            navigationController?.pushViewController(vc, animated: true)
+            if let termsVC = TermsAndPolicyViewController.loadFromStoryboard("Policy",
+                                                                              "terms") {
+                termsVC.modalPresentationStyle = .fullScreen
+                termsVC.fromSetting = true
+                present(termsVC,
+                        animated: true,
+                        completion: nil)
+            }
             return
         }
         
@@ -98,7 +102,6 @@ class AboutVC: BaseViewController {
             return
         }
     }
-    
     
     var versionString: String {
         let infoDict = Bundle.main.infoDictionary!

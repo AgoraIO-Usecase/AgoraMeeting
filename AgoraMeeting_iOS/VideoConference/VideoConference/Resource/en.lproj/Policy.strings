@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7VK-x1-lc2"; */
+"7VK-x1-lc2.text" = "Agora Privacy And Terms of Service";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "IuF-ee-CgA"; */
+"IuF-ee-CgA.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "I have read the terms"; ObjectID = "Ub4-nK-dRL"; */
+"Ub4-nK-dRL.normalTitle" = "I have read the terms";
+
+/* Class = "UIButton"; normalTitle = "Disagree"; ObjectID = "c0r-Sd-ZZU"; */
+"c0r-Sd-ZZU.normalTitle" = "Disagree";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "ibE-Wa-D2c"; */
+"ibE-Wa-D2c.normalTitle" = "Close";
+
+/* Class = "UIButton"; normalTitle = "Agree"; ObjectID = "vFI-07-IQ9"; */
+"vFI-07-IQ9.normalTitle" = "Agree";

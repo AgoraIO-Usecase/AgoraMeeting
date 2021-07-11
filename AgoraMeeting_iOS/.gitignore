@@ -18,6 +18,7 @@ Podfile.lock
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+*.framework
 
 ## Other
 *.xccheckout

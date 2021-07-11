@@ -30,6 +30,16 @@ class LoginVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
+        if !TermsAndPolicyViewController.getPolicyPopped(),
+           let termsVC = TermsAndPolicyViewController.loadFromStoryboard("Policy",
+                                                                          "terms") {
+            termsVC.modalPresentationStyle = .fullScreen
+            termsVC.fromSetting = false
+            present(termsVC,
+                    animated: true,
+                    completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
