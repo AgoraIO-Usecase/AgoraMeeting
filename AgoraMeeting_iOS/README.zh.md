@@ -1,5 +1,16 @@
 > *Read this article in another language: [English](README.md)*
 
+# 本项目已经不再维护。最新请到以下地址查看：
+```
+iOS: https://github.com/AgoraIO-Usecase/AgoraMeeting-iOS
+Android: https://github.com/AgoraIO-Usecase/AgoraMeeting-Android
+Web: https://github.com/AgoraIO-Usecase/AgoraMeeting-Desktop
+```
+
+---------------------------------------
+
+
+
 本文指导你运行 iOS 示例项目。
 
 ## 前提条件
