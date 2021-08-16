@@ -1,5 +1,12 @@
 > *Read this in another language: [English](./README.md)*
 
+# 本项目已经不再维护。最新请到以下地址查看：
+```
+iOS: https://github.com/AgoraIO-Usecase/AgoraMeeting-iOS
+Android: https://github.com/AgoraIO-Usecase/AgoraMeeting-Android
+Web: https://github.com/AgoraIO-Usecase/AgoraMeeting-Desktop
+```
+
 ### 在线体验
 
 [web demo](https://solutions.agora.io/meeting/web/)

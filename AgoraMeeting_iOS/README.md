@@ -1,5 +1,12 @@
 > *其他语言版本：[简体中文](README.zh.md)*
 
+# This project is no longer maintained, please check for the latest：
+```
+iOS: https://github.com/AgoraIO-Usecase/AgoraMeeting-iOS
+Android: https://github.com/AgoraIO-Usecase/AgoraMeeting-Android
+Web: https://github.com/AgoraIO-Usecase/AgoraMeeting-Desktop
+```
+
 This page introduces how to run the iOS sample project.
 
 ## Prerequisites 
