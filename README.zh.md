@@ -1,6 +1,14 @@
 > *Read this article in another language: [English](README.md)*
 
+# 本项目已经不再维护。最新请到以下地址查看：
+```
+iOS: https://github.com/AgoraIO-Usecase/AgoraMeeting-iOS
+Android: https://github.com/AgoraIO-Usecase/AgoraMeeting-Android
+Web: https://github.com/AgoraIO-Usecase/AgoraMeeting-Desktop
+```
+
 ## 目录
+
 - [项目概述](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0)
   - [支持场景](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E6%94%AF%E6%8C%81%E5%9C%BA%E6%99%AF)
   - [功能列表](https://github.com/AgoraIO-Usecase/AgoraMeeting/blob/master/README.zh.md#%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8)
