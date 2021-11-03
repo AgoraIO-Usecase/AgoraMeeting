@@ -21,11 +21,11 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "file://${rootDir}/maven"}
         google()
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven { url "file://${rootDir}/maven"}
     }
 }
 
