@@ -57,7 +57,7 @@
     "cross-env": "^6.0.3",
     "customize-cra": "^0.8.0",
     "devtron": "^1.4.0",
-    "dexie": "^2.0.4",
+    "dexie": "^3.2.2",
     "eruda": "^2.2.1",
     "hard-source-webpack-plugin": "^0.13.1",
     "immutable": "4.0.0-rc.12",
